@@ -4,7 +4,7 @@
 
 An open-source, browser-based application for conducting semi-automated systematic reviews in fast-moving, data-intensive educational domains. SARSP-LangEd integrates LLM-assisted screening and extraction with human-in-the-loop validation, rule-based normalisation, prompt analysis, and datag-driven topic discovery—packaging every intermediate artifact into a single downloadable reproducibility archive.
 
-> 📖 **Companion publication:** Pérez-Paredes, P., & [Co-authors]. (in preparation). *Semi-Automated Research Synthesis in Language Education*. Cambridge Elements in Research Methods in Applied Linguistics. Cambridge University Press.
+> 📖 **Companion publication:** Fernández-Martínez, N.J. & Pérez-Paredes, P. (in preparation). *Semi-Automated Research Synthesis in Language Education*. Cambridge Elements in Research Methods in Applied Linguistics. Cambridge University Press.
 
 ---
 
