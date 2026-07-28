@@ -77,9 +77,6 @@ python -m spacy download xx_sent_ud_sm
 
 ## Running the Application
 
-Start the Streamlit application:
-
-```bash
 streamlit run app.py
 ```
 
