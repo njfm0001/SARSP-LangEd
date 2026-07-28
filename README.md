@@ -186,7 +186,7 @@ The accompanying case study comprises **427 empirical studies** on text-based la
 
 Questions, bug reports, feature requests, and collaboration proposals are welcome.
 
-Please open an issue in this repository or contact the corresponding author.
+Please open an issue in this repository or contact the corresponding author at njfernan@ujaen.es
 
 ---
 
@@ -195,7 +195,7 @@ Please open an issue in this repository or contact the corresponding author.
 ```text
 MIT License
 
-Copyright (c) 2026 Pascual Pérez-Paredes and contributors
+Copyright (c) 2026 Nicolás José Fernández-Martínez & Pascual Pérez-Paredes
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
