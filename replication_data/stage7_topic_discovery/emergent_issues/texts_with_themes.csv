@@ -1,0 +1,807 @@
+text,cluster_id,theme
+"Ambiguity of learning gains: While AI tools can enhance student enjoyment and engagement, there is ambiguity surrounding the measurement of concrete learning gains.",2,Pedagogical and Psychological Barriers
+The need for learners to develop critical verification skills to evaluate the reliability of AI-generated content.,2,Pedagogical and Psychological Barriers
+A strong learner preference for hybrid models that combine the flexibility of CALL tools with the guidance and connection of human teachers.,7,Pedagogical and Psychological Barriers
+"A 'weak with the strong' phenomenon was observed, where GAI's performance decreased with more professional and in-depth questions from students with high expertise in linguistics, contradicting findings from other fields.",1,Ethical and Cultural Challenges in GenAI
+"Usefulness over enjoyment: The study found that for academic writing tasks, students value the effectiveness and utility of ChatGPT more than its entertainment or enjoyment aspects, as shown by the marginal increase in hedonic motivation.",5,Limitations of AI in Writing and Feedback
+"Difficulty in habit formation: A short-term (8-week) intervention may not be sufficient for students to form a consistent habit of using AI tools for learning, even if they find them useful.",2,Pedagogical and Psychological Barriers
+"Need for critical assessment skills: The study emphasizes that for AI to be effective, students must develop 'regulation skills' to critically evaluate and verify AI-generated content, moving beyond passive acceptance.",2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+The potential negative impact of GenAI on language learners' intrinsic and extrinsic motivation.,8,Ethical and Cultural Challenges in GenAI
+The significant challenge of designing valid and reliable assessment tasks that are compatible with the capabilities of GenAI tools.,8,Ethical and Cultural Challenges in GenAI
+"A widespread lack of confidence and competence among teacher educators themselves, which is a barrier to adapting ILTE programs.",7,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+Teachers' concerns about how their professional image and identity might be challenged by parents' and students' attitudes towards their use of GenAI.,8,Ethical and Cultural Challenges in GenAI
+"Disparities in student-owned technology (e.g., laptops with auto-correction vs. tablets without) can significantly impact writing performance on specific error types like spelling, highlighting an in-class digital divide.",3,Limitations of AI in Writing and Feedback
+"Despite increased competence and confidence in using AI tools, students' strong preference for human feedback (from teachers and peers) over AI-generated feedback persists, highlighting the irreplaceable value of human interaction in the learning process.",2,Pedagogical and Psychological Barriers
+"A mismatch exists between the text-based modality of ChatGPT and the needs of learners with non-read/write learning styles (e.g., visual, auditory, kinesthetic).",5,Limitations of AI in Writing and Feedback
+"The effectiveness of features like personalization and vocabulary suggestion is heavily moderated by the user's language proficiency, creating a varied user experience across different skill levels.",1,Ethical and Cultural Challenges in GenAI
+"The 'randomness-by-design' of GPT's output makes it unsuitable for providing consistent, uniform feedback required in many classroom settings.",7,Pedagogical and Psychological Barriers
+"GPT exhibits a strong tendency for 'over-correction,' where it alters or 'improves' grammatically correct and appropriate student writing, which could undermine learner confidence and voice.",3,Limitations of AI in Writing and Feedback
+"The dual psychological role of avatars: An avatar's perceived function (e.g., tutor vs. examiner) can dramatically shift its emotional impact on students from supportive to anxiety-inducing.",2,Pedagogical and Psychological Barriers
+"A potential discrepancy exists in how learners perceive chatbot effectiveness, which may be influenced by their own communicative competence.",5,Limitations of AI in Writing and Feedback
+There is a need to develop chatbots that can use more informal and fragmented language to better reflect authentic human conversation.,6,Limitations of AI in Writing and Feedback
+"A key challenge is the inability of current text-based chatbots to incorporate or simulate non-verbal conversational cues (e.g., prosody, pauses), which are integral to language acquisition.",6,Limitations of AI in Writing and Feedback
+"LLMs have limitations in their ability to engage in deep, nuanced discussions and explorations, often providing superficial responses to complex queries.",9,Limitations of AI in Writing and Feedback
+"There is a concern regarding LLMs' capability to teach intricate, domain-specific professional knowledge and skills due to a lack of depth in the generated content.",9,Limitations of AI in Writing and Feedback
+"The dominance of standard English varieties in the options provided by AI speech synthesis tools, limiting exposure to a wider range of Englishes.",1,Ethical and Cultural Challenges in GenAI
+"The risk of GenAI reinforcing 'native-speakerism' due to databases being trained primarily on 'standard English', which could undermine the goals of GELT if not used critically.",1,Ethical and Cultural Challenges in GenAI
+Preservation of genre-specific stylistic features and authorial voice during AI-assisted editing.,3,Limitations of AI in Writing and Feedback
+"Uncertainty whether newer, more advanced GenAI models can overcome the simplification issues and linguistic biases observed in earlier models.",1,Ethical and Cultural Challenges in GenAI
+"The inability of AI to apply a developmental perspective to L2 writing assessment, particularly in differentiating deliberate copying from the constrained paraphrasing attempts typical of learners.",3,Limitations of AI in Writing and Feedback
+"Ethical ambiguity regarding plagiarism, with the perception that copying from a non-human entity might not constitute academic dishonesty.",3,Limitations of AI in Writing and Feedback
+"Negative impact on professional identity formation, leading to self-positioning as 'illegitimate' or 'terrible' English users compared to AI.",1,Ethical and Cultural Challenges in GenAI
+"The role of GenAI in perpetuating harmful ideologies, such as native speakerism, by being positioned as the ultimate linguistic authority.",8,Ethical and Cultural Challenges in GenAI
+"The mood of a prompt (e.g., imperative, interrogative) does not significantly impact user satisfaction with AI responses, contrasting sharply with human communication.",6,Limitations of AI in Writing and Feedback
+"Specific content-related prompt flaws were identified as major barriers to quality AI output, including dual requests in a single prompt, use of abstract vocabulary, and applying excessive constraints.",6,Limitations of AI in Writing and Feedback
+"The role and impact of typographic revision in AI-mediated online writing is an under-explored but potentially significant area for future research, particularly in relation to learner agency.",3,Limitations of AI in Writing and Feedback
+"Score compression: The tendency of the AI model to avoid assigning very high or very low scores, clustering evaluations around the midpoint.",6,Limitations of AI in Writing and Feedback
+"Lack of longitudinal awareness: The AI's inability to track student progress across multiple drafts, treating each submission as an isolated event.",3,Limitations of AI in Writing and Feedback
+"Reinforcement of linguistic hierarchies: The risk that AI, trained on prestige language varieties, may penalize or misinterpret non-standard dialects or heritage speaker expressions, thus marginalizing linguistic diversity.",1,Ethical and Cultural Challenges in GenAI
+"Homogeneity of AI responses: ChatGPT repeatedly generated similar content points (e.g., 'easy access to vast information') across different participants' texts.",6,Limitations of AI in Writing and Feedback
+"Vague student understanding of plagiarism: Students showed uncertainty about what constitutes plagiarism when using AI, with one suggesting up to 50% of AI content could be used without being identified.",3,Limitations of AI in Writing and Feedback
+The unreliability of AI detection tools is a significant barrier to the fair implementation of restrictive AI policies.,6,Limitations of AI in Writing and Feedback
+Inconsistency in instructor and departmental policies on GenAI creates confusion and challenges for students.,8,Ethical and Cultural Challenges in GenAI
+"The practicalities of declaration policies, such as what specific uses of AI need to be declared, require further clarification to avoid being overly burdensome for students.",2,Pedagogical and Psychological Barriers
+The AI model's difficulty in evaluating the 'format' criterion suggests a limitation in its ability to understand and apply genre-specific conventions in writing.,3,Limitations of AI in Writing and Feedback
+"The AI's over-penalization of morphological and lexical errors raises concerns about its suitability for assessing the writing of non-native speakers in morphologically complex languages, where such errors are common.",1,Ethical and Cultural Challenges in GenAI
+The potential for internet-connected AI tools to cause distraction and decrease concentration during learning.,2,Pedagogical and Psychological Barriers
+The need for offline versions of Gen-AI tools to mitigate distraction and ensure access without constant internet connectivity.,8,Ethical and Cultural Challenges in GenAI
+The challenge of balancing personalized AI-driven learning with traditional community-based learning activities to avoid social isolation.,2,Pedagogical and Psychological Barriers
+"The conceptualization of GenAI literacy for language teachers must be multi-faceted, encompassing not just usage but also knowledge, design, evaluation, and ethics.",8,Ethical and Cultural Challenges in GenAI
+"A distinction is needed between general AI literacy and the specific, contextualized GenAI literacy required for language education professionals.",1,Ethical and Cultural Challenges in GenAI
+"A definitional ambiguity exists regarding what constitutes 'language learning' when using AI tools, specifically whether it encompasses programming languages like Java.",1,Ethical and Cultural Challenges in GenAI
+Algorithmic colonialingualism: AI perpetuating neo-colonization by marginalizing L2 learners' voices and reinforcing Western hegemony.,1,Ethical and Cultural Challenges in GenAI
+"Technological barriers in specific national contexts, such as the need for VPNs in China to access international AI platforms.",0,Ethical and Cultural Challenges in GenAI
+Commercial imperatives driving product design and tiered access to higher quality AI features.,6,Limitations of AI in Writing and Feedback
+"The effectiveness of ChatGPT feedback may be genre-dependent, and findings from one genre (opinion essays) may not generalize to others.",5,Limitations of AI in Writing and Feedback
+"The inherent variability in ChatGPT's output, even with consistent prompts, poses a methodological challenge for research consistency and replicability.",5,Limitations of AI in Writing and Feedback
+"The non-significant role of 'Effort Expectancy' in this context challenges general assumptions in technology acceptance models, suggesting that for complex or highly valued tasks, users prioritize effectiveness and social validation far more than ease of use.",0,Ethical and Cultural Challenges in GenAI
+"The rapid, continuous development of LLMs poses a methodological challenge for research, as different participant cohorts may use significantly different versions of the same tool.",9,Limitations of AI in Writing and Feedback
+The significant emotional and practical burden placed on instructors tasked with enforcing restrictive AI usage policies.,2,Pedagogical and Psychological Barriers
+"The study reveals a counterintuitive finding that higher language proficiency can be associated with lower self-efficacy in using GenAI, challenging the assumption that skilled learners will be more confident technology users.",8,Ethical and Cultural Challenges in GenAI
+"The identification of the 'interaction-oriented communicator' profile suggests that the social-relational dimension of GenAI is a distinct and significant factor in user perception, potentially independent of the tool's functional effectiveness.",8,Ethical and Cultural Challenges in GenAI
+"The creation of new contradictions through GenAI use, specifically a 'rule vs. subject' conflict (navigating AI usage policies) and a 'division of labor vs. subject' conflict (the added workload of validating AI output and checking for AI detection).",8,Ethical and Cultural Challenges in GenAI
+"The tension between product-orientation and learning-orientation in GAI use, where a dominant product-focused mindset may lead to superficial engagement and misuse of the technology, hindering learning.",0,Ethical and Cultural Challenges in GenAI
+"The transferability of GAI interaction strategies across different writing contexts (formal vs. informal) and languages (L1 vs. L2), highlighting the importance of users' underlying thinking and expressive skills.",3,Limitations of AI in Writing and Feedback
+"The generation of feedback in separate sessions for different writing components (content, organization, language) can lead to confusing overlaps, increasing cognitive load for learners.",3,Limitations of AI in Writing and Feedback
+"The tool's output can lack emotional depth and warmth, affecting its relatability and suitability for certain writing tasks.",3,Limitations of AI in Writing and Feedback
+The complexity of language generated by the LLM can be a comprehension barrier for some learners.,9,Limitations of AI in Writing and Feedback
+"Impact of Monitoring: The awareness of being observed (by having to submit chat logs) may have influenced students' prompting behavior, indicating a need for research into how monitoring affects the ethical use of GenAI.",8,Ethical and Cultural Challenges in GenAI
+"The persistence of traditional (transmissive) pedagogical beliefs can act as a significant barrier to the adoption of GenAI, even in environments with strong policy-level and institutional support.",8,Ethical and Cultural Challenges in GenAI
+There is a risk of a disconnect between top-down policy initiatives for digital transformation and the bottom-up realities of classroom practice and teacher beliefs.,7,Pedagogical and Psychological Barriers
+"A specific challenge is the discrepancy between AI-generated images and students' specialized prior knowledge (e.g., the inaccurate depiction of logistic robots).",2,Pedagogical and Psychological Barriers
+"The generation of anatomically incorrect or unrealistic features in AI images, such as distorted human hands and faces, poses a significant usability issue.",6,Limitations of AI in Writing and Feedback
+Challenges in maintaining cooperation and managing social dynamics in paired learner-chatbot interactions due to differing interests or proficiency levels.,5,Limitations of AI in Writing and Feedback
+"A significant emergent issue is the potential for well-designed LLM feedback to be detrimental to high-performing or well-calibrated students, disrupting their already accurate self-assessment processes if it only highlights flaws without affirming overall quality.",9,Limitations of AI in Writing and Feedback
+"The methodological challenge of interpreting process data, as behaviors like pausing or time on task can signify either productive cognitive engagement or off-task behavior, requiring more advanced or multimodal validation methods (e.g., eye-tracking).",6,Limitations of AI in Writing and Feedback
+"The difficulty in using process data to clearly distinguish between the behavioral and cognitive dimensions of learning engagement, as they are often intertwined during complex tasks like writing.",3,Limitations of AI in Writing and Feedback
+N/A,4,Emerging Trends and Potentials of GenAI
+"Ethical responsibilities related to the use of neurophysiological (EEG) data, including data privacy, secure storage, and avoiding 'neuro-reductionism'.",0,Ethical and Cultural Challenges in GenAI
+"The risk of learner dependency on AI tools, where the AI becomes a 'crutch' that inhibits the development of learner autonomy and self-correction skills.",2,Pedagogical and Psychological Barriers
+"The evolving role of the educator from an information provider to a facilitator of complex human-AI learning experiences, with a unique role in fostering socio-emotional 'comfort'.",2,Pedagogical and Psychological Barriers
+"The usability and effectiveness of an AI chatbot are significantly impacted by the user interface design and the availability of user support, such as manuals and tutorials.",6,Limitations of AI in Writing and Feedback
+"Student reluctance to use a chatbot can stem from receiving a few initial unhelpful responses, indicating a need for robust performance and user guidance to build trust.",5,Limitations of AI in Writing and Feedback
+"The effectiveness of AI tools is highly dependent on their specific design, feedback quality, and the learner's context (e.g., L1 vs. L2), as evidenced by contradictory findings in the literature.",6,Limitations of AI in Writing and Feedback
+"The 'novelty effect' may act as a confounding variable in studies on AI in education, potentially inflating short-term motivation and engagement.",2,Pedagogical and Psychological Barriers
+"The 'role exchange' phenomenon, where AI performs high-cognition tasks (e.g., lesson planning) and students perform low-cognition tasks (e.g., prompting), fundamentally altering the nature of learning and effort.",2,Pedagogical and Psychological Barriers
+"The dynamic of 'reverse mentoring,' where educators learn about new technologies from their students, challenging traditional hierarchies of expertise.",7,Pedagogical and Psychological Barriers
+"The concept of 'inexplicable ecstasy,' describing the contradictory feeling among educators of being both excited by GenAI's potential and uncertain about its pedagogical application.",8,Ethical and Cultural Challenges in GenAI
+"The use of generative AI for informal language learning in contexts where it is officially banned or restricted presents unique challenges, requiring learners to use VPNs and purchase overseas accounts, which impacts accessibility and equity.",1,Ethical and Cultural Challenges in GenAI
+"The significant impact of teachers' emotional states on technology-enabled productivity, suggesting that affective factors are as crucial as cognitive ones in technology adoption.",7,Pedagogical and Psychological Barriers
+"The finding that some seemingly positive coping strategies (e.g., seeking instrumental support) do not necessarily lead to higher productivity, indicating a complex and non-linear relationship between coping actions and performance outcomes.",7,Pedagogical and Psychological Barriers
+The emotional vulnerability and sensitivity of educators when integrating new AI technologies.,2,Pedagogical and Psychological Barriers
+AI's potential to limit students' creativity in language expression.,3,Limitations of AI in Writing and Feedback
+"Some learners expressed a preference for focusing on instructional content rather than engaging with the chatbot's entertaining or conversational elements, indicating a potential mismatch between persona-based design and individual learning preferences.",5,Limitations of AI in Writing and Feedback
+"ChatGPT-generated feedback can be overly long and complex, potentially causing cognitive overload and reducing its effectiveness.",5,Limitations of AI in Writing and Feedback
+Students expressed a desire for future GAI systems that can integrate with brain-computer interfaces or use eye-tracking to generate multimodal content based on users' thoughts and non-verbal cues.,8,Ethical and Cultural Challenges in GenAI
+The finding that larger-scale LLMs do not always outperform smaller ones in specific L2 assessment tasks.,9,Limitations of AI in Writing and Feedback
+"The inconsistent and uninterpretable behavior of certain LLMs (e.g., T5) in the context of L2 writing analysis.",9,Limitations of AI in Writing and Feedback
+The sensitivity of LLM-Surprisal to specific linguistic features like low-frequency vocabulary and misuse of negation can lead to high scores that may not accurately reflect lower proficiency.,9,Limitations of AI in Writing and Feedback
+"The challenge of defining and operationalizing a catch-all 'OTHER' category is significant, as the model struggles to recognize it consistently, yet it is crucial for identifying novel or marginal rhetorical moves.",3,Limitations of AI in Writing and Feedback
+"While LLMs avoid human cognitive biases like fatigue or 'annotator drift', they introduce their own form of stochastic uncertainty, which necessitates new verification strategies such as the proposed double annotation method.",9,Limitations of AI in Writing and Feedback
+"AI 'Expert Blind Spot': The study suggests ChatGPT may suffer from an 'expert blind spot,' where its extensive training prevents it from anticipating the needs of a novice audience, such as the need for clarification or elaboration on concepts.",6,Limitations of AI in Writing and Feedback
+"The perceived ambivalent or 'double-sidedness' of ChatGPT, where it is simultaneously seen as a source of both positive and negative outcomes.",5,Limitations of AI in Writing and Feedback
+"The potential for teachers to have a philosophical or personal-level objection to the technology, viewing it as 'offensive'.",7,Pedagogical and Psychological Barriers
+"The inefficiency of the tool's method for flagging errors in long texts (e.g., by sentence number).",3,Limitations of AI in Writing and Feedback
+"The potential for AI to replace human jobs, causing anxiety among users.",0,Ethical and Cultural Challenges in GenAI
+"The need for new terminology to describe AI-assisted writing and paraphrasing, as 'plagiarism' may not be fully applicable.",3,Limitations of AI in Writing and Feedback
+"The risk of GAI 'dehumanising' an L2 user's academic writing, where their work is judged based on perceived GAI usage.",3,Limitations of AI in Writing and Feedback
+"The potential for biased recognition of GAI-generated text, leading to social discomfort and fear of being perceived as an incompetent writer.",3,Limitations of AI in Writing and Feedback
+"The redefinition of 'better writing' in an era where GAI can produce technically proficient text, raising questions about what constitutes writing excellence.",3,Limitations of AI in Writing and Feedback
+"The stylistic output of ChatGPT, when emulating student writing, aligns more closely with formal, informational, published scientific prose rather than the typical, more involved and less formal style of novice EFL writers.",3,Limitations of AI in Writing and Feedback
+"A significant lack of within-register variation in AI-generated texts, leading to a homogeneity that contrasts sharply with the diversity found in student-produced texts.",3,Limitations of AI in Writing and Feedback
+The statistical nature of AI language models may limit their ability to address sociocultural aspects of language use.,1,Ethical and Cultural Challenges in GenAI
+A 'translanguaging deficiency' was noted where the AI would incorrectly generate text in the source language (Chinese) instead of the target language (English).,1,Ethical and Cultural Challenges in GenAI
+The specific issue of 'patchwriting' (excessive textual borrowing bordering on plagiarism) from GenAI models as a key academic integrity concern.,3,Limitations of AI in Writing and Feedback
+"The potential for flawed or task-inappropriate GenAI models to negatively influence and confuse students, leading to lower quality work on specific dimensions like task fulfillment.",8,Ethical and Cultural Challenges in GenAI
+Misclassification of L2 writers' text as AI-generated by detection tools due to linguistic features like lower perplexity.,3,Limitations of AI in Writing and Feedback
+"The design of different GenAI platforms (e.g., conversational friend vs. information source) encourages distinct user behaviors and dispositions.",8,Ethical and Cultural Challenges in GenAI
+"Unequal linguistic recognition where tools confuse low-resource languages (e.g., Malayalam for Tamil or Telugu) or misunderstand spoken input (e.g., Vietnamese).",1,Ethical and Cultural Challenges in GenAI
+"Language 'AI-nization': The risk of student writing adopting a homogenous, machine-like style, thereby losing individual and cultural voice.",3,Limitations of AI in Writing and Feedback
+"AI as a 'new colonizing tool': The potential for AI to reinforce standard language ideologies and linguistic neo-imperialism, marginalizing other literacies and rhetorics.",1,Ethical and Cultural Challenges in GenAI
+The practice of 'adversarial learning' (using one AI to address feedback from another) as a new form of engagement or disengagement.,2,Pedagogical and Psychological Barriers
+"The challenge of designing GAI feedback that is both usable and pedagogically effective, avoiding being too prescriptive or too general.",8,Ethical and Cultural Challenges in GenAI
+"The redefinition of 'feedback literacy' for the GAI era, emphasizing critical judgment of AI suggestions.",6,Limitations of AI in Writing and Feedback
+ChatGPT's tendency to repeat previous responses instead of providing deeper explanations when prompted for more detail.,5,Limitations of AI in Writing and Feedback
+"The concept of 'rhetorical flatness' to describe AI's lack of dynamic, context-sensitive communication, which goes beyond simple accuracy.",6,Limitations of AI in Writing and Feedback
+"The absence of self-reference (e.g., 'I think') in AI feedback is not merely a stylistic choice but a feature that constrains the relational and pedagogical potential of the interaction.",6,Limitations of AI in Writing and Feedback
+"The increasing sophistication of AI makes it difficult to differentiate between advanced human writing and AI-generated text, challenging traditional concepts of authorship and originality.",3,Limitations of AI in Writing and Feedback
+Assessment may need to shift from focusing solely on the final product to including the writing process to ensure authenticity.,3,Limitations of AI in Writing and Feedback
+"A reduction in verb cohesion was observed in texts revised with ChatGPT, potentially impacting text flow and style.",5,Limitations of AI in Writing and Feedback
+"AI tools may overlook or fail to correct nuanced, context-dependent errors such as prepositions, which are critical for coherence.",1,Ethical and Cultural Challenges in GenAI
+"AI's difficulty in handling errors stemming from L1 interference, such as pronoun omission in texts by speakers of pro-drop languages.",1,Ethical and Cultural Challenges in GenAI
+"The unexpected weak performance of GenAI in assessing the 'formatting' domain, which was presumed to be a strength, highlights its limitations when formatting involves more than simple text conventions and includes multimodal components.",3,Limitations of AI in Writing and Feedback
+The mystery of how customized chatbots process and integrate uploaded knowledge-base files affects performance and transparency.,6,Limitations of AI in Writing and Feedback
+"The legal classification of AES as a 'high-risk' technology under the European Union's AI Act, which imposes specific legal obligations regarding control, transparency, and consent for its use in educational settings.",2,Pedagogical and Psychological Barriers
+"The inherent difficulty for AI models to classify rhetorical moves that are semantically close or complexly related, which can confuse classifiers.",6,Limitations of AI in Writing and Feedback
+"The challenge of achieving high inter-rater reliability in human evaluations of rhetorical accuracy, highlighting the subjective nature of genre conventions.",3,Limitations of AI in Writing and Feedback
+"A key challenge in using LLMs for 'feedback on feedback' is the model's inability to assess content validity without access to the original source text, due to technical constraints like context window size.",9,Limitations of AI in Writing and Feedback
+"The inherent difficulty for learners in mastering complex cognitive strategies may not be overcome by AI chatbot elaboration alone, suggesting a need for more scaffolded pedagogical intervention.",6,Limitations of AI in Writing and Feedback
+"The potential for pre-existing learning habits shaped by the broader educational culture (e.g., reliance on rote memorization) to act as a barrier to the adoption of AI-suggested learning strategies.",2,Pedagogical and Psychological Barriers
+"The ethical ambiguity surrounding GAI use for tasks like summarizing literature and elaborating on content, creating a tension between efficiency and scholarly rigor.",3,Limitations of AI in Writing and Feedback
+The potential for GAI to lead to uncritical engagement with source material and neglect of essential details.,8,Ethical and Cultural Challenges in GenAI
+The challenge for students in balancing the use of GAI as a supportive tool against the risk of undermining principles of originality and authorship.,3,Limitations of AI in Writing and Feedback
+"The socio-psychological conflict students experience regarding the acknowledgment of GenAI use, stemming from fear of judgment by supervisors and future employers.",8,Ethical and Cultural Challenges in GenAI
+"The significant role of social influence, particularly from academic advisors, in shaping students' trust and willingness to adopt GenAI tools.",8,Ethical and Cultural Challenges in GenAI
+User fatigue from the cognitive load associated with verifying AI responses and processing verbose outputs.,6,Limitations of AI in Writing and Feedback
+"The disruptive effect of interaction (e.g., waiting for responses) on the natural flow of reading.",5,Limitations of AI in Writing and Feedback
+Tension and conflict in collaborative academic settings due to differing views on the ethics and effectiveness of GAI.,8,Ethical and Cultural Challenges in GenAI
+Reduced originality and creativity in group work when members use similar prompts or tools.,7,Pedagogical and Psychological Barriers
+Difficulty integrating MT/GAI-generated content into group assignments due to incompatible writing styles or interpretations.,3,Limitations of AI in Writing and Feedback
+"The effectiveness of ChatGPT in fostering creativity is contingent on the teacher's existing expertise and their ability to craft specific, high-quality prompts.",5,Limitations of AI in Writing and Feedback
+ChatGPT's lack of context understanding and common-sense knowledge can lead to inaccurate or inappropriate replies in complex pedagogical scenarios.,5,Limitations of AI in Writing and Feedback
+The suitability and reliability of existing standardized tests for measuring critical thinking may be questionable in the context of human-AI interaction.,6,Limitations of AI in Writing and Feedback
+The impact of ChatGPT on learning is not uniform; it may create a dichotomous effect where some students benefit significantly while others perceive it negatively or become overly reliant.,5,Limitations of AI in Writing and Feedback
+The need to reconsider and redefine plagiarism in the context of AI-assisted writing.,3,Limitations of AI in Writing and Feedback
+"The potential misalignment of AI feedback, which is based on statistical patterns from web data, with specific academic standards and expectations for argumentative writing.",3,Limitations of AI in Writing and Feedback
+The significant occurrence of incidental learning suggests a need to reconsider curriculum design and how to leverage or account for learning that happens outside of planned instruction.,7,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+The 'authenticity gap' created by ChatGPT could potentially de-motivate learners from engaging in traditional or other online learning environments.,5,Limitations of AI in Writing and Feedback
+"The finding that learners' current needs and obligations are stronger drivers for using ChatGPT than their long-term aspirations suggests a utilitarian, rather than holistic, adoption of the technology for language learning.",5,Limitations of AI in Writing and Feedback
+"The study's findings contradict some previous criticisms that AI's rigidity might suppress creativity, suggesting the relationship is more complex and positively influenced by engagement.",6,Limitations of AI in Writing and Feedback
+The significant moderating effect of creative self-efficacy highlights that psychological factors are as critical as the technological tools themselves in achieving desired learning outcomes.,7,Pedagogical and Psychological Barriers
+The potential for a hybrid model combining AI feedback with teacher-led instruction to address the limitations of AI in developing critical thinking.,2,Pedagogical and Psychological Barriers
+"AI tools may not be effective in addressing culture-specific linguistic areas and deep comprehension issues, requiring supplemental instruction.",1,Ethical and Cultural Challenges in GenAI
+"The blurring of lines between AI assistance (e.g., proofreading) and academic misconduct, particularly when extensive editing results in error-free text that is linguistically similar to fully AI-generated content.",3,Limitations of AI in Writing and Feedback
+The need to redefine 'good writing' and reinvent assessment methods to align with an educational paradigm where AI tools are ubiquitous.,3,Limitations of AI in Writing and Feedback
+"The rigidity of GPT's output, which maintains a consistent, formal, and somewhat impersonal style even when prompted with diverse and personal topics, suggests a limitation in its ability to produce contextually nuanced and varied prose.",3,Limitations of AI in Writing and Feedback
+"The finding that perceived ethics acts as a negative mediator, suggesting that even highly usable and useful technologies can face adoption resistance if ethical concerns are not addressed.",0,Ethical and Cultural Challenges in GenAI
+"In resource-constrained environments, social norms are not static but are actively shaped by users' initial experiences with a technology's ease of use and usefulness.",0,Ethical and Cultural Challenges in GenAI
+Accountability for AI-generated content and decisions remains a significant ethical concern for educators.,2,Pedagogical and Psychological Barriers
+A fundamental disconnect exists between the LLM's ability to retrieve and state a grammatical rule correctly and its ability to apply that rule consistently in practice.,9,Limitations of AI in Writing and Feedback
+"The LLM's performance and reliability vary significantly and unpredictably across tasks that appear similar on the surface, such as generating orthographic errors versus generating word confusions.",9,Limitations of AI in Writing and Feedback
+"A key technical challenge is how to automatically extract specific linguistic information (e.g., the subject 'impact' and verb 'are') from a chatbot's unstructured text response and insert it into a structured template for ultra-short, on-the-fly explanations in a writing assistant.",6,Limitations of AI in Writing and Feedback
+"Pedagogical challenges of non-determinism: The unpredictable and varied nature of AI-generated responses creates significant difficulties for teachers in structuring lessons, managing classroom activities, and ensuring consistent learning outcomes.",2,Pedagogical and Psychological Barriers
+"The illusion of personalization: The study critically questions whether the 'individualized' responses from GenAI tools constitute genuine 'personalized' learning, arguing that true personalization must be based on specific learner needs and pedagogical goals, not just the tool's inherent randomness.",8,Ethical and Cultural Challenges in GenAI
+There is a need to gauge the long-term effects of using AI tools on learners' ability to think independently and critically.,2,Pedagogical and Psychological Barriers
+"The generation of 'trivial' distractors, which are factually true according to the text but fail to function as incorrect options, posing a specific challenge to the utility of the generated content.",3,Limitations of AI in Writing and Feedback
+"The potential for the translation process to reduce the lexical space of a dataset, which might paradoxically contribute to better model performance by simplifying the learning task.",1,Ethical and Cultural Challenges in GenAI
+Lack of speech recognition capabilities in the tested version (March 2023) prevented the practice of oral and listening skills.,1,Ethical and Cultural Challenges in GenAI
+"Specific task failures, such as incorrectly identifying collocations, highlight nuanced reliability issues beyond general accuracy.",1,Ethical and Cultural Challenges in GenAI
+"A specific weakness of ChatGPT is its difficulty in constructing well-designed, attractive, and plausible distractors for multiple-choice questions, a nuanced aspect of assessment design.",5,Limitations of AI in Writing and Feedback
+There is a need for experimental research to investigate the actual effectiveness and learning benefits of using these customized LLM-based chatbots.,6,Limitations of AI in Writing and Feedback
+"The perceptions and needs of actual L2 learners with varying proficiency levels may differ significantly from those of pre-service teachers, warranting further research with diverse participant groups.",7,Pedagogical and Psychological Barriers
+"The ethical dilemma posed by 'unrealistically impressive task improvement' from individual AI use, which may mask a lack of genuine learning and misrepresent student ability.",2,Pedagogical and Psychological Barriers
+The finding that an AWE chatbot can be more similar to one human rater than that human rater is to another human rater complicates the notion of using human agreement as the sole gold standard for evaluating AI performance.,6,Limitations of AI in Writing and Feedback
+The potential for AI to generate culturally insensitive or inappropriate content that is inconsistent with learners' sociolinguistic backgrounds.,1,Ethical and Cultural Challenges in GenAI
+"A mismatch can occur between the AI's identified grammatical issues and a student's self-perceived learning needs (e.g., focusing on logic instead of grammar).",1,Ethical and Cultural Challenges in GenAI
+"Student frustration can arise from ambiguous or unsatisfying AI explanations, highlighting the need for prompt engineering skills and critical evaluation.",2,Pedagogical and Psychological Barriers
+The effectiveness of structured AI interventions is dependent on students' adherence to instructions and their willingness to engage in clarifying dialogue with the AI.,2,Pedagogical and Psychological Barriers
+Negative impact on long-term learning: The ease of getting answers from ChatGPT led to a lack of retention of new vocabulary and structures.,5,Limitations of AI in Writing and Feedback
+"Difficulty with linguistic specificity: The tool struggled to adhere to specific instructions, such as consistently using traditional vs. simplified Chinese characters.",1,Ethical and Cultural Challenges in GenAI
+The study reveals that ChatGPT alone is insufficient for effective self-management and self-monitoring in language learning; its role is primarily that of a facilitator that requires integration with other tools and learner-driven strategies.,5,Limitations of AI in Writing and Feedback
+Nostalgia for traditional writing methods (pen and paper) and the perceived loss of personal and emotional connection when using AI tools.,3,Limitations of AI in Writing and Feedback
+"A mandated curriculum can act as a barrier to the wholesale adoption of AI tools, as teachers may not have the autonomy to generate and use their own AI-assisted materials.",2,Pedagogical and Psychological Barriers
+The model's tendency to classify based on task similarity rather than pure linguistic proficiency.,1,Ethical and Cultural Challenges in GenAI
+"Difficulty in handling texts of varying lengths, particularly very short texts which may be classified inaccurately.",3,Limitations of AI in Writing and Feedback
+"The challenge of distinguishing between adjacent proficiency levels (e.g., B1 vs. B2) where boundaries are often fuzzy.",7,Pedagogical and Psychological Barriers
+"The quality of AI-generated feedback is highly dependent on the specific AI model used, the quality of the prompts, and how the AI processes the input.",6,Limitations of AI in Writing and Feedback
+The absence of question-based feedback in AI responses may hinder the development of students' critical thinking skills.,2,Pedagogical and Psychological Barriers
+A key issue is the disparity between short-term performance gains from AI feedback and poor long-term retention compared to teacher feedback.,2,Pedagogical and Psychological Barriers
+"AI's inability to account for human comprehensibility despite minor errors when grading, a nuance human instructors handle easily.",6,Limitations of AI in Writing and Feedback
+"AI's tendency to fabricate information or invent details (e.g., creating a 'toy company' context) to satisfy a prompt's requirements when the actual data is not present in the source text.",6,Limitations of AI in Writing and Feedback
+Difficulty in capturing and translating nuances of local dialects within a language.,1,Ethical and Cultural Challenges in GenAI
+"The tendency for AI to produce translations that are tonally inappropriate (e.g., overly academic for a relaxed context), affecting reader-friendliness.",1,Ethical and Cultural Challenges in GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+The AI's lack of deep contextual understanding and inability to read real-time social cues hinders its role as an effective intercultural mediator.,6,Limitations of AI in Writing and Feedback
+"The AI's tendency to provide perfect translations or rephrasing deprives learners of crucial opportunities to experience and repair communication breakdowns, which is essential for developing pragmatic competence.",1,Ethical and Cultural Challenges in GenAI
+Managing unrealistic student expectations for instant results in a generation accustomed to immediate gratification.,7,Pedagogical and Psychological Barriers
+"Teacher insecurity and lack of preparedness to implement pedagogical MT use, a dimension often overlooked in existing integration frameworks.",7,Pedagogical and Psychological Barriers
+"The applicability of existing frameworks (like ADAPT, developed for Spanish) to typologically different languages (e.g., Asian languages with non-alphabet-based writing systems).",1,Ethical and Cultural Challenges in GenAI
+The potential for AI tools to undermine students' intrinsic motivation derived from experiential learning and overcoming challenges.,2,Pedagogical and Psychological Barriers
+The moral dilemma and disagreement between students and faculty on what constitutes academic misconduct when using AI.,2,Pedagogical and Psychological Barriers
+"The need for AI tools to be more context-aware and culturally personalized, particularly for learners from different linguistic backgrounds like Arabic.",1,Ethical and Cultural Challenges in GenAI
+"The performance of LLMs can degrade if they process the same incorrect sentence multiple times, suggesting they might 'learn' from the input in a way that leads to problematic outputs.",9,Limitations of AI in Writing and Feedback
+"A major problem lies in the classification of error types and explanations, which often do not align with the corrections provided.",7,Pedagogical and Psychological Barriers
+The finding that generative AI tools boost motivation and interest more effectively than confidence suggests that AI alone is insufficient for holistic affective development.,2,Pedagogical and Psychological Barriers
+"There is a need to strategically combine AI-based learning with other pedagogical approaches, such as peer interaction and guided discussions, to comprehensively support student confidence.",2,Pedagogical and Psychological Barriers
+"The finding that syntactic complexity decreased across both groups post-feedback, though less so for the AI group, highlights complex cognitive trade-offs in the writing revision process that are influenced by feedback type.",3,Limitations of AI in Writing and Feedback
+"GenAI models may exhibit linguistic bias, such as flagging correct British English as an error, disadvantaging users from diverse linguistic backgrounds.",1,Ethical and Cultural Challenges in GenAI
+"Current digital transcription technologies (OCR) struggle to accurately interpret handwritten texts, especially those with non-linear annotations, posing a significant challenge for AI-based assessment of physical work.",3,Limitations of AI in Writing and Feedback
+"AI's inability to access non-textual data like intonation, body language, and rich background context, which are crucial for creating culturally authentic and emotionally resonant educational materials.",1,Ethical and Cultural Challenges in GenAI
+"The risk of AI generating content that is disconnected from real-world experiences and cultural nuances, thereby compromising the authenticity of learner-centered corpora.",1,Ethical and Cultural Challenges in GenAI
+"Overuse of AI may diminish the importance of real-world interaction, which is essential for language acquisition.",1,Ethical and Cultural Challenges in GenAI
+"Students may develop a preference for interacting with AI over humans, affecting social learning skills.",2,Pedagogical and Psychological Barriers
+The ease of getting answers from AI can encourage procrastination.,6,Limitations of AI in Writing and Feedback
+The translation quality can be 'messy' and require significant human correction.,1,Ethical and Cultural Challenges in GenAI
+"GenAI's potential to make established learning theories (e.g., constructivism, social learning theory) obsolete by short-circuiting the learning process.",8,Ethical and Cultural Challenges in GenAI
+The significant environmental impact due to the high energy consumption of AI servers.,0,Ethical and Cultural Challenges in GenAI
+The need for supplementary tools like AI detectors may become necessary in educational settings to ensure academic integrity.,2,Pedagogical and Psychological Barriers
+A new dynamic of learning may emerge where students use AI tools for individual tasks but rely on peer collaboration to overcome technical hurdles with the AI itself.,2,Pedagogical and Psychological Barriers
+"The lengthy and sometimes irrelevant feedback from ChatGPT can be confusing for learners, particularly those with lower proficiency.",5,Limitations of AI in Writing and Feedback
+ChatGPT's tendency to alter the original meaning of a text or add unneeded information during the correction process.,5,Limitations of AI in Writing and Feedback
+"Disclosure policies may inadvertently penalize honest students, particularly vulnerable L2 writers.",7,Pedagogical and Psychological Barriers
+A fundamental tension exists between using GenAI to overcome linguistic challenges and the risk of being perceived as less competent or inauthentic for doing so.,8,Ethical and Cultural Challenges in GenAI
+"The study highlights the inadequacy of traditional, product-based writing assessments in the age of GenAI, pushing for a shift towards process-oriented evaluation.",3,Limitations of AI in Writing and Feedback
+"The study introduces a dimension of human-machine collaboration in SLA, suggesting a need to reconsider how relational and cognitive support are conceptualized in digital learning contexts.",2,Pedagogical and Psychological Barriers
+Ethical tension of disclosure: Writers are caught between institutional policies and the professional risks or 'stigma' associated with revealing their AI use.,3,Limitations of AI in Writing and Feedback
+Reinforcement of native speakerism: The goal of using AI to achieve 'native-speaker level fluency' can perpetuate harmful language ideologies and undermine linguistic diversity.,1,Ethical and Cultural Challenges in GenAI
+"Dehumanization of writing: A purely prescriptive, tool-based approach to AI risks mechanizing and standardizing the writing process, stripping it of human nuance.",3,Limitations of AI in Writing and Feedback
+The use of AI for translation can hinder the development of cognitive strategies essential for mastering academic writing conventions in a second language.,3,Limitations of AI in Writing and Feedback
+AI-based translation from a native language to English may introduce subtle errors and inconsistencies that learners with limited proficiency might overlook.,1,Ethical and Cultural Challenges in GenAI
+Student preference for the social and interactive aspects of traditional learning environments over AI-based tools.,2,Pedagogical and Psychological Barriers
+The perception that traditional classrooms are superior for avoiding boredom and facilitating peer interaction.,7,Pedagogical and Psychological Barriers
+The failure of tool augmentation (using web search) to improve performance suggests that expert-level reasoning questions in this domain cannot be easily solved by retrieving information from the internet.,6,Limitations of AI in Writing and Feedback
+"In dialogue interactions, some advanced LLMs exhibit conversational failures like digressing into self-referential narratives and losing track of the user's intent.",9,Limitations of AI in Writing and Feedback
+AI tools may not fully accommodate the nuanced linguistic needs of ESL learners in non-English-speaking countries.,1,Ethical and Cultural Challenges in GenAI
+Potential for false positives in AI-driven plagiarism detection systems.,3,Limitations of AI in Writing and Feedback
+"The integration of GenAI into CBLP raises a conceptual challenge regarding terminology, as 'corpus-based' implies a reliance on authentic corpus data, not AI-generated content. This suggests a need to explore revised terminology like 'GenAI-supported CBLP'.",1,Ethical and Cultural Challenges in GenAI
+"A potential for imbalance in assessment practices, where the ease of creating objective, lower-order questions with AI may lead to their overemphasis at the expense of more complex, higher-order assessments that are harder to automate.",2,Pedagogical and Psychological Barriers
+"The challenge of aligning standardized AI outputs with localized and specific curriculum standards presents a significant barrier to meaningful integration, moving beyond generic content generation.",2,Pedagogical and Psychological Barriers
+"API dependency: The tool's long-term viability is subject to changes in API costs, model specifications, and access restrictions from providers.",0,Ethical and Cultural Challenges in GenAI
+"Limited generalizability: The tool's performance may not generalize well across different L1 backgrounds, target languages, or text genres beyond what was used in the validation study.",1,Ethical and Cultural Challenges in GenAI
+"Inability to detect pragmatic and cultural errors: The LLM struggles to identify nuanced errors related to register, genre conventions, and culturally specific expressions.",9,Limitations of AI in Writing and Feedback
+Lack of user customizability: The current version lacks features for users to adapt the error classification system to their specific research or pedagogical needs.,7,Pedagogical and Psychological Barriers
+GPT-4's prescriptive approach may stifle the creative process of idea generation during pre-writing.,3,Limitations of AI in Writing and Feedback
+"The potential for human interaction to induce overconfidence, which can negatively impact writing performance on specific dimensions like content.",3,Limitations of AI in Writing and Feedback
+"The study reveals a paradoxical effect of LLM acceptance, where higher acceptance is most strongly associated with a 'dissonant' writing profile, indicating a conflict between aiming for deep, meaningful writing and simultaneously relying on surface-level, unreflective strategies facilitated by the technology.",9,Limitations of AI in Writing and Feedback
+"Institutional ambiguity and unclear policies on AI use can directly cause teacher anxiety, leading to the abandonment of pedagogically sound, innovative practices.",2,Pedagogical and Psychological Barriers
+"A significant disconnect exists between national discourse promoting digital transformation and the constraints of a rigid, assessment-focused national curriculum.",7,Pedagogical and Psychological Barriers
+"The model exhibits cultural and contextual blind spots, struggling with the subtleties of Palestinian culture and overlooking intricate sexual and political themes.",0,Ethical and Cultural Challenges in GenAI
+"The model may suppress or refuse to generate content on topics deemed sensitive or taboo, such as certain aspects of sexuality.",0,Ethical and Cultural Challenges in GenAI
+The need to redefine plagiarism and academic integrity in an era of hybrid human-AI writing.,3,Limitations of AI in Writing and Feedback
+"The influence of external pressures, such as heavy teacher workloads, as a driver for ethically ambiguous uses of AI in pedagogy.",2,Pedagogical and Psychological Barriers
+The concept of a 'written accent' in non-native English academic writing and whether its elimination by AI is a form of empowerment or erasure of linguistic identity.,3,Limitations of AI in Writing and Feedback
+"The study highlights a 'linguistic digital divide,' where low-resource languages like Maltese are significantly underserved by current LLM technology due to data scarcity, limiting access to effective AI-driven learning tools for their speakers and learners.",1,Ethical and Cultural Challenges in GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+"The challenge of ensuring predictability and controllability in generative models, as the chatbot sometimes directly revised student comments instead of only providing suggestions.",6,Limitations of AI in Writing and Feedback
+"The concept of 'invisible engagement,' where students may mentally process AI feedback before deciding not to make revisions, is a methodological challenge for studies that only analyze revision outputs.",2,Pedagogical and Psychological Barriers
+"Ethical considerations of using personal biometric data (face, voice) to generate AI instructors, including consent and data security.",2,Pedagogical and Psychological Barriers
+"The necessity of a human-in-the-loop approach, specifically expert review, to validate AI-generated educational content and mitigate the risk of hallucinations.",2,Pedagogical and Psychological Barriers
+"The inability to explain how an LLM arrived at a specific grade can jeopardize student rights and accountability, especially when students challenge assessment decisions.",9,Limitations of AI in Writing and Feedback
+"Metacognitive dependency: The risk where external regulation from GAI supplants internalized, autonomous self-monitoring skills.",8,Ethical and Cultural Challenges in GenAI
+"The robotic and adult-like tone of CAs can diminish emotional connection and engagement, which is crucial for young learners.",2,Pedagogical and Psychological Barriers
+There is a trade-off where the challenge of interacting with a CA (due to accent recognition issues) makes children focus more on linguistic form at the expense of meaning and learning experience.,1,Ethical and Cultural Challenges in GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+"The potential for LLMs to 'jailbreak' and provide illogical scores when faced with unexpected or out-of-domain learner responses (e.g., marking a comma as a correct translation).",9,Limitations of AI in Writing and Feedback
+"The impact of subtle differences in the information provided to human versus AI raters (e.g., access to context sentences) can significantly affect scoring alignment.",6,Limitations of AI in Writing and Feedback
+"LLMs may score grammatically incorrect but semantically related answers leniently, whereas human raters may treat these as clear errors, highlighting a difference in error evaluation.",9,Limitations of AI in Writing and Feedback
+"ChatGPT exhibits a systemic disinclination toward using the passive voice in its own outputs and in its feedback, which is a significant drawback for translation contexts where passive voice is stylistically necessary.",5,Limitations of AI in Writing and Feedback
+"Teachers are beginning to use more sophisticated content-based cues (e.g., lack of 'personality') for AI detection, moving beyond a sole reliance on linguistic features.",2,Pedagogical and Psychological Barriers
+"A potential counter-strategy from students is to deliberately introduce errors into AI-generated text to make it appear more human-written, posing a new challenge for detection.",3,Limitations of AI in Writing and Feedback
+"Lack of grammatical delicacy: AI models like ChatGPT may not capture subtle grammatical intricacies (e.g., distinguishing between simple past and perfective aspect), leading to linguistically imprecise examples.",1,Ethical and Cultural Challenges in GenAI
+"The cognitive load of prompt crafting in a foreign language can be a significant barrier for EFL learners, adding stress beyond the writing task itself.",3,Limitations of AI in Writing and Feedback
+"The necessity of human scaffolding appears to be independent of language proficiency level, as other studies cited show that even high-proficiency learners require personalized teacher guidance.",1,Ethical and Cultural Challenges in GenAI
+"The concept of 'personal innovativeness' as a factor influencing the quality of GenAI outputs, highlighting individual differences in AI literacy among teachers.",2,Pedagogical and Psychological Barriers
+The necessity of peer scaffolding within teacher groups to compensate for varying levels of technological skill and prompting ability.,7,Pedagogical and Psychological Barriers
+"The gains from using ChatGPT are not sustained once access to the tool is removed, questioning its effectiveness for long-term learning.",5,Limitations of AI in Writing and Feedback
+"The effectiveness of LLMs in language learning is domain-specific, showing a significant impact on syntactic complexity but a limited effect on lexical development without targeted instruction.",9,Limitations of AI in Writing and Feedback
+"The challenge of achieving multimodal coherence, where AI-generated text and AI-generated images are misaligned, hindering comprehension for early readers.",3,Limitations of AI in Writing and Feedback
+"Narration accent mismatch (e.g., British vs. U.S. English) acts as a subtle but significant barrier to immersion and cultural relevance, highlighting a need for nuanced localization.",1,Ethical and Cultural Challenges in GenAI
+"Addressing the emotional responses of educators (e.g., fear of being replaced) to AI integration.",2,Pedagogical and Psychological Barriers
+The significant time and labor investment required from educators for thoughtful and collaborative AI integration.,2,Pedagogical and Psychological Barriers
+"The quality and usability of LLM output for language learning may be significantly lower for Less Commonly Taught Languages (LCTLs) compared to More Commonly Taught Languages (MCTLs), potentially widening the resource gap.",9,Limitations of AI in Writing and Feedback
+"Age is a significant factor influencing learners' attitudes and acceptance of generative AI for self-directed language learning, with older learners being more skeptical.",1,Ethical and Cultural Challenges in GenAI
+The tendency for learners to misattribute AI-generated text based on stylistic features like sentence length and complexity rather than accuracy or idiomaticity.,3,Limitations of AI in Writing and Feedback
+"Students' ability to detect AI errors is context-dependent; they could only recognize mistakes on topics they were already familiar with, limiting their capacity for critical evaluation in new learning areas.",2,Pedagogical and Psychological Barriers
+"There is a significant gap between the theoretical ideal of AI as a scaffolding tool and the practical reality of its use for direct answer retrieval, which may hinder deep learning.",6,Limitations of AI in Writing and Feedback
+The reliability of using LLMs for languages other than English is questionable without developing specific language models (LLMs) for them.,9,Limitations of AI in Writing and Feedback
+"The lack of human-like interaction, as nuances or colloquialisms can pose a challenge in information management and communication.",1,Ethical and Cultural Challenges in GenAI
+The environmental cost of pretraining large language models.,1,Ethical and Cultural Challenges in GenAI
+"The study noted a potential for 'communication addiction' with the tool, where a student felt an eagerness to constantly engage with it, highlighting a novel aspect of user engagement.",0,Ethical and Cultural Challenges in GenAI
+"AI's misinterpretation of specialized terminology: The study found that specific pedagogical terms within a prompt, such as 'hook', could be interpreted in a teacher-centered way by the AI, leading to lower-quality outputs that lacked student interaction.",2,Pedagogical and Psychological Barriers
+The incompatibility of human-centric vs. AI-centric templates: A lesson plan template that works well for a human teacher's instructional design may not be effective for guiding an AI and may require iterative refinement for optimal results.,2,Pedagogical and Psychological Barriers
+The distinction in student rejection patterns between form-focused and content-focused feedback suggests AI is less effective or accepted for higher-order writing concerns.,3,Limitations of AI in Writing and Feedback
+"Students prioritize the functional utility of AI feedback over their emotional response to it, indicating a task-oriented rather than relational engagement with the technology.",2,Pedagogical and Psychological Barriers
+"The credibility of AI feedback is a concern for students, who may perceive it as vague or superficial without human oversight.",2,Pedagogical and Psychological Barriers
+"Student personality traits (e.g., shyness vs. outgoingness) may determine the effectiveness and preference for AI-based versus human-based interaction, requiring personalized pedagogical approaches.",2,Pedagogical and Psychological Barriers
+"The effectiveness of AI for pronunciation practice is perceived differently by learners of varying proficiency levels, with advanced learners being more critical of non-humanlike speech synthesis.",1,Ethical and Cultural Challenges in GenAI
+"The unexpected finding that needs satisfaction (a core tenet of Self-Determination Theory) did not directly mediate the relationship between GenAI literacy and writing SRL, suggesting that for this specific demographic, other factors like creative self-concept are more influential.",8,Ethical and Cultural Challenges in GenAI
+"The choice of pedagogical framework (e.g., genre vs. process) is a critical factor that significantly alters the effectiveness and perception of LLM integration in writing instruction.",9,Limitations of AI in Writing and Feedback
+"AI-assisted writing instruction may inadvertently widen the performance gap between high- and low-achieving students, as higher-achievers appear better equipped to leverage the technology.",3,Limitations of AI in Writing and Feedback
+"The negative impact of LLM use on a specific psychological and motivational construct, the 'ideal L2 writing self', suggesting a potential erosion of learners' aspirational identity as competent writers.",9,Limitations of AI in Writing and Feedback
+"Students' development of a 'resistance' mindset, consciously planning to limit their use of a highly effective tool to preserve their own cognitive skills and agency.",7,Pedagogical and Psychological Barriers
+"The novelty and adaptive nature of ChatGPT might sustain motivation even in the presence of factors that typically lead to burnout, challenging previous findings on the direct negative impact of burnout on motivation.",5,Limitations of AI in Writing and Feedback
+The ethical debate concerning the use of copyrighted works for training LLMs without permission or compensation to the original authors.,9,Limitations of AI in Writing and Feedback
+"The lack of replicability in LLM outputs, which contrasts with the deterministic and verifiable results from corpus queries.",9,Limitations of AI in Writing and Feedback
+N/A,4,Emerging Trends and Potentials of GenAI
+The need for chatbots to provide source traceability and citations for information.,6,Limitations of AI in Writing and Feedback
+Cognitive overload for lower-proficiency learners due to the volume and complexity of AI-generated suggestions.,6,Limitations of AI in Writing and Feedback
+The effectiveness of LLMs may be significantly lower in languages other than English due to less available machine-readable data.,9,Limitations of AI in Writing and Feedback
+The environmental and social costs of developing and running large-scale AI models should be considered.,6,Limitations of AI in Writing and Feedback
+"Redefinition of Language Proficiency: The study raises the question of whether skillful use of AI tools to achieve communication goals constitutes a form of advanced language ability, challenging traditional definitions of proficiency.",1,Ethical and Cultural Challenges in GenAI
+Tension between Convenience and Deep Learning: A significant concern emerged about the potential for technological convenience to undermine the deep cognitive engagement required for profound language acquisition.,1,Ethical and Cultural Challenges in GenAI
+The potential for AI tools to create new forms of social comparison and peer pressure among students.,2,Pedagogical and Psychological Barriers
+"The need to reconsider the conventional understanding of how basic psychological needs (autonomy, competence, relatedness) interact and are weighted in AI-mediated learning environments compared to traditional ones.",2,Pedagogical and Psychological Barriers
+The tendency of the LLM to produce repetitive or unoriginal content when faced with complex or non-trivial prompts.,9,Limitations of AI in Writing and Feedback
+"Practical workflow challenges, such as the need to convert handwritten student work into digital text before it can be processed by the LLM.",9,Limitations of AI in Writing and Feedback
+"Algorithmic influence on learning paths: The study noted that AI systems adapt to user interaction styles, which can subtly shape and influence learning trajectories without the user's full awareness.",2,Pedagogical and Psychological Barriers
+"The need for 'calibrated trust': Learners must develop a nuanced level of trust in AI, avoiding both uncritical acceptance and complete rejection to engage with the technology productively.",2,Pedagogical and Psychological Barriers
+The 'black-box' nature of AI makes it difficult for students with limited ability to verify the correctness of its responses.,2,Pedagogical and Psychological Barriers
+The process of selecting effective prompts can be mentally 'exhausting' for students.,7,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+"The finding that user satisfaction and familiarity do not predict learning outcomes challenges the common assumption in tech development that a positive user experience equates to effective learning, highlighting a need for pedagogy-driven design.",7,Pedagogical and Psychological Barriers
+"The ethical dilemma for educators on whether to correct students' misconceptions about the high accuracy of AI detection, as this belief might deter plagiarism.",2,Pedagogical and Psychological Barriers
+"The potential bias of AI detection tools against non-native English speakers, which could lead to false accusations of academic misconduct.",1,Ethical and Cultural Challenges in GenAI
+"The need for context-specific research on GenAI adoption, particularly in non-Western, multilingual, and resource-limited settings.",8,Ethical and Cultural Challenges in GenAI
+"The influence of collectivist cultural values on technology acceptance and use, which may differ from individualistic cultures.",0,Ethical and Cultural Challenges in GenAI
+The risk of AI destabilizing core academic skills and moral judgment if integration is not accompanied by direct instruction in critical thinking.,2,Pedagogical and Psychological Barriers
+"The pedagogical utility of framing ChatGPT's affordances and limitations as 'paradoxes' (e.g., 'friend' yet a 'foe') to stimulate students' critical thinking and responsible use.",5,Limitations of AI in Writing and Feedback
+N/A,4,Emerging Trends and Potentials of GenAI
+"The specific academic background of participants (e.g., computer science) may significantly influence their perception and assessment of an AI tool's usability, potentially skewing results compared to a general student population.",2,Pedagogical and Psychological Barriers
+"The rise of AI tools challenges the traditional understanding of Vygotsky's Zone of Proximal Development (ZPD), suggesting the learner-tool relationship can extend beyond human-human interaction and that the original framework may have underestimated the potential of digital mediators.",2,Pedagogical and Psychological Barriers
+Ethical ambiguity experienced by learners regarding acceptable use versus academic misconduct.,7,Pedagogical and Psychological Barriers
+Difficulty of AI in handling domain-specific discourse and nuanced rhetorical elements like tone and persuasive style.,3,Limitations of AI in Writing and Feedback
+"The dual nature of efficiency, where time saved on drafting is spent on verification and fact-checking.",3,Limitations of AI in Writing and Feedback
+The inability of current LLMs to replace traditional diagnostic testing for identifying specific linguistic deficiencies ('lacks') establishes a clear boundary for their utility in needs analysis.,9,Limitations of AI in Writing and Feedback
+"The potential for AI to resolve logistical and motivational challenges for teachers (e.g., unavailability of stakeholders for interviews, lack of compensation for course design work) highlights a practical application beyond pedagogical content generation.",2,Pedagogical and Psychological Barriers
+"The study's finding that metalinguistic guidance did not improve critical reflection contradicts some previous research, suggesting that fostering higher-order thinking skills requires more sophisticated and scaffolded strategies than what the GAC provided.",7,Pedagogical and Psychological Barriers
+"Content policy restrictions: The study found that ChatGPT may refuse to evaluate essays that it perceives as violating its content policy, creating a potential barrier for its use with diverse student writing topics.",5,Limitations of AI in Writing and Feedback
+"Non-standardized output format: The format of ChatGPT's responses can be inconsistent, posing a challenge for automated systems designed to parse its feedback and requiring manual adjustments.",5,Limitations of AI in Writing and Feedback
+"Potential bias towards text length: The authors observed that GenAI might assign higher scores to longer essays, suggesting a potential algorithmic bias that could unfairly penalize concise writing and requires further investigation.",3,Limitations of AI in Writing and Feedback
+"The inherently enjoyable, novel, and interactive nature of AI-mediated learning activities may override the influence of learners' pre-existing motivational orientations (like the ideal L2 self) on their emotional experiences.",2,Pedagogical and Psychological Barriers
+"There is a lack of theoretically sound and empirically validated instruments for measuring English learners' readiness for ChatGPT-integrated learning, particularly tools that account for achievement emotions.",5,Limitations of AI in Writing and Feedback
+"The study identifies the significant impact of AI tools on psycho-emotional constructs like well-being and emotion regulation, an area that has been under-researched in language education.",2,Pedagogical and Psychological Barriers
+"A 'metacognitive divide' in AI tool use: The study suggests a new form of digital divide based not on access to technology, but on the cognitive and metacognitive skills required to use it effectively, creating a gap between students who can and cannot leverage AI for learning.",2,Pedagogical and Psychological Barriers
+"A significant lack of consensus among different stakeholder groups (researchers, teachers, students) on what research topics should be prioritized, which could hinder focused progress in the field.",7,Pedagogical and Psychological Barriers
+"The phenomenon of students responding and engaging differently with AI-generated feedback, which itself became a viable research topic.",2,Pedagogical and Psychological Barriers
+"The challenge for teachers in elevating practical, effective AI-based teaching designs into theoretically-grounded research plans.",2,Pedagogical and Psychological Barriers
+"The significant and consistent gender disparity in the perception and evaluation of ChatGPT across nearly all measured dimensions (e.g., teaching effectiveness, user experience, learning motivation) highlights a critical challenge for the equitable design and implementation of AI in education.",2,Pedagogical and Psychological Barriers
+Concerns about the potential replacement of teachers' careers by AI technologies.,2,Pedagogical and Psychological Barriers
+The challenge for teachers to keep up with and select appropriate tools from the rapidly iterating GAI technologies.,8,Ethical and Cultural Challenges in GenAI
+"The finding that perceived behavioural control is not a significant predictor of intention challenges the universal applicability of the Theory of Planned Behaviour (TPB) framework for GenAI adoption, particularly in collectivist cultural contexts.",0,Ethical and Cultural Challenges in GenAI
+"Inability to fulfill social-emotional needs: The study suggests that GenAI interactions are perceived as instrumental and skill-oriented, lacking the social and emotional elements present in human communication, which may limit their appeal for learners who prefer human-mediated interaction.",8,Ethical and Cultural Challenges in GenAI
+"Lack of tangible representation: The paper notes that the shortfall in replicating real-life conversational dynamics may be partly due to the lack of a tangible interlocutor, such as an avatar, in the tools used.",6,Limitations of AI in Writing and Feedback
+"The study highlights that the emotional and psychological barriers faced by struggling learners could lead to resistance against AI tools, potentially widening the educational gap between them and their peers if not addressed with targeted pedagogical strategies.",2,Pedagogical and Psychological Barriers
+"The structure of a pedagogical tool (e.g., structured vs. semi-structured journals) can significantly influence the depth of student reflection on GenAI use, even when quantitative literacy scores do not show a statistical difference between the two approaches.",8,Ethical and Cultural Challenges in GenAI
+"The study's model explained 44.9% of the variance in immersion, indicating that the remaining 55.1% is influenced by other unexamined factors, highlighting a need for future research to explore variables like task complexity and learner autonomy.",7,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+"The challenge of transitioning students from structured, teacher-prompted (extracurricular) use to fully autonomous, self-motivated (extramural) use of GenAI.",8,Ethical and Cultural Challenges in GenAI
+"The differential effectiveness of current GenAI tools, which may be more beneficial for lower-proficiency learners than for higher-proficiency learners seeking to master complex linguistic structures.",1,Ethical and Cultural Challenges in GenAI
+"Unequal access to more powerful, subscription-based versions of AI tools (e.g., ChatGPT Plus) creates an equity issue, potentially widening the gap in learning opportunities and the development of essential AI literacies.",2,Pedagogical and Psychological Barriers
+"Significant cross-linguistic inaccuracies, particularly in specialized linguistic tasks like cognate identification, which is crucial for bilingual pedagogy.",1,Ethical and Cultural Challenges in GenAI
+"Discrepancy in output quality between majority (English) and minority (Spanish) languages, revealing the linguistic and cultural insensitivity of current AI training data.",1,Ethical and Cultural Challenges in GenAI
+"A teacher's initial evaluative experience (positive or negative) with an LLM can have a significant and lasting impact on their future agency and engagement, potentially overriding the general trend of increased acceptance with more exposure.",9,Limitations of AI in Writing and Feedback
+"A significant gap can exist between a teacher's optimistic expectations of an LLM and its actual performance, leading to disillusionment and constrained agency.",9,Limitations of AI in Writing and Feedback
+There is a potential conflict between the student-centered pedagogical approaches often suggested by LLMs and the deeply ingrained teacher-centered learning cultures present in some educational contexts.,9,Limitations of AI in Writing and Feedback
+"Feedback from LLMs lacks the precision, context-richness, and multidimensionality of human interaction.",9,Limitations of AI in Writing and Feedback
+The generic and 'neutral' nature of feedback may not be compelling enough to drive sustained use for specific skills like speaking.,7,Pedagogical and Psychological Barriers
+Hindrance of Creativity: A major concern raised by students was that using a high-quality AI-generated model text could limit their own creativity and content development during the rewriting process.,3,Limitations of AI in Writing and Feedback
+"Stylistic Unnaturalness: Students perceived the AI's output as formulaic, monotonous, and lacking the emotional depth and personal voice characteristic of human writing.",3,Limitations of AI in Writing and Feedback
+"The potential for AI to undermine the assessment construct itself; for example, if AI can perfect grammar, the value of assessing grammar may be questioned.",2,Pedagogical and Psychological Barriers
+"GenAI's capability to generate complex test items surpassed expert expectations, indicating that its capacity extends beyond simple tasks and may soon rival human-generated content in more complex assessments.",8,Ethical and Cultural Challenges in GenAI
+"The challenge of ensuring the authenticity of AI-facilitated language interactions, as AI struggles to replicate the nuances and cultural contexts of human communication.",1,Ethical and Cultural Challenges in GenAI
+"The unique limitation of plagiarism detection, where ChatGPT can only identify work it generated itself.",3,Limitations of AI in Writing and Feedback
+"The necessity for continuous human monitoring and adjustment, challenging the notion of full automation.",0,Ethical and Cultural Challenges in GenAI
+"The tool's feedback may not cover deeper aspects of writing like ethical considerations, underlying issues, or cultural sensitivity.",3,Limitations of AI in Writing and Feedback
+The robotic tone of AI feedback lacks the nuance and human touch of a teacher's comments.,6,Limitations of AI in Writing and Feedback
+"Increased anxiety among language learners regarding their future career viability due to the rapid advancement of AI in language translation, writing, and editing.",1,Ethical and Cultural Challenges in GenAI
+"A tension exists for EFL students in low-performing communities who may lack the necessary technological and language exposure to benefit from AI writing tools, highlighting a specific manifestation of the digital divide.",3,Limitations of AI in Writing and Feedback
+"Even the most advanced student writers in the study used prompting rules that were far less sophisticated than those recommended for professional writers, indicating a need for instruction in higher-order prompting skills across all proficiency levels.",3,Limitations of AI in Writing and Feedback
+"Existential impact on the teaching profession: A notable concern was the long-term professional viability of EFL teachers, with some expressing anxiety that LLMs could have a direct impact on their 'survival' in the profession.",9,Limitations of AI in Writing and Feedback
+"Without deliberate pedagogical integration and teacher scaffolding, learner-chatbot interactions risk remaining superficial, which may limit the development of deep, analytical, and complex communicative skills.",5,Limitations of AI in Writing and Feedback
+"The finding that advanced AI-TPACK correlates negatively with behavioral intention presents a new challenge for teacher training, suggesting that expertise can lead to 'awareness-driven caution' or 'complexity-driven hesitancy'.",2,Pedagogical and Psychological Barriers
+"The study highlights that in policy-restricted and resource-constrained environments, the drivers for technology adoption may differ significantly from those in more developed contexts, with social networks playing a compensatory role for resource gaps.",0,Ethical and Cultural Challenges in GenAI
+"Students' philosophical or existential unease about AI's potential to replace human thinking and advise on human emotions, which goes beyond simple factual distrust.",2,Pedagogical and Psychological Barriers
+The convenience of quick AI responses may prevent students from engaging in more thorough and beneficial discussions amongst themselves.,2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+"Perceived satisfaction was found to not directly predict learning effectiveness, which contradicts some previous findings and suggests a more complex relationship mediated by behavioral intention.",7,Pedagogical and Psychological Barriers
+"Self-regulation had a surprisingly limited predictive power on satisfaction and performance expectancy, possibly due to the highly self-regulatory nature of ChatGPT itself.",5,Limitations of AI in Writing and Feedback
+Screen fatigue: Prolonged use of digital resources can be mentally exhausting for learners.,7,Pedagogical and Psychological Barriers
+"The tendency to anthropomorphize GenAI can lead to the formation of emotional attachments (e.g., the 'Friend' metaphor), blurring the ethical lines between human and machine interaction.",8,Ethical and Cultural Challenges in GenAI
+"Conceptualizing GenAI as a 'Brain' perilously insinuates that GenAI and the human brain are cognitively interchangeable, which could constrain the development of critical thinking by limiting access to diverse, well-rounded information.",8,Ethical and Cultural Challenges in GenAI
+The need for further research to determine whether AI-based assistance enhances or hinders language skill development in the long term.,1,Ethical and Cultural Challenges in GenAI
+"The 'novelty effect' may inflate positive user perceptions of AI tools, and these perceptions might not be sustained over longer periods of use.",6,Limitations of AI in Writing and Feedback
+The integration of GenAI can negatively impact teacher wellbeing and increase stress.,8,Ethical and Cultural Challenges in GenAI
+The use of GenAI may hinder the personal bond and meaningful interaction between teachers and students.,8,Ethical and Cultural Challenges in GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+"The difficulty for educators, even experienced ones, to reliably distinguish between AI-generated and student-authored texts, which complicates assessment and academic integrity enforcement.",3,Limitations of AI in Writing and Feedback
+"Limited impact on nuanced language use: A key finding was that ChatGPT did not significantly improve the 'language use' component, suggesting a specific limitation in its ability to teach or correct complex grammatical constructions, cohesion, and other nuanced aspects of academic writing.",5,Limitations of AI in Writing and Feedback
+"The use of a native language and visual aids (drawing) as a preliminary step before using translation technology, indicating a potential dependency on L1 for conceptualization before producing L2 text.",1,Ethical and Cultural Challenges in GenAI
+"A significant number of students (17.8%) believe GenAI tools should never be permitted for language learning, indicating strong ethical opposition within the student body.",8,Ethical and Cultural Challenges in GenAI
+Students' individual learning beliefs and strategies significantly influence their perception and acceptance of GenAI as a learning tool.,8,Ethical and Cultural Challenges in GenAI
+The distinction between using GenAI as a 'support mechanism' versus a tool to 'create/submit an entire assignment' is a key factor in students' personal ethical judgments.,8,Ethical and Cultural Challenges in GenAI
+"Student Frustration as a Learning Obstacle: An unexpected issue was the degree of student frustration with poor AI outputs, which was perceived as wasted time and effort, highlighting a need to teach resilience when using new technologies.",2,Pedagogical and Psychological Barriers
+"Unanticipated Metalinguistic Development: An unexpected positive outcome was that the process of prompting, evaluating, and re-prompting the AI fostered a deep metalinguistic and metacognitive awareness among students.",2,Pedagogical and Psychological Barriers
+The need for continuous improvement and adaptation of AI systems to meet the evolving needs of language learners for long-term effectiveness.,1,Ethical and Cultural Challenges in GenAI
+Uncertainty about learners' ability to sustain skill improvements independently after the cessation of AI-assisted instruction.,2,Pedagogical and Psychological Barriers
+"Potential for addiction to the tool, similar to social media addiction.",0,Ethical and Cultural Challenges in GenAI
+Existential concerns about AI becoming powerful enough to 'rule humans'.,2,Pedagogical and Psychological Barriers
+Unusual user concern about developing an emotional attachment ('falling in love') with the chatbot.,5,Limitations of AI in Writing and Feedback
+N/A,4,Emerging Trends and Potentials of GenAI
+The 'illusion of engagement' where high behavioral participation visible on digital platforms masks a lack of genuine motivation and deep learning.,0,Ethical and Cultural Challenges in GenAI
+"The specific vulnerability of lower-proficiency learners in vocational contexts to developing passive, compliance-oriented learning habits when using GenAI.",8,Ethical and Cultural Challenges in GenAI
+The potential for AI tools to unintentionally demotivate learners if not paired with strong pedagogical support that fosters autonomy and emotional connection.,2,Pedagogical and Psychological Barriers
+The risk of adversarial attacks ('jailbreaking') on dynamic LLM-based systems poses a significant security threat for high-stakes assessment applications.,9,Limitations of AI in Writing and Feedback
+The tendency of LLMs to generate content clustered around a small number of topics from its training data requires specific corrective measures to ensure content diversity in generated materials.,9,Limitations of AI in Writing and Feedback
+"The finding that high openness to experience weakens the effect of social influence challenges traditional technology acceptance models, suggesting a need for more nuanced, personality-aware approaches to promoting educational technology.",0,Ethical and Cultural Challenges in GenAI
+"The rapid advancement of generative AI presents both opportunities and challenges for educational researchers, requiring them to adapt their methodologies and navigate a quickly changing technological landscape.",2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+The potential for cognitive overload and the generation of useless or repetitive feedback by AI.,6,Limitations of AI in Writing and Feedback
+"ChatGPT's limited communicative competence due to its text-only modality, which hinders its effectiveness as a language practice partner.",5,Limitations of AI in Writing and Feedback
+"A key challenge is maintaining narrative coherence and ethical consistency when using generative AI NPCs, especially when student inquiries deviate from the intended storyline, which could undermine the learning experience.",2,Pedagogical and Psychological Barriers
+"The tendency for LLMs to gradually revert to dominant, standardized linguistic forms within a single interaction, even when prompted otherwise, requiring continuous intervention.",9,Limitations of AI in Writing and Feedback
+"The challenge of whether GenAI can authentically represent user identities or participate in dynamic, co-constructed identity-building dialogues typical of human interaction.",8,Ethical and Cultural Challenges in GenAI
+Pedagogical challenges regarding the alignment of ChatGPT with curriculum objectives and the appropriate design and assessment of AI-assisted writing tasks.,3,Limitations of AI in Writing and Feedback
+Social issues concerning the impact of AI on teacher-student relationships and the shifting roles and identities of teachers and students.,2,Pedagogical and Psychological Barriers
+The issue of the power and authority of the AI tool within the educational dynamic.,2,Pedagogical and Psychological Barriers
+"The development of a 'false' sense of competence arising from overreliance on the AI chatbot, which requires self-reflection and monitoring strategies to discern.",6,Limitations of AI in Writing and Feedback
+"The rise of learners using non-traditional methods (apps, media) makes standardized placement tests and homogeneous proficiency-based classes increasingly impractical.",7,Pedagogical and Psychological Barriers
+The need to design and manage multi-level classrooms is becoming a critical challenge for language programs.,1,Ethical and Cultural Challenges in GenAI
+"The student population most susceptible to leaving formal education is the one primarily motivated by information acquisition, as MT directly serves this need.",7,Pedagogical and Psychological Barriers
+"The high perceived capability of GenAI chatbots by students ('as capable as real teacher') may diminish the traditionally observed impact of teacher presence on cognitive and behavioral engagement, suggesting a potential shift in student-teacher-technology dynamics.",2,Pedagogical and Psychological Barriers
+"The unpredictability of LLM capabilities, which emerge due to increased investment rather than targeted innovation, makes it difficult to anticipate future skills.",9,Limitations of AI in Writing and Feedback
+"The absence of reliable techniques to control the behavior of LLMs, even with methods like fine-tuning or reinforcement learning.",9,Limitations of AI in Writing and Feedback
+The inherent complexity of LLMs as 'black-box' systems makes it almost impossible to precisely understand their internal behavior and reasoning.,9,Limitations of AI in Writing and Feedback
+"The tendency of LLMs to produce non-idiomatic expressions in German that are direct translations from English (e.g., 'Rollenmodelle' for 'role models').",9,Limitations of AI in Writing and Feedback
+AI-generated texts for scientific topics tend to list general information rather than explaining causal relationships or providing specific findings from studies.,3,Limitations of AI in Writing and Feedback
+"A consistent and rigid structure was observed across all ChatGPT-4 texts (introduction, body, summary, generic outlook), which is a significant drawback for creating varied assessment materials.",5,Limitations of AI in Writing and Feedback
+"The integration of AI tools may dilute the direct impact of teacher enthusiasm on student well-being, altering traditional classroom dynamics.",2,Pedagogical and Psychological Barriers
+"A boost in self-efficacy for productive skills from AI use does not necessarily translate to improved overall well-being, suggesting that performance pressure may counteract the psychological benefits of perceived competence.",2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+"The use of personal social media photos for learning raises ethical issues regarding the privacy of other people (e.g., friends) who may appear in those photos without their consent.",0,Ethical and Cultural Challenges in GenAI
+"Recruiting participants for research that requires access to sensitive personal data like social media content is a significant challenge for researchers, potentially leading to small or biased samples.",0,Ethical and Cultural Challenges in GenAI
+Lack of human interaction leading to social isolation.,0,Ethical and Cultural Challenges in GenAI
+"The chatbot's tendency to produce unfinished sentences, which hinders communication and understanding.",5,Limitations of AI in Writing and Feedback
+"A 'robotic' feel to conversations due to the chatbot's failure to ask reciprocal questions, reducing the quality of interaction.",6,Limitations of AI in Writing and Feedback
+"Difficulty in Evaluating AI-Generated Explanations: The study points to a significant challenge in the field, which is the lack of standardized criteria and robust frameworks for evaluating the quality, clarity, and educational effectiveness of AI-generated feedback and explanations.",6,Limitations of AI in Writing and Feedback
+The 'human validation bottleneck' where the necessary step of teacher approval for AI-generated content limits the system's ability to scale to large numbers of users.,2,Pedagogical and Psychological Barriers
+"Dependency on proprietary models, which raises concerns about accessibility, cost, and lack of control for educational institutions.",7,Pedagogical and Psychological Barriers
+"The widespread accessibility of tools like ChatGPT 'democratizes plagiarism,' making it available to all learners regardless of income level.",5,Limitations of AI in Writing and Feedback
+"AI detection tools are unreliable and can be biased against EFL learners, complicating efforts to ensure academic integrity.",2,Pedagogical and Psychological Barriers
+Ignoring the role of culture and context in language learning.,1,Ethical and Cultural Challenges in GenAI
+Overlooking students' emotions and the need for emotional support.,7,Pedagogical and Psychological Barriers
+"Loss of human interaction in teaching, particularly for speaking and listening skills.",7,Pedagogical and Psychological Barriers
+Inability to assess non-verbal and paralinguistic features in communication.,1,Ethical and Cultural Challenges in GenAI
+"Geopolitical and infrastructural barriers, such as the limited accessibility of certain GenAI tools in specific countries (e.g., China), pose a significant challenge that goes beyond individual or institutional facilitating conditions like basic computer and internet access.",8,Ethical and Cultural Challenges in GenAI
+"A potential 'ceiling effect' was observed for writing self-efficacy, where after an initial improvement with peer feedback, GenAI did not lead to further gains.",3,Limitations of AI in Writing and Feedback
+"The lack of significant improvement in cognitive engagement suggests students may not be processing AI feedback as deeply as other types, possibly due to doubts about its reliability.",2,Pedagogical and Psychological Barriers
+The study highlights the need for a hybrid feedback model that combines AI efficiency with the critical thinking and identity-fostering aspects of teacher and peer interactions.,2,Pedagogical and Psychological Barriers
+The need for learners to continuously update their digital competencies due to the rapid evolution of AI technologies.,2,Pedagogical and Psychological Barriers
+"The influence of context-specific regulatory environments (e.g., requiring VPNs for access) on learners' ability to engage with global AI platforms.",2,Pedagogical and Psychological Barriers
+"The use of AI feedback tools may negatively impact a teacher's professional identity, leading to fears of being perceived as lacking knowledge or becoming obsolete.",2,Pedagogical and Psychological Barriers
+Students' use of ChatGPT to revise texts before submission can hinder a teacher's ability to perform formative assessment by masking authentic weaknesses and developmental stages.,5,Limitations of AI in Writing and Feedback
+"The study's findings on competence and relatedness may become outdated as GenAI tools evolve with improved multimodal and emotional intelligence capabilities, necessitating continuous research.",8,Ethical and Cultural Challenges in GenAI
+"The need to adapt motivational theories like SDT to account for the unique affordances of advanced, multimodal AI in educational settings.",2,Pedagogical and Psychological Barriers
+The blurring of boundaries between authorship and originality when students incorporate AI output with minimal modification.,3,Limitations of AI in Writing and Feedback
+"A tension between the perceived convenience of AI tools and the need for information literacy, especially in high-stakes academic writing.",3,Limitations of AI in Writing and Feedback
+"The potential for AI to weaken opportunities for collaborative, socially mediated feedback between students and human instructors.",2,Pedagogical and Psychological Barriers
+"The lengthiness of AI-generated feedback can be a disadvantage, discouraging careful reading and engagement.",6,Limitations of AI in Writing and Feedback
+AI-generated revisions may not always be coherent with the preceding sentences in the student's original text.,3,Limitations of AI in Writing and Feedback
+A pedagogical gap exists between students' analytical understanding of multimodal concepts (like SFL metafunctions) and their ability to apply these concepts creatively when generating images with AI.,2,Pedagogical and Psychological Barriers
+"The potential inadequacy of traditional technology acceptance models (like UTAUT) to fully capture complex, AI-specific issues such as ethics, data security, and intercultural communication nuances in translation.",0,Ethical and Cultural Challenges in GenAI
+"Cognitive overload as a consequence of rapid, unstructured AI output, which can reduce perceived enjoyment and ease of use.",6,Limitations of AI in Writing and Feedback
+"Language inconsistency, such as an AI tool unexpectedly switching from English to Chinese during a practice session, disrupting the learning experience.",1,Ethical and Cultural Challenges in GenAI
+"The challenge of maintaining a unique, personal writing style when using AI for revision and polishing.",3,Limitations of AI in Writing and Feedback
+"Emotional alienation resulting from prolonged interaction with non-empathetic, templated AI feedback.",6,Limitations of AI in Writing and Feedback
+Cognitive homogenization where standardized AI recommendations stifle intellectual curiosity and diverse learning paths.,2,Pedagogical and Psychological Barriers
+"Cultural simplification and the perpetuation of stereotypes through AI, described as a form of digital 'Orientalism'.",0,Ethical and Cultural Challenges in GenAI
+"Pedagogical disempowerment, where the role of educators is marginalized in feedback and instructional processes.",7,Pedagogical and Psychological Barriers
+"Inadequacy of current AI tools (both ASR and text-based LLMs) for teaching and providing feedback on suprasegmental features (e.g., prosody, stress, intonation) due to technical limitations like a lack of auditory feedback.",1,Ethical and Cultural Challenges in GenAI
+"The need for teacher mediation to bridge the cognitive and emotional gap between AI-generated feedback and student comprehension, especially when feedback is perceived as unclear or inapplicable.",2,Pedagogical and Psychological Barriers
+The challenge of sustaining student motivation beyond the initial novelty phase of using LLMs.,9,Limitations of AI in Writing and Feedback
+"The perceived lack of fine-grained statistical data and explicit linguistic information in LLM outputs compared to traditional, specialized corpora.",9,Limitations of AI in Writing and Feedback
+"The potential for a 'novelty effect' to inflate initial motivational gains, which may not be sustained over time.",7,Pedagogical and Psychological Barriers
+"The risk of learners developing a 'temporary dependence' on AI tools, which could hinder the development of independent skills and lead to a motivation drop when the tool is not available.",2,Pedagogical and Psychological Barriers
+"The capability of advanced LLMs to provide effective feedback on deeper structural aspects of writing, such as organization, marks a significant evolution from earlier automated writing evaluation tools.",3,Limitations of AI in Writing and Feedback
+The nature of student interaction (direct and dialogic vs. indirect and static) with an LLM may significantly impact the uptake and perception of its feedback.,9,Limitations of AI in Writing and Feedback
+N/A,4,Emerging Trends and Potentials of GenAI
+"Absence of human-like voice: The robotic, non-human tone of ChatGPT was identified as a specific drawback impacting user comfort and engagement.",5,Limitations of AI in Writing and Feedback
+"Difficulty in meaning negotiation: Compared to human interaction, students found it harder to clarify and negotiate the intended meaning of feedback provided by the AI.",6,Limitations of AI in Writing and Feedback
+"A significant imbalance exists in the language skills addressed, with a heavy focus on productive skills (speaking, writing) over receptive skills (listening, reading).",1,Ethical and Cultural Challenges in GenAI
+"There is low viewer engagement with most videos on this topic, as indicated by the low number of comments.",0,Ethical and Cultural Challenges in GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+Encroachment on professional autonomy as a concern for teachers.,7,Pedagogical and Psychological Barriers
+The impact of varying cultural attitudes on the adoption and effectiveness of AI tools in different educational contexts.,2,Pedagogical and Psychological Barriers
+"A fundamental limitation of LLMs, being textually grounded, may be their inability to accurately model physical phenomena like phonetic processes, a problem that better datasets may not solve.",9,Limitations of AI in Writing and Feedback
+"Inaccurate AI responses can increase learners' extraneous cognitive load, as they must expend additional effort to verify and correct the information provided.",6,Limitations of AI in Writing and Feedback
+A significant disconnect exists between pre-service teachers' positive attitudes toward AI's potential and their low self-confidence in using it.,2,Pedagogical and Psychological Barriers
+Teacher educators' potential biases against AI use can act as a barrier to its integration in teacher education.,2,Pedagogical and Psychological Barriers
+The fear of job displacement and technology intimidation are significant emotional barriers for pre-service teachers.,7,Pedagogical and Psychological Barriers
+The current teacher education curriculum is inadequate in preparing teachers for an AI-integrated educational landscape.,2,Pedagogical and Psychological Barriers
+"A key challenge is the misalignment between a student author's perspective and the AI's feedback, particularly for content-focused issues, which students are more inclined to argue against or ignore.",3,Limitations of AI in Writing and Feedback
+The inability of the AI to pinpoint exact locations of errors when providing general feedback hinders learners' ability to recognize and rectify their specific linguistic shortcomings.,1,Ethical and Cultural Challenges in GenAI
+"Pedagogical usability of technical representations: The use of a technical phonological alphabet (ARPAbet) in feedback, while accurate, may have confused learners unaccustomed to it, hindering uptake.",7,Pedagogical and Psychological Barriers
+"Technical robustness across contexts: The performance and accuracy of AI models for feedback can be inhibited by variations in users' L1 backgrounds, microphone quality, and background noise, posing a challenge for real-world application.",6,Limitations of AI in Writing and Feedback
+"The necessity for users (both teachers and learners) to develop a comprehensive set of competencies beyond basic operation, including critical evaluation of output, contextual awareness, and ethical understanding.",7,Pedagogical and Psychological Barriers
+"The inherent linguistic and cultural bias stemming from a predominantly English-based training corpus, which can be problematic in diverse language education settings, especially when the model relies on automatic translation for responses.",1,Ethical and Cultural Challenges in GenAI
+"The fundamental question of what skills to teach in an AI era where AI can perform many tasks (e.g., resume writing, coding) more efficiently than humans.",2,Pedagogical and Psychological Barriers
+The unit of analysis (T-unit vs. sentence) significantly impacts the performance of LLMs in writing assessment.,9,Limitations of AI in Writing and Feedback
+"LLMs may misidentify correct but non-standard or varied language expressions as errors, indicating a reliance on standardized norms.",9,Limitations of AI in Writing and Feedback
+"The cost and processing time vary significantly between different LLMs, affecting their practical applicability in educational settings.",9,Limitations of AI in Writing and Feedback
+"The financial cost of using API-based models is a practical barrier to large-scale implementation, requiring cost-benefit analysis.",0,Ethical and Cultural Challenges in GenAI
+The potential for LLMs to provide beneficial feedback on awkward but grammatically correct sentences suggests a nuanced role for AI tutors in improving writing quality beyond simple error correction.,3,Limitations of AI in Writing and Feedback
+"Prompt sensitivity: The order of instructions within a prompt can significantly alter the output, with the AI potentially misinterpreting difficulty parameters as content if they are not placed correctly.",6,Limitations of AI in Writing and Feedback
+The use of two different AI models simultaneously can cause significant discrepancies and inconsistencies in output quality and length.,6,Limitations of AI in Writing and Feedback
+"A mismatch exists between the game's keyboard-and-mouse control scheme and the prevalence of touchscreen devices in modern primary school classrooms, posing a practical usability challenge.",7,Pedagogical and Psychological Barriers
+The high dependency of chatbot performance on users' prompt engineering skills poses a significant barrier to widespread and effective implementation in educational settings.,5,Limitations of AI in Writing and Feedback
+"A lack of ability to provide nuanced, individualized feedback based on a deep understanding of a specific learner's profile and needs remains a key limitation compared to human teachers.",7,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+Ethical considerations should extend beyond bias and privacy to include issues of access and equity.,0,Ethical and Cultural Challenges in GenAI
+Variations in the regional availability and affordability of advanced AI tools like ChatGPT can exacerbate existing disparities in language learning outcomes and digital literacy.,1,Ethical and Cultural Challenges in GenAI
+"The limited capabilities of free versions of ChatGPT may hinder the development of certain skills like speaking and listening, creating a divide based on access to premium features.",5,Limitations of AI in Writing and Feedback
+The inability of GenAI to understand and respond to human emotion and sensibility in writing feedback.,8,Ethical and Cultural Challenges in GenAI
+"The AI's lack of perceptiveness, such as failing to sense a user's impatience or tone from text-based interactions.",6,Limitations of AI in Writing and Feedback
+"The discourse structure of AI texts (e.g., repetitive conclusions in each paragraph) can make them seem inauthentic and easily identifiable.",3,Limitations of AI in Writing and Feedback
+"The quality and nature of text-to-speech voices used for AI-generated audio can be a significant drawback, with students finding them 'annoying' and difficult to understand.",1,Ethical and Cultural Challenges in GenAI
+"The study reframes the human-AI relationship in this context, positioning the LLM as an 'assistive tool' rather than a collaborative partner, as the teacher remains the sole agent initiating tasks, refining prompts, and making final pedagogical decisions.",2,Pedagogical and Psychological Barriers
+"The potential for homogenization of student ideas, creating a 'box of thinking' due to reliance on similar AI-generated content.",2,Pedagogical and Psychological Barriers
+"Learners' perception that other specialized applications (e.g., Duolingo) are superior for specific skill practice like speaking.",1,Ethical and Cultural Challenges in GenAI
+Threat of job replacement for teachers.,7,Pedagogical and Psychological Barriers
+"Lack of emotional and cultural nuance in AI outputs, which is critical for language learning.",1,Ethical and Cultural Challenges in GenAI
+Risk of creating deepfakes and manipulating users through personal data leakage.,0,Ethical and Cultural Challenges in GenAI
+"The concept of 'self-threat,' where AI challenges fundamental self-motives and personal identity.",2,Pedagogical and Psychological Barriers
+AI's inability to inspire students in the way human teachers can.,2,Pedagogical and Psychological Barriers
+The lack of emotional interaction from ChatGPT becomes a significant critique when the tool is framed as an authentic 'interlocutor' from a post-humanist perspective.,5,Limitations of AI in Writing and Feedback
+The potential for a negative correlation between WTC and technology acceptance can occur in learners who are concerned about over-reliance on AI leading to a loss of independent thinking skills.,2,Pedagogical and Psychological Barriers
+"The unexpected finding that boredom did not significantly predict or mediate learner engagement, contrary to some previous research.",7,Pedagogical and Psychological Barriers
+"The lack of authentic human interaction was identified as a specific cause of boredom, highlighting a key distinction between human-AI and human-human communication in language learning.",6,Limitations of AI in Writing and Feedback
+"Cultural Inappropriateness: AI tools can generate content that is culturally inaccurate or inappropriate, such as transliterating English terms without context, using culturally Western-oriented images, or discussing concepts like 'adopted family' in a way that does not align with Arab-Islamic cultural practices.",1,Ethical and Cultural Challenges in GenAI
+"The potential for AI to provide an overwhelming volume of suggestions, leading to student confusion.",2,Pedagogical and Psychological Barriers
+"The challenge of AI-generated feedback being unclear, overly complex, or vague.",6,Limitations of AI in Writing and Feedback
+"The lack of personalization in AI suggestions, which may not align with a student's unique ideas or voice.",2,Pedagogical and Psychological Barriers
+"Student resistance to embracing AI-facilitated learning, due to unfamiliarity or skepticism.",2,Pedagogical and Psychological Barriers
+Potential dilution of the teacher's role and agency in the learning process.,7,Pedagogical and Psychological Barriers
+"A key finding was the lack of a significant relationship between facilitating conditions and perceived usefulness, suggesting that while support makes the tool easier to use, it doesn't necessarily convince teachers of its value, possibly due to the experimental nature of its use and lack of institutional policy at the time.",7,Pedagogical and Psychological Barriers
+"A significant gap exists between the potential applications of AI in education and its actual, limited utilization by teachers.",2,Pedagogical and Psychological Barriers
+A low level of AI knowledge and competence among teachers may paradoxically reduce their feelings of being professionally threatened by the technology.,2,Pedagogical and Psychological Barriers
+"The specific need for human teachers to convey practical, experience-based knowledge that is not theory-based.",7,Pedagogical and Psychological Barriers
+The importance of human-to-human communication as a key motivator in the learning process.,7,Pedagogical and Psychological Barriers
+The inability of AI to handle deep questions and culturally specific aspects of learning.,6,Limitations of AI in Writing and Feedback
+"The issue of AI confirmation bias, where the model reinforces pre-existing beliefs or provides biased information, poses a significant challenge for critical learning.",6,Limitations of AI in Writing and Feedback
+The model's persistence in providing incorrect answers even after being corrected highlights a limitation in its reasoning and learning capabilities within a single interaction.,6,Limitations of AI in Writing and Feedback
+"The insignificance of security concerns as a direct predictor of adoption intention suggests users in some developing nations may prioritize convenience over security, at least initially.",0,Ethical and Cultural Challenges in GenAI
+The lack of peer influence on adoption highlights that generative AI tools may follow a different diffusion pattern than collaborative or social technologies.,0,Ethical and Cultural Challenges in GenAI
+The tension between using AI for learning versus using it as an assistance tool (a crutch).,2,Pedagogical and Psychological Barriers
+The widening gap between individuals who are proficient in using AI for learning and those who are not.,2,Pedagogical and Psychological Barriers
+"The challenge for learners to keep up with the rapid technological evolution of AI tools, leading to a 'learning optimization gap'.",6,Limitations of AI in Writing and Feedback
+"Erosion of personal and cultural writing identity, where GAI strips work of its unique voice and cultural imprints.",3,Limitations of AI in Writing and Feedback
+Loss of emotional attachment to one's own academic work due to AI's involvement in the creative and refinement processes.,2,Pedagogical and Psychological Barriers
+Need for improved response speed to maintain user engagement.,0,Ethical and Cultural Challenges in GenAI
+Demand for a wider variety of conversational topics to meet diverse learner interests.,7,Pedagogical and Psychological Barriers
+Desire for more specific and targeted feedback mechanisms beyond general conversational flow.,5,Limitations of AI in Writing and Feedback
+"The ambiguity surrounding acceptable AI use can blur the line between assistance and plagiarism, leading to unintentional violations of academic honesty policies.",2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+"The operational challenge of relying on third-party LLM providers, which may require using less accurate fallback models during service disruptions, impacting the quality and fairness of the assessment.",9,Limitations of AI in Writing and Feedback
+"The specific issue of 'theme repeaters' as a consequence of theme-detection error, which, while having a small impact on scores, can negatively affect the test-taker experience and perceived validity of the task.",7,Pedagogical and Psychological Barriers
+The viral spread of 'tips and tricks' on social media for using ChatGPT to plagiarize contravenes educational equity and impairs learner motivation.,5,Limitations of AI in Writing and Feedback
+"The development of AI-based plagiarism detection technologies is lagging significantly behind the rapid advancement of generative AI tools, making detection difficult for educators.",3,Limitations of AI in Writing and Feedback
+Inability of the LLM to provide accurate citations and references.,9,Limitations of AI in Writing and Feedback
+Potential for cultural insensitivity in generated content.,0,Ethical and Cultural Challenges in GenAI
+Lack of feedback on non-verbal communication cues.,7,Pedagogical and Psychological Barriers
+Inadequate feedback on crucial phonological aspects like pronunciation and intonation.,7,Pedagogical and Psychological Barriers
+"The generation of 'off-task' feedback, where the model does not adhere strictly to the prompt's constraints.",6,Limitations of AI in Writing and Feedback
+The potential mismatch between the LLM's evaluation criteria and those of the human teacher or the course curriculum.,9,Limitations of AI in Writing and Feedback
+"The lack of contextual awareness, as the LLM has no background knowledge of the students, their prior performance, or the teaching context, which can lead to inappropriate feedback.",9,Limitations of AI in Writing and Feedback
+The need to redefine plagiarism in the context of generative AI.,3,Limitations of AI in Writing and Feedback
+The potential for AI tools to demotivate learners by removing the 'joy of inquiry' from the writing process.,3,Limitations of AI in Writing and Feedback
+Loss of authorial voice and homogenization of writing styles.,3,Limitations of AI in Writing and Feedback
+Lack of emotional support and inability to address human emotions and personal expressions.,7,Pedagogical and Psychological Barriers
+Administrative concerns at educational institutions regarding the use of AI in classrooms can limit its implementation and related research.,2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+"The weak relationship found between Perceived System Quality (PSQ) and teachers' perceptions suggests a potential dissatisfaction with ChatGPT's user-interface design, functionality, and reliability for educational purposes.",5,Limitations of AI in Writing and Feedback
+The non-significant impact of Online Course Design (OCD) on Perceived Ease of Use (PEOU) indicates that teachers did not find ChatGPT's design inherently well-suited or user-friendly for language teaching tasks.,5,Limitations of AI in Writing and Feedback
+The reduction of the discriminative power of grading systems due to a shift from a normal to a skewed score distribution towards higher grades.,7,Pedagogical and Psychological Barriers
+"The ambiguity of 'price value' as a construct in technology acceptance when advanced AI tools are widely available for free, diminishing its predictive power on user intention.",0,Ethical and Cultural Challenges in GenAI
+"The complex, non-uniform impact of motivation across different technology acceptance pathways, indicating that motivational interventions need to be highly targeted.",0,Ethical and Cultural Challenges in GenAI
+"A specific pattern of criterion-by-rater bias was identified where the AWE chatbot's scoring tendencies (e.g., leniency on content vs. strictness on language) were reversed compared to human raters.",6,Limitations of AI in Writing and Feedback
+A practical trade-off exists between enhancing the chatbot's rating accuracy through more extensive training data and maintaining its processing efficiency and speed.,6,Limitations of AI in Writing and Feedback
+"The specific finding that the prompt engineering phase, rather than language or task demands, is a primary source of high cognitive load for students.",7,Pedagogical and Psychological Barriers
+The need for instructional design that explicitly balances the motivational affordances of LLMs with their cognitive demands.,9,Limitations of AI in Writing and Feedback
+"Processing lengthy texts in ChatGPT can lead to a loss of information, which may limit its effectiveness for tasks requiring long-form argument production like essays.",5,Limitations of AI in Writing and Feedback
+"The subjective impact of text-based AI feedback on motivation for communication, with responses ranging from positive to neutral.",6,Limitations of AI in Writing and Feedback
+Some students' difficulty in understanding and applying AI-generated feedback effectively.,2,Pedagogical and Psychological Barriers
+"The generality and superficiality of GenAI-generated content, which may be unsuitable for advanced or specialized topics.",8,Ethical and Cultural Challenges in GenAI
+"The lack of genuine originality and creativity in GenAI outputs, limiting their use for tasks requiring novel ideas.",8,Ethical and Cultural Challenges in GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+The tendency for L2 learners to frequently request L1 translations and simplified versions of ChatGPT's output suggests that the default complexity and length of AI-generated text can be a barrier to comprehension and effective use.,5,Limitations of AI in Writing and Feedback
+Students desire for ChatGPT to provide verifiable and reliable sources for literature reviews.,5,Limitations of AI in Writing and Feedback
+A need for less generic and more academically nuanced rephrasing suggestions.,7,Pedagogical and Psychological Barriers
+"Suggestions for new features, such as multimedia functions.",0,Ethical and Cultural Challenges in GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+"The study points to an 'emotional dimension' of affordances, suggesting LLMs' potential to reduce learner anxiety, which is an underexplored aspect.",9,Limitations of AI in Writing and Feedback
+Time constraints for teachers are a significant obstacle to learning and integrating new AI technologies like ChatGPT.,2,Pedagogical and Psychological Barriers
+Suppression of creativity: Concern that AI might reinforce existing patterns rather than fostering genuine creative exploration and novel ideas.,2,Pedagogical and Psychological Barriers
+"Hindrance of interaction skills: Fear that excessive use of AI tools might impede the development of real-life, face-to-face communication abilities.",6,Limitations of AI in Writing and Feedback
+"Students exhibit a 'competence-driven mindset,' initially prioritizing grades over the content of the feedback.",7,Pedagogical and Psychological Barriers
+A preference for critical feedback over positive feedback for learning improvement was observed.,7,Pedagogical and Psychological Barriers
+"The generic nature of some AI feedback impedes students' ability to process it effectively, requiring greater linguistic competence.",6,Limitations of AI in Writing and Feedback
+Emotional Duality: Learners experienced a dual emotional response of feeling both empowered and anxious while using AI for learning.,2,Pedagogical and Psychological Barriers
+Ethical Dissonance: The redundancy and potential unreliability of AI-generated information caused ethical dissonance among learners.,2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+"The issue of AI generating text with a repetitive and homogenous linguistic style, regardless of the topic.",3,Limitations of AI in Writing and Feedback
+"The challenge of the AI misinterpreting user instructions, leading to outputs that do not align with the teacher's pedagogical intent.",2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+Potential for students to become addicted to AI tools.,2,Pedagogical and Psychological Barriers
+"Student reluctance to use AI tools, claiming it might weaken long-term critical thinking abilities.",2,Pedagogical and Psychological Barriers
+Students expressing greater trust in teacher feedback compared to AI-generated feedback.,2,Pedagogical and Psychological Barriers
+"Erosion of foundational skills: A subset of participants struggled to conceptualize lesson plans without AI assistance, indicating a risk of eroding core curriculum design competencies.",2,Pedagogical and Psychological Barriers
+"Uncritical acceptance of AI output: Due to the 'black-box' nature of AI, some teachers accepted algorithmic suggestions uncritically without being able to articulate the pedagogical rationale.",2,Pedagogical and Psychological Barriers
+The overwhelming quantity of feedback generated by AI can be a burden for students.,2,Pedagogical and Psychological Barriers
+"AI feedback is less effective for complex, discipline-specific aspects of academic writing, such as methodology and data analysis.",3,Limitations of AI in Writing and Feedback
+AI feedback lacks suitability for the specific academic context.,6,Limitations of AI in Writing and Feedback
+"The rapid pace of LLM development means that research findings are highly version-specific, necessitating continuous research to establish baselines for new models.",9,Limitations of AI in Writing and Feedback
+"Methodological factors in research design, such as the sample size of human raters, can significantly influence the observed performance and characteristics (e.g., severity) of LLMs.",9,Limitations of AI in Writing and Feedback
+The risk of creating 'AI-nized' writing that lacks individual voice and style.,3,Limitations of AI in Writing and Feedback
+"The paradox for L2 writers, where AI can both threaten authenticity and enhance it by overcoming linguistic barriers.",3,Limitations of AI in Writing and Feedback
+The need to redefine authenticity and academic integrity in the context of human-AI collaborative writing.,3,Limitations of AI in Writing and Feedback
+"The specific challenges of applying AI to a minority language like Maltese, which has complex grammar and limited digital resources.",1,Ethical and Cultural Challenges in GenAI
+The risk of diminishing the human element in teaching and reducing valuable teacher-student interaction.,7,Pedagogical and Psychological Barriers
+"A notable lack of expressed concern about model hallucination among the student participants, which contrasts with findings in other research.",7,Pedagogical and Psychological Barriers
+"The specific challenge of GenAI's poor performance when translating into high-context languages like Chinese, attributed to insufficient databases.",1,Ethical and Cultural Challenges in GenAI
+Algorithms of oppression: The potential for AI to reproduce and reinforce existing social stereotypes and biases present in its training data.,0,Ethical and Cultural Challenges in GenAI
+"Linguistic colonialism paradox: AI may promote liberal ideas while using vocabulary and structures rooted in colonialist histories, creating a contradictory output.",1,Ethical and Cultural Challenges in GenAI
+"The study revealed a conflict in students between their fear of using ChatGPT due to ethical concerns and social pressure, and their actual, albeit careful, use of the tool.",5,Limitations of AI in Writing and Feedback
+"A significant lack of social support from teachers and other important figures was identified as a key barrier to students' intended use of ChatGPT, a notable finding within the UTAUT framework.",5,Limitations of AI in Writing and Feedback
+The potential for social desirability bias in self-reported survey data regarding AI tool usage.,0,Ethical and Cultural Challenges in GenAI
+The discrepancy between quantitative and qualitative data highlights the complexity of measuring user behavior and perceptions related to new technologies like ChatGPT.,5,Limitations of AI in Writing and Feedback
+"Gullibility to False Information: The study noted that ChatGPT can be 'overly gullible in accepting obviously false statements from a user,' posing a risk if used uncritically.",5,Limitations of AI in Writing and Feedback
+"Difficulty with Emotional Nuance: While proficient in identifying general emotions, ChatGPT is 'conspicuously weak and dumb in conveying nuanced emotional expressions,' failing to grasp subtleties that require a deeper understanding of interpersonal dynamics.",5,Limitations of AI in Writing and Feedback
+"Lack of Holistic Text Comprehension: ChatGPT tends to make inferences based on immediate context rather than a holistic understanding of the entire narrative, leading to failures in complex causal reasoning.",5,Limitations of AI in Writing and Feedback
+"Inability to assess content relevance, such as detecting off-topic essays.",7,Pedagogical and Psychological Barriers
+The unusually high recall rate (100%) for error detection suggests a potential for over-counting or definitional discrepancies with human graders that needs further review.,7,Pedagogical and Psychological Barriers
+The inability of LLMs to replicate human creativity and deep contextual understanding poses a significant challenge in specialized fields like medicine where these skills are paramount.,9,Limitations of AI in Writing and Feedback
+The model's struggles with translating non-English languages accurately can limit its effectiveness and utility in a global medical education context.,1,Ethical and Cultural Challenges in GenAI
+"The unreliability of AI detection tools was a major issue, as their results could not be used as 'hard evidence', preventing teachers from taking disciplinary action.",2,Pedagogical and Psychological Barriers
+The ambiguity of the few existing institutional policies created confusion for teachers rather than providing clear guidance.,7,Pedagogical and Psychological Barriers
+"Cognitive load from verbose feedback: Overly general prompts can generate an overwhelming amount of information, imposing a significant cognitive burden on learners trying to process and apply the feedback.",7,Pedagogical and Psychological Barriers
+"The need to investigate how to effectively interleave all four language skills (listening, reading, writing, and speaking) using AI support.",1,Ethical and Cultural Challenges in GenAI
+A future challenge is to develop methods to scientifically assess the degree and subjectivity of student engagement within human-computer collaborative learning environments.,2,Pedagogical and Psychological Barriers
+"The finding that for high-proficiency users, AI tools can increase extraneous cognitive load by introducing irrelevant or low-quality information, counteracting the intended benefit of load reduction.",6,Limitations of AI in Writing and Feedback
+"The confirmation that the intrinsic cognitive load associated with core academic tasks like critical reading and idea planning cannot be offloaded to AI, highlighting an essential, non-automatable aspect of scholarly work.",3,Limitations of AI in Writing and Feedback
+N/A,4,Emerging Trends and Potentials of GenAI
+The need to identify the specific features of AI tools that are most influential in fostering motivation and self-regulated learning.,2,Pedagogical and Psychological Barriers
+The need for further exploration of ethical considerations surrounding AI in education.,2,Pedagogical and Psychological Barriers
+The need to investigate the long-term impacts of AI on student autonomy and dependency on technology.,2,Pedagogical and Psychological Barriers
+N/A,4,Emerging Trends and Potentials of GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+"ChatGPT's tendency to produce code that is syntactically correct and executable but logically flawed presents a new challenge for assessment, as it can appear valid without genuine student comprehension.",5,Limitations of AI in Writing and Feedback
+"Conventional plagiarism detection tools are insufficient for identifying AI-generated content, necessitating new methods for ensuring academic integrity.",3,Limitations of AI in Writing and Feedback
+"A key challenge for current LLMs is the assessment of higher-order thinking skills, as they struggle to evaluate the nuances of complex arguments and contextualize responses fully.",9,Limitations of AI in Writing and Feedback
+"The study highlights that institutional bias from human raters can be a significant factor in assessment reliability, an issue that standardized AI raters could potentially mitigate.",6,Limitations of AI in Writing and Feedback
+"Procedural bias: Future research must address the procedural bias that can arise from different task execution modes (e.g., paper-based vs. digital input for AI), which could affect the fairness of comparisons.",6,Limitations of AI in Writing and Feedback
+Inability to handle complexity: AI feedback has limitations in its ability to answer complex questions and address nuanced issues.,6,Limitations of AI in Writing and Feedback
+Ethical and technical constraints: The use of AI in assessment brings up ethical issues and technical constraints that need to be addressed.,2,Pedagogical and Psychological Barriers
+Fear of losing creativity in writing due to the imposition of a pre-decided pattern by the AI.,3,Limitations of AI in Writing and Feedback
+"The specific inability of the LLM to differentiate and appropriately handle various language registers (formal, informal, neutral), often defaulting to formalizing all text.",9,Limitations of AI in Writing and Feedback
+"Technical usability issues, such as problems with logging in, can be a barrier to use.",0,Ethical and Cultural Challenges in GenAI
+"The study highlights how geopolitical factors, such as economic sanctions and national internet policies in Iran, create significant accessibility and cost barriers (requiring VPNs and virtual phone numbers), which negatively shapes user perceptions of price-value, a factor that is often positive in other contexts.",0,Ethical and Cultural Challenges in GenAI
+"A paradoxical effect where increased awareness of rhetorical strategies, facilitated by the AI tool, led to a decrease in writing confidence for a small number of students who became acutely aware of their shortcomings.",3,Limitations of AI in Writing and Feedback
+The potential for AI feedback to unintentionally erase the personal voice and style of the student writer.,3,Limitations of AI in Writing and Feedback
+"Behavioural intention has a relatively weak influence on actual use behaviour, suggesting that established habits and facilitating conditions are more critical in determining actual use, which diverges from the emphasis placed on intention in the original UTAUT model.",0,Ethical and Cultural Challenges in GenAI
+The 'fear of missing out' can motivate students to use GenAI despite being aware of its associated risks.,8,Ethical and Cultural Challenges in GenAI
+"The critical role of pedagogical framing: The effectiveness of AI is highly dependent on how instructors structure tasks and guide students, which can determine whether AI leads to deep learning or superficial use.",2,Pedagogical and Psychological Barriers
+"The potential for a divided user base: Within a single cohort, AI can create two distinct user patterns—one strategic and one convenience-driven—posing a challenge for standardized instruction.",2,Pedagogical and Psychological Barriers
+"Challenges in applying LLMs to oral proficiency assessment, particularly for under-resourced languages and learners with diverse accents.",9,Limitations of AI in Writing and Feedback
+Technical difficulties in using Automatic Speech Recognition (ASR) for accurate pronunciation evaluation and audio-text transcription for non-native speech.,1,Ethical and Cultural Challenges in GenAI
+"Current NLP technology struggles to capture complex oral linguistic features such as fluency, pronunciation, and interactional competence.",1,Ethical and Cultural Challenges in GenAI
+"The aggregate cognitive load: The mental effort required by students was a combination of both feedback-seeking (prompt engineering) and feedback processing, which is a new dimension to consider for cognitive load in AI-assisted learning.",2,Pedagogical and Psychological Barriers
+The potential for technological competence to compensate for lower language proficiency in evaluating AI feedback was an unexpected finding.,1,Ethical and Cultural Challenges in GenAI
+"The study highlights the rapid evolution of AI capabilities, showing a significant performance difference in reliability between ChatGPT 3.5 and ChatGPT 4, which necessitates ongoing evaluation of specific AI model versions for educational use.",6,Limitations of AI in Writing and Feedback
+"For smaller and low-resource languages, traditional dictionaries are unlikely to be supplanted by LLMs as readily as for high-resource languages like English.",9,Limitations of AI in Writing and Feedback
+The necessity for students to use technical workarounds like VPNs to access educational tools creates an additional layer of complexity and a potential digital divide based on technical skill and risk tolerance.,0,Ethical and Cultural Challenges in GenAI
+"The study found no significant direct relationship between Perceived Ease of Use (PEU) and Attitude (AT), which contradicts some previous TAM studies. The authors suggest this may be because the learners are already familiar with digital tools, making the tool's actual usefulness a more critical factor in forming their attitude than its simplicity.",0,Ethical and Cultural Challenges in GenAI
+"LLM difficulty with ambiguity: The study highlighted a discrepancy in the tolerance for ambiguity between LLMs and human raters, with LLMs struggling more with writers' attempts to synthesize information.",9,Limitations of AI in Writing and Feedback
+"LLM confusion of assessment criteria: A specific issue was identified where the LLM conflated distinct assessment criteria within a single evaluation, such as main idea representation and omission of unnecessary details.",9,Limitations of AI in Writing and Feedback
+The risk that new AI technologies will reproduce racialized and colonial formations of the past without decolonial ethical frameworks.,2,Pedagogical and Psychological Barriers
+The pedagogical imperative to shift focus from teaching fixed content ('what') to enabling students to engage with indeterminacy ('how') in a rapidly evolving technological landscape.,7,Pedagogical and Psychological Barriers
+"The psychological impact on students, who may feel their skills are 'diminished' or 'belittled' by AI's capabilities.",2,Pedagogical and Psychological Barriers
+The challenge of managing information overload when AI provides responses that are too complex or verbose for the learner's proficiency level.,6,Limitations of AI in Writing and Feedback
+"The power dynamic created by AI, where its feedback is initially perceived as an unquestionable authority, potentially eroding learner agency.",2,Pedagogical and Psychological Barriers
+"The 'expertise effect': AI-generated responses can appear scientific and convincing, which may deceive students who lack strong information literacy skills into accepting inaccurate information.",2,Pedagogical and Psychological Barriers
+"Difficulty in evaluating source-based writing: The study found that GPT-4 was less effective at scoring tasks that required integrating information from a source text (the Listen-Write task), a specific challenge for young EFL learners' writing assessment.",3,Limitations of AI in Writing and Feedback
+Students' difficulty in transitioning from generating numerous questions to independently identifying and refining high-quality inquiry questions without significant instructor guidance.,7,Pedagogical and Psychological Barriers
+Homogenization of language and culture as a potential unintended consequence of AI use.,1,Ethical and Cultural Challenges in GenAI
+"The 'lag effect' of technology ethics, where ethical standards and policies struggle to keep pace with rapid technological development.",0,Ethical and Cultural Challenges in GenAI
+Fundamental shifts in learner identity and the definition of language proficiency in an AI-mediated context.,1,Ethical and Cultural Challenges in GenAI
+"A significant gap was identified in the use of AI for 'reflection-in-action' (i.e., during live teaching), with teachers primarily using it for reflection before or after instruction.",2,Pedagogical and Psychological Barriers
+"The challenge of AI's inability to fully grasp the complexities and mutual understanding inherent in human-human interaction, which is central to deep reflective practice.",6,Limitations of AI in Writing and Feedback
+The development of a professional culture where teachers feel compelled to hide their use of potentially beneficial tools due to social and professional stigma.,7,Pedagogical and Psychological Barriers
+"The perception of teacher AI use as a threat to professional competence, regardless of whether the use is responsible and pedagogically sound.",2,Pedagogical and Psychological Barriers
+"Moral Risks: The use of AI in language education poses moral risks, as education is not only about knowledge transfer but also about building students' attitudes, a process which could be negatively impacted by biased or erroneous AI-generated content.",2,Pedagogical and Psychological Barriers
+"Perceived Safety as an Adoption Driver: Teachers' perception of feeling safe and comfortable due to the platform's anonymity and privacy features acts as a significant, yet often overlooked, factor driving the adoption of ChatGPT in their professional practice.",5,Limitations of AI in Writing and Feedback
+The unprecedented speed of GenAI development and adoption creates a more intense and harder-to-mitigate form of technostress compared to previous technologies.,8,Ethical and Cultural Challenges in GenAI
+"Techno-insecurity, the fear of one's skills becoming obsolete or being replaced by AI, is a significant contributor to teacher stress.",7,Pedagogical and Psychological Barriers
+"Despite pedagogical interventions, some students may continue to use GenAI tools in unauthorized ways, such as for drafting entire texts.",8,Ethical and Cultural Challenges in GenAI
+A key challenge is balancing the utility of AI for tasks like editing with the risk of it altering or erasing a student's authentic authorial voice.,3,Limitations of AI in Writing and Feedback
+"A primary issue is that most educational AI chatbots are designed to produce only standard native English, which can reinforce native-speakerism and undermine GELT goals. This study's use of chatbots with diverse Englishes is a direct response to this problem.",1,Ethical and Cultural Challenges in GenAI
+"The study acknowledges a theoretical tension between using the World Englishes (WE) framework, which categorizes English into 'varieties', and the English as a Lingua Franca (ELF) perspective, which emphasizes communicative fluidity over fixed varieties.",1,Ethical and Cultural Challenges in GenAI
+"A potential conflict between AI-generated synthesis and learner autonomy was observed, as students sometimes rejected GenAI's synthesized outlines because they deviated from their own original ideas.",8,Ethical and Cultural Challenges in GenAI
+"The study suggests that AI-delivered roleplays may tap into a 'divergent—but not entirely distinct—set of turn-taking practices' from human interactions, raising complex questions about construct validity and whether the AI is creating a new form of interaction rather than simply simulating a human one.",6,Limitations of AI in Writing and Feedback
+"Potential for poor performance on complex assessment tasks, such as evaluating long texts from multi-level tests.",7,Pedagogical and Psychological Barriers
+"The inability to use AI-generated rationales to understand the model's internal decision-making process, limiting their utility for system improvement and validation.",6,Limitations of AI in Writing and Feedback
+The effectiveness of LLM feedback for long-term retention is questionable without pedagogical task designs that promote deeper cognitive processing and negotiation of meaning.,9,Limitations of AI in Writing and Feedback
+"There is a discrepancy between the perceived linguistic naturalness of LLMs and their actual ability to replicate authentic, informal conversational language, which may provide learners with a skewed model of the target language.",9,Limitations of AI in Writing and Feedback
+The transferability of skills acquired during an intervention to different types of assessment tasks is a key consideration for future research.,7,Pedagogical and Psychological Barriers
+A need for discourse analysis of AI-student interactions to understand which specific interactional features contribute to skill improvement.,2,Pedagogical and Psychological Barriers
+"The influence of individual learner characteristics (proficiency, L1, gender, digital literacy) on the efficacy of AI-mediated interaction requires further investigation.",2,Pedagogical and Psychological Barriers
+The need to design hybrid AI systems that balance structure and flexibility to create optimal conditions for both practicing and assessing interactional competence.,6,Limitations of AI in Writing and Feedback
+The pedagogical challenge of designing tasks that elicit specific interactional skills through their intrinsic design rather than as a byproduct of technological failures.,7,Pedagogical and Psychological Barriers
+"The study suggests that a one-size-fits-all approach to integrating LLMs into education is ineffective, as the tool's utility is significantly mediated by individual student characteristics like learning autonomy.",9,Limitations of AI in Writing and Feedback
+"AI tools may generate ideas that are generic or impersonal, lacking a personal touch.",6,Limitations of AI in Writing and Feedback
+Students might use suggestions from AI tools that result in overcomplicated language without fully understanding the context or connotations.,2,Pedagogical and Psychological Barriers
+"Research in this area may suffer from participant selection bias, where studies predominantly include proponents of the technology, leading to overly positive findings.",0,Ethical and Cultural Challenges in GenAI
+"A gap can exist between AI-generated feedback and a student's ability to apply the corrections, particularly for complex grammatical structures.",3,Limitations of AI in Writing and Feedback
+"Negative student perceptions (e.g., viewing the tool as untrustworthy, chaotic, or scary) can act as a barrier to adoption and effective use.",7,Pedagogical and Psychological Barriers
+"The mode of GenAI use (i.e., as a feedback provider versus an interactive partner) appears to be a critical factor influencing its effectiveness on higher-order thinking skills.",8,Ethical and Cultural Challenges in GenAI
+"Existing theoretical frameworks for feedback, like Hattie and Timperley's model, may need to be updated to explicitly account for the source of feedback (e.g., AI-only, human-only, hybrid) and its differential impact on various skill levels.",6,Limitations of AI in Writing and Feedback
+N/A,4,Emerging Trends and Potentials of GenAI
+"The study highlights a specific gap in technology-mediated learning: the lack of significant improvement in pronunciation, suggesting that current tools and methods may not adequately address phonetic and phonological skills without targeted pedagogical strategies.",1,Ethical and Cultural Challenges in GenAI
+"The difficulty for general-purpose LLMs to differentiate between closely related linguistic error categories (e.g., lexical vs. grammatical), suggesting a need for more linguistically fine-tuned models for educational assessment.",9,Limitations of AI in Writing and Feedback
+"The ethical disposition of the user (integrity, responsibility) is a critical factor in the beneficial use of LLMs.",9,Limitations of AI in Writing and Feedback
+The social dynamic of 'conditional recommendation' based on a peer's perceived ethical stance on AI use.,0,Ethical and Cultural Challenges in GenAI
+"Lack of personal touch: A concern that AI-generated activities, while convenient, may not have the nuance and personal connection of materials created by the teacher.",2,Pedagogical and Psychological Barriers
+Curriculum alignment difficulty: A practical challenge in making AI-generated content fit seamlessly with pre-existing learning objectives and curriculum standards.,2,Pedagogical and Psychological Barriers
+AI tools lack the ability to provide human-like emotional and motivational encouragement in feedback.,6,Limitations of AI in Writing and Feedback
+Standard AI scoring metrics may not fully capture the complexities of non-English languages with distinct syntactic and cultural structures.,1,Ethical and Cultural Challenges in GenAI
+The perceived decline in the accuracy and quality of ChatGPT's responses over the ten-month study period.,5,Limitations of AI in Writing and Feedback
+"Limited adoption of generative AI by instructors for reading, listening, and speaking skills, despite their participation in training and positive attitudes towards the technology.",2,Pedagogical and Psychological Barriers
+The challenge for educators to keep pace with the rapid development of AI technologies and the overwhelming number of new tools.,2,Pedagogical and Psychological Barriers
+The potential for cultural and ideological conflicts between generic AI suggestions and the norms of specific local educational contexts.,2,Pedagogical and Psychological Barriers
+"The finding that GenAI-IDLE enhances positive emotions (enjoyment) but does not mitigate negative ones (boredom), suggesting a complex emotional landscape in AI-supported independent learning.",2,Pedagogical and Psychological Barriers
+"A 'proficiency divide' may exist, where EFL learners with lower language proficiency struggle to effectively rephrase prompts and interact with the LLM, limiting their ability to benefit from the tool compared to more proficient peers.",9,Limitations of AI in Writing and Feedback
+"The study identified a computational 'scoring fatigue' in GenAI tools, where prolonged use leads to a decline in scoring accuracy and rubric adherence.",8,Ethical and Cultural Challenges in GenAI
+The non-deterministic nature and undocumented backend updates of commercial LLMs pose a significant challenge for ensuring the longitudinal stability and reliability of AI-based assessment.,9,Limitations of AI in Writing and Feedback
+"The quality of LLM-generated questions is dependent on the proficiency level of the interaction, with lower performance and more inconsistencies observed at the novice level, suggesting challenges in adapting LLMs for lower-proficiency learners who provide simpler input.",9,Limitations of AI in Writing and Feedback
+The deficiency of culturally responsive and Arabic-language AI resources presents a significant barrier to implementation in specific contexts like Saudi Arabia.,1,Ethical and Cultural Challenges in GenAI
+"General-purpose AI solutions are often inadequate for the unique cognitive and sensory profiles of autistic learners, requiring substantial modification and customization that is not readily available.",6,Limitations of AI in Writing and Feedback
+"The study reveals a 'metacognitive divide' where students with higher-order learning skills benefit more from AI tools, potentially widening the gap with peers who have less developed skills.",2,Pedagogical and Psychological Barriers
+A one-size-fits-all approach to integrating AI in education is ineffective; pedagogical strategies must be differentiated based on students' cognitive and metacognitive profiles.,2,Pedagogical and Psychological Barriers
+"Blocked access to the LLM in the study's context required the use of a VPN, highlighting a specific geopolitical barrier to accessibility.",0,Ethical and Cultural Challenges in GenAI
+"AI evaluators may be more lenient than human evaluators in specific categories like 'Organization' and 'Topic Development', potentially rewarding structure over substance.",6,Limitations of AI in Writing and Feedback
+The AI's inability to fully process non-verbal cues from video content represents a significant gap in its capacity for holistic presentation assessment.,6,Limitations of AI in Writing and Feedback
+"The challenge of assessing less common language varieties (e.g., Finland Swedish) when LLMs are primarily trained on the standard version of the language (e.g., Swedish from Sweden).",9,Limitations of AI in Writing and Feedback
+"The non-linear relationship between model size and performance for low-resource languages, where scaling up does not guarantee improvement.",1,Ethical and Cultural Challenges in GenAI
+N/A,4,Emerging Trends and Potentials of GenAI
+"The presence of significant anxiety even among highly engaged and self-efficacious students suggests that successful LLM integration requires addressing the psychological and emotional dimensions of technology adoption, not just promoting its use.",9,Limitations of AI in Writing and Feedback
+"The study reveals a nuanced and sometimes contradictory relationship between personality traits and the core constructs of the Technology Acceptance Model. For example, extraversion positively predicted perceived ease of use but not perceived usefulness, suggesting that engagement does not always translate to perceived learning value.",0,Ethical and Cultural Challenges in GenAI
+"Different personality traits lead to varied usage strategies, from systematic and goal-directed (conscientiousness) to creative and exploratory (openness), highlighting the need for personalized AI tool design and implementation.",6,Limitations of AI in Writing and Feedback
+"Students may be driven to adopt technologies they do not feel they can control due to external pressures (e.g., employment market), which could lead to ineffective or problematic usage.",0,Ethical and Cultural Challenges in GenAI
+"Inability of the AI tool to process and interpret multimodal elements (e.g., text within tables, posters, flowcharts), limiting its utility for contemporary learning materials that are often not purely text-based.",6,Limitations of AI in Writing and Feedback
+N/A,4,Emerging Trends and Potentials of GenAI
+"Contrary to some prior research on automated feedback, high-proficiency learners spent more time and cognitive effort interacting with ChatGPT than the moderate-proficiency learner, suggesting a different pattern of cognitive load distribution.",5,Limitations of AI in Writing and Feedback
+"The study highlights the critical need for a strong pedagogical framework (like the proposed GenAI-enhanced CBLP model) to mediate student-AI interaction, ensuring that the technology is used for targeted learning rather than for producing full texts, thereby maintaining academic integrity and pedagogical coherence.",2,Pedagogical and Psychological Barriers
+A bidirectional relationship exists where learners' initial perceptions of a tool's effectiveness predict their engagement and subsequent performance gains.,7,Pedagogical and Psychological Barriers
+Technological dependency can plateau or limit long-term learning gains compared to non-dependent users.,7,Pedagogical and Psychological Barriers
+"The rigidity of some AI tools, like summarizers, can stifle learner creativity and lead to oversimplification.",6,Limitations of AI in Writing and Feedback
+"Cultural and contextual mismatches in AI-generated content (e.g., Western-centric patterns, inappropriate formality) can hinder authentic communication.",1,Ethical and Cultural Challenges in GenAI
+Students developing AI literacy to avoid improper use and misinterpretation of feedback from GenAI chatbots,6,Limitations of AI in Writing and Feedback
+Overreliance on GenAI chatbots may negatively affect student's creativity and their ability to actively construct knowledge,8,Ethical and Cultural Challenges in GenAI
+Overloaded feedback,7,Pedagogical and Psychological Barriers
+Absence of specific error highlighting,1,Ethical and Cultural Challenges in GenAI
+Repetitive comments,0,Ethical and Cultural Challenges in GenAI
+Misinterpreted students' intentions,7,Pedagogical and Psychological Barriers
+Lacked clarity or examples,7,Pedagogical and Psychological Barriers
+Irrelevant feedback,7,Pedagogical and Psychological Barriers
+Generate lengthy revisions that teachers find challenging for students to understand,7,Pedagogical and Psychological Barriers
+Lack of proactive learning guidance,7,Pedagogical and Psychological Barriers
+Limitations in fully understanding and adapting to individual student needs,7,Pedagogical and Psychological Barriers
+Ineffective in revealing students' competency,7,Pedagogical and Psychological Barriers
+Ineffective in promoting transferable skills,7,Pedagogical and Psychological Barriers
+Ineffective in promoting creativity,7,Pedagogical and Psychological Barriers
+Ineffective in promoting knowledge construction,7,Pedagogical and Psychological Barriers
+Limited development of knowledge transfer,7,Pedagogical and Psychological Barriers
+Irrelevance to high-stakes exams,7,Pedagogical and Psychological Barriers
+Generic and non-contextualized recommendations,0,Ethical and Cultural Challenges in GenAI
+Overly complex language for lower proficiency students,1,Ethical and Cultural Challenges in GenAI
+Lack of practicality,0,Ethical and Cultural Challenges in GenAI
+Not in line with students' abilities,7,Pedagogical and Psychological Barriers
+Challenges in task clarity,6,Limitations of AI in Writing and Feedback
+Not aligned with current educational trends,7,Pedagogical and Psychological Barriers
+Difficulties with fiction due to complex metaphors and nuanced language,3,Limitations of AI in Writing and Feedback
+Potential variability due to individual biases and resistance to new technologies,0,Ethical and Cultural Challenges in GenAI
+Rapid evolution of AI technology,6,Limitations of AI in Writing and Feedback
