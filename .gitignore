@@ -1,0 +1,10 @@
+temp/
+*.xlsx
+*.xls
+*.csv
+__pycache__/
+.env
+.streamlit/secrets.toml
+sample_data/*.pdf
+replication_data/*.pdf       ← Add if PDFs are too large for GitHub
+*.egg-info/
