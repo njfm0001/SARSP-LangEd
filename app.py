@@ -4,29 +4,9 @@ Main Streamlit Application Entry Point
 """
 import streamlit as st
 
-import spacy
 import logging
 
 logger = logging.getLogger(__name__)
-
-REQUIRED_SPACY_MODELS = [
-    "en_core_web_sm", "es_core_news_sm", "fr_core_news_sm",
-    "de_core_news_sm", "it_core_news_sm", "xx_sent_ud_sm"
-]
-
-_missing_models = []
-for _model in REQUIRED_SPACY_MODELS:
-    try:
-        spacy.load(_model)
-    except OSError:
-        _missing_models.append(_model)
-
-if _missing_models:
-    logger.warning(
-        f"Missing spaCy models: {_missing_models}. "
-        f"Run 'bash post_install.sh' or 'python -m spacy download <model>' to install. "
-        f"Tokenization will fall back to NLTK/whitespace; POS heuristics will be disabled for affected languages."
-    )
 
 # =============================================================================
 # PAGE CONFIGURATION & GLOBAL STYLES
