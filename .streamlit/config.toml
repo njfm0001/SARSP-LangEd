@@ -2,9 +2,7 @@
 maxUploadSize = 500
 maxMessageSize = 500
 enableXsrfProtection = true
-
-[browser]
-gatherUsageStats = false
+fileWatcherType = "none"
 
 [theme]
 primaryColor = "#ff4b4b"
