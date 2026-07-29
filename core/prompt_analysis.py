@@ -152,24 +152,56 @@ LANG_SPACY_MAP = {
 
 _spacy_cache = {}
 
+def _download_spacy_model(model_name):
+    """Attempt to download a spaCy model on-demand. Returns True on success."""
+    try:
+        import spacy.cli
+        spacy.cli.download(model_name)
+        return True
+    except Exception:
+        return False
+
+
 def get_spacy_for_lang(lang_code):
-    """Load spaCy model for language code with caching and fallback."""
+    """Load spaCy model for language code with caching, on-demand download, and fallback."""
     if not HAS_SPACY:
         return None
     model_name = LANG_SPACY_MAP.get(lang_code, 'xx_sent_ud_sm')
     if model_name in _spacy_cache:
         return _spacy_cache[model_name]
+    # Attempt 1: load directly
     try:
         nlp = spacy.load(model_name)
         _spacy_cache[model_name] = nlp
         return nlp
-    except Exception:
+    except OSError:
+        pass
+    # Attempt 2: download on-demand then load
+    if _download_spacy_model(model_name):
+        try:
+            nlp = spacy.load(model_name)
+            _spacy_cache[model_name] = nlp
+            return nlp
+        except OSError:
+            pass
+    # Attempt 3: fall back to multilingual model
+    if 'xx_sent_ud_sm' in _spacy_cache:
+        return _spacy_cache['xx_sent_ud_sm']
+    try:
+        nlp = spacy.load('xx_sent_ud_sm')
+        _spacy_cache['xx_sent_ud_sm'] = nlp
+        return nlp
+    except OSError:
+        pass
+    # Attempt 4: download multilingual fallback
+    if _download_spacy_model('xx_sent_ud_sm'):
         try:
             nlp = spacy.load('xx_sent_ud_sm')
             _spacy_cache['xx_sent_ud_sm'] = nlp
             return nlp
-        except Exception:
-            return None
+        except OSError:
+            pass
+    return None
 
 
 def detect_language_safe(text):
@@ -726,14 +758,38 @@ def render_prompt_analysis_page():
                 return
             prompts_df = st.session_state["pa_prompts_df"].copy()
             if st.button("🚀 Run Full Prompt Analysis", type="primary", key="pa_run_btn"):
-                total_steps = 6
+                total_steps = 7
                 progress_bar = st.progress(0, text="Starting analysis...")
 
-                # --- Step 1/6: Character length ---
+                # --- Step 0/7: Ensure required spaCy models are available ---
+                progress_bar.progress(0.5 / total_steps, text="🧠 Checking spaCy models...")
+                if HAS_SPACY:
+                    # Always ensure English model is available (needed for POS heuristics)
+                    _ = get_spacy_for_lang('en')
+                    # Detect which languages will be needed and pre-download models
+                    if HAS_LANGDETECT:
+                        sample_langs = prompts_df['prompt'].head(50).apply(detect_language_safe).unique()
+                        needed_models = set()
+                        for lang in sample_langs:
+                            model = LANG_SPACY_MAP.get(lang, 'xx_sent_ud_sm')
+                            needed_models.add(model)
+                        for model in needed_models:
+                            if model not in _spacy_cache:
+                                try:
+                                    spacy.load(model)
+                                    _spacy_cache[model] = spacy.load(model)
+                                except OSError:
+                                    _download_spacy_model(model)
+                                    try:
+                                        _spacy_cache[model] = spacy.load(model)
+                                    except OSError:
+                                        pass
+
+                # --- Step 1/7: Character length ---
                 progress_bar.progress(1 / total_steps, text="📏 Computing character lengths...")
                 prompts_df['char_len'] = prompts_df['prompt'].apply(len)
 
-                # --- Step 2/6: Language detection ---
+                # --- Step 2/7: Language detection ---
                 progress_bar.progress(2 / total_steps, text="🌍 Detecting languages...")
                 if HAS_LANGDETECT:
                     prompts_df['lang'] = prompts_df['prompt'].apply(detect_language_safe)
@@ -741,7 +797,7 @@ def render_prompt_analysis_page():
                     prompts_df['lang'] = 'und'
                     st.warning("⚠️ langdetect not installed. Language detection skipped.")
 
-                # --- Step 3/6: Token & sentence counts ---
+                # --- Step 3/7: Token & sentence counts ---
                 progress_bar.progress(3 / total_steps, text="🔢 Counting tokens and sentences...")
                 basic_results = prompts_df.apply(
                     lambda r: pd.Series(analyze_prompt_basic(r['prompt'], r['lang'])),
@@ -749,7 +805,7 @@ def render_prompt_analysis_page():
                 )
                 prompts_df[['token_count', 'sentence_count']] = basic_results
 
-                # --- Step 4/6: Translation ---
+                # --- Step 4/7: Translation ---
                 progress_bar.progress(4 / total_steps, text="🔄 Translating non-English prompts...")
                 if HAS_TRANSLATOR:
                     prompts_df['prompt_en'] = prompts_df.apply(
@@ -759,7 +815,7 @@ def render_prompt_analysis_page():
                     prompts_df['prompt_en'] = prompts_df['prompt']
                     st.warning("⚠️ deep-translator not installed. Using original text for structural analysis.")
 
-                # --- Step 5/6: Regex-based functional features ---
+                # --- Step 5/7: Regex-based functional features ---
                 progress_bar.progress(5 / total_steps, text="🔍 Detecting functional features (role, constraints, examples, CoT)...")
                 role_pats = st.session_state.get("pa_role_patterns", DEFAULT_ROLE_PATTERNS)
                 constraint_pats = st.session_state.get("pa_constraint_patterns", DEFAULT_CONSTRAINT_PATTERNS)
@@ -792,7 +848,7 @@ def render_prompt_analysis_page():
                     all_func_cols = ['has_role', 'has_constraints', 'has_example', 'has_cot'] + [c[0] for c in custom_col_names]
                     prompts_df['has_any_functional'] = prompts_df[all_func_cols].any(axis=1)
 
-                # --- Step 6/6: Syntactic heuristics (imperative / interrogative) ---
+                # --- Step 6/7: Syntactic heuristics (imperative / interrogative) ---
                 progress_bar.progress(6 / total_steps, text="🧠 Running syntactic heuristics (imperative / interrogative)...")
                 prompts_df['imperative_like'] = prompts_df.apply(
                     lambda r: detect_imperative_heuristic(r['prompt_en'], r['lang']), axis=1
