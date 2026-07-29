@@ -153,14 +153,17 @@ LANG_SPACY_MAP = {
 _spacy_cache = {}
 
 def _download_spacy_model(model_name):
-    """Attempt to download a spaCy model on-demand. Returns True on success."""
+    """Attempt to download a spaCy model on-demand. Returns True on success.
+    On read-only filesystems (e.g., Streamlit Cloud), this will fail gracefully."""
     try:
         import spacy.cli
         spacy.cli.download(model_name)
         return True
+    except (OSError, PermissionError):
+        # Read-only filesystem (Streamlit Cloud) — model must be pre-installed via requirements.txt
+        return False
     except Exception:
         return False
-
 
 def get_spacy_for_lang(lang_code):
     """Load spaCy model for language code with caching, on-demand download, and fallback."""
@@ -761,29 +764,11 @@ def render_prompt_analysis_page():
                 total_steps = 7
                 progress_bar = st.progress(0, text="Starting analysis...")
 
-                # --- Step 0/7: Ensure required spaCy models are available ---
+                # --- Step 0/7: Verify spaCy models are available ---
                 progress_bar.progress(0.5 / total_steps, text="🧠 Checking spaCy models...")
                 if HAS_SPACY:
-                    # Always ensure English model is available (needed for POS heuristics)
+                    # Load English model (needed for POS heuristics); fall back silently if unavailable
                     _ = get_spacy_for_lang('en')
-                    # Detect which languages will be needed and pre-download models
-                    if HAS_LANGDETECT:
-                        sample_langs = prompts_df['prompt'].head(50).apply(detect_language_safe).unique()
-                        needed_models = set()
-                        for lang in sample_langs:
-                            model = LANG_SPACY_MAP.get(lang, 'xx_sent_ud_sm')
-                            needed_models.add(model)
-                        for model in needed_models:
-                            if model not in _spacy_cache:
-                                try:
-                                    spacy.load(model)
-                                    _spacy_cache[model] = spacy.load(model)
-                                except OSError:
-                                    _download_spacy_model(model)
-                                    try:
-                                        _spacy_cache[model] = spacy.load(model)
-                                    except OSError:
-                                        pass
 
                 # --- Step 1/7: Character length ---
                 progress_bar.progress(1 / total_steps, text="📏 Computing character lengths...")
