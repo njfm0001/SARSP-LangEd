@@ -146,7 +146,7 @@ The public hosted application does not relieve researchers of these responsibili
 sarsp_langed_gui/
 ├── app.py                    # Streamlit entry point
 ├── core/                     # Pipeline stages
-├── replication_data/                     # Replication dataset
+├── replication_data/         # Replication dataset
 ├── requirements.txt
 └── README.md
 ```
