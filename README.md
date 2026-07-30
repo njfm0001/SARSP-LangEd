@@ -2,7 +2,7 @@
 
 **Semi-Automated Research Synthesis Protocol for Language Education**
 
-An open-source, browser-based application for conducting semi-automated systematic reviews in fast-moving, data-intensive educational domains. SARSP-LangEd integrates LLM-assisted screening and extraction with human-in-the-loop validation, rule-based normalisation, prompt analysis, and datag-driven topic discovery—packaging every intermediate artifact into a single downloadable reproducibility archive.
+An open-source, browser-based application for conducting semi-automated systematic reviews in fast-moving, data-intensive educational domains. SARSP-LangEd integrates LLM-assisted screening and extraction with human-in-the-loop validation, rule-based normalisation, prompt analysis, and data-driven topic discovery—packaging every intermediate artefact into a single downloadable reproducibility archive.
 
 > 📖 **Companion publication:** Fernández-Martínez, N.J. & Pérez-Paredes, P. (in preparation). *Semi-Automated Research Synthesis in Language Education*. Cambridge Elements in Research Methods in Education. Cambridge University Press.
 
@@ -32,8 +32,8 @@ Stages marked ❌ run entirely offline with zero API costs.
 - **🖥️ Browser-based GUI** — No command-line expertise required; guided workflows with sliders, dropdowns, and editable text areas
 - **🔒 Locked + Custom modes** — Default prompts/schemas guarantee downstream compatibility; Custom mode enables domain adaptation with auto-generated JSON schemas
 - **👥 Human-in-the-loop** — Dual-rater screening, double-blind validation, and expert adjudication at every decision point
-- **🔄 Replication Mode** — Load the original case study artifacts instantly to verify published results without re-running API calls
-- **📦 Reproducibility Package** — One-click ZIP download containing all pipeline artifacts, configuration metadata, and a machine-readable manifest
+- **🔄 Replication Mode** — Load the original case study artefacts instantly to verify published results without re-running API calls
+- **📦 Reproducibility Package** — One-click ZIP download containing all pipeline artefacts, configuration metadata, and a machine-readable manifest
 - **🌐 Model-agnostic** — Supports Cerebras, Google Gemini, Mistral AI, OpenAI, and local endpoints (Ollama, LM Studio)
 - **♿ Accessible** — Stages 1, 4, 5, and 6 require zero API costs and run entirely offline
 
@@ -145,14 +145,9 @@ The public hosted application does not relieve researchers of these responsibili
 ```text
 sarsp_langed_gui/
 ├── app.py                    # Streamlit entry point
-├── stages/                   # Eight pipeline stages
-├── components/               # Shared GUI components
-├── utils/                    # Helper functions and API clients
-├── prompts/                  # Default prompts and schemas
-├── data/                     # Replication dataset
-├── assets/                   # Images and static resources
+├── core/                     # Pipeline stages
+├── replication_data/                     # Replication dataset
 ├── requirements.txt
-├── LICENSE
 └── README.md
 ```
 
@@ -160,13 +155,13 @@ sarsp_langed_gui/
 
 ## Reproducibility
 
-Every stage automatically saves its primary artifacts to a structured temporary directory. The **Stage 8 Results Dashboard** aggregates these into a single downloadable ZIP archive containing:
+Every stage automatically saves its primary artefacts to a structured temporary directory. The **Stage 8 Results Dashboard** aggregates these into a single downloadable ZIP archive containing:
 
 - **`REPRODUCIBILITY_MANIFEST.json`** — Complete audit trail with timestamps, model identifiers, prompts, and execution parameters
 - Per-stage outputs (CSV, JSON, Excel, PNG figures)
 - Complete configuration metadata
 
-The **Replication Mode** (available from the sidebar) loads the original case-study artifacts, allowing independent verification of published results without re-running any computationally expensive API stages.
+The **Replication Mode** (available from the sidebar) loads the original case-study artefacts, allowing independent verification of published results without re-running any computationally expensive API stages.
 
 The reproducibility package is intended to facilitate transparent reporting and independent verification. It supports—but does not replace—the researcher's responsibility to validate every stage of the analytical process before publication.
 
