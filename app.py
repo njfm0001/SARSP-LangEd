@@ -4,9 +4,12 @@ Main Streamlit Application Entry Point
 """
 import streamlit as st
 
-import logging
+# --- Import consent module ---
+from core.consent import render_consent_gate, render_consent_footer
 
-logger = logging.getLogger(__name__)
+# import logging
+
+# logger = logging.getLogger(__name__)
 
 # =============================================================================
 # PAGE CONFIGURATION & GLOBAL STYLES
@@ -17,6 +20,12 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# =============================================================================
+# CONSENT GATE — Must be accepted before any functionality
+# =============================================================================
+if not render_consent_gate():
+    st.stop()  # Halt execution until consent is given
 
 # =============================================================================
 # SIDEBAR: NAVIGATION
@@ -71,6 +80,9 @@ with st.sidebar:
         st.success(f"🔬 **Replication Mode Active**\n{n_files} artifact(s) + {n_topics} topic section(s) loaded.")
     
     st.divider()
+
+    # --- Legal footer link ---
+    render_consent_footer()
 
 # =============================================================================
 # PAGE ROUTING
