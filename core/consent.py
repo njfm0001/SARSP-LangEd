@@ -233,7 +233,18 @@ def render_consent_gate():
     
     if accept_btn and terms_check and privacy_check:
         set_consent(True, True)
-        st.rerun()
+        # Force full page reload to reset scroll position
+        st.markdown(
+            """
+            <script>
+                setTimeout(function() {
+                    window.location.reload();
+                }, 100);
+            </script>
+            """,
+            unsafe_allow_html=True
+        )
+        st.stop()
     
     return False
 
