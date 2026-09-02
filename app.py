@@ -26,9 +26,24 @@ st.set_page_config(
 # =============================================================================
 if not render_consent_gate():
     st.stop()  # Halt execution until consent is given
-else:
-    st.balloons()
-    st.rerun()
+
+# Force scroll to top after consent is accepted
+st.markdown(
+    """
+    <script>
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        var appContainer = document.querySelector('[data-testid="stAppViewContainer"]');
+        if (appContainer) appContainer.scrollTop = 0;
+        if (window.parent !== window) {
+            window.parent.scrollTo(0, 0);
+        }
+    </script>
+    """,
+    unsafe_allow_html=True
+)
+
 # =============================================================================
 # SIDEBAR: NAVIGATION
 # =============================================================================
