@@ -219,21 +219,18 @@ def render_consent_gate():
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         accept_btn = st.button(
-            "✅ Accept and Continue",
-            type="primary",
-            use_container_width=True,
-            disabled=not (terms_check and privacy_check),
-            key="gate_accept_btn"
+        "✅ Accept and Continue",
+        type="primary",
+        use_container_width=True,
+        disabled=not (terms_check and privacy_check),
+        key="gate_accept_btn",
+        on_click=_mark_consent_accepted,
         )
     
     if not (terms_check and privacy_check):
         st.caption("⚠️ You must accept both the Terms of Use and Privacy Policy to proceed.")
     
     st.markdown('</div>', unsafe_allow_html=True)
-    
-    if accept_btn and terms_check and privacy_check:
-        set_consent(True, True)
-        st.rerun()
     
     return False
 
@@ -255,3 +252,45 @@ def render_consent_footer():
         st.markdown(f"- Privacy accepted: {'✅' if st.session_state.get('consent_privacy') else '❌'}")
         if st.session_state.get('consent_timestamp'):
             st.markdown(f"- Consent given: {st.session_state['consent_timestamp'][:19]}")
+
+def _mark_consent_accepted():
+    set_consent(True, True)
+    st.session_state["_reset_scroll_after_consent"] = True
+
+
+def reset_main_scroll_once():
+    """Reset the main Streamlit viewport after leaving the consent gate."""
+    import streamlit.components.v1 as components
+
+    components.html(
+        """
+        <script>
+        (() => {
+            const deadline = performance.now() + 1500;
+
+            function reset() {
+                const doc = window.parent.document;
+                const main = doc.querySelector(
+                    'section[data-testid="stMain"]'
+                );
+
+                if (main) {
+                    main.scrollTop = 0;
+                    main.scrollLeft = 0;
+                }
+
+                if (window.parent.scrollY !== 0) {
+                    window.parent.scrollTo(0, 0);
+                }
+
+                if (performance.now() < deadline) {
+                    window.requestAnimationFrame(reset);
+                }
+            }
+
+            window.requestAnimationFrame(reset);
+        })();
+        </script>
+        """,
+        height=0,
+    )
