@@ -178,10 +178,16 @@ The public hosted application does not relieve researchers of these responsibili
 ## Project Structure
 
 ```text
-sarsp_langed_gui/
+SARSP-LangEd/
 ├── app.py                    # Streamlit entry point
-├── core/                     # Pipeline stages
+├── core/                     # Pipeline stages & consent gate
+│   ├── consent.py            
+│   ├── preprocessing.py
+│   ├── screening.py
+│   ├── extraction.py
+│   ├── ...
 ├── replication_data/         # Replication dataset
+├── .streamlit/               # Streamlit configuration (config.toml)
 ├── requirements.txt
 └── README.md
 ```
@@ -250,21 +256,13 @@ Please use the following reference:
 
 ---
 
-## License
-
-This project is released under the **MIT License**.
-
-See the [LICENSE](LICENSE) file for details.
-
-You are free to use, modify, and distribute this software for academic or commercial purposes, provided that the original copyright notice and license text are included in all copies or substantial portions of the software.
-
----
-
 ## Acknowledgements
 
 SARSP-LangEd was developed as the methodological infrastructure for the Cambridge Elements volume **Semi-Automated Research Synthesis in Language Education**.
 
 The accompanying case study comprises **427 empirical studies** on text-based large language models in language education published between **December 2022 and October 2025**.
+
+This work was supported by the Spanish Ministerio de Ciencia, Innovación y Universidades (Agencia Estatal de Investigación) (grant number PID2023-146916NB-I00).
 
 ---
 
@@ -276,6 +274,7 @@ Questions, bug reports, feature requests, and collaboration proposals are welcom
 
 ## License (MIT)
 
+This project is released under the MIT License.
 ```text
 MIT License
 
