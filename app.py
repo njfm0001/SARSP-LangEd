@@ -5,7 +5,11 @@ Main Streamlit Application Entry Point
 import streamlit as st
 
 # --- Import consent module ---
-from core.consent import render_consent_gate, render_consent_footer
+from core.consent import (
+    render_consent_gate,
+    render_consent_footer,
+    reset_main_scroll_once,
+)
 
 # import logging
 
@@ -25,7 +29,10 @@ st.set_page_config(
 # CONSENT GATE — Must be accepted before any functionality
 # =============================================================================
 if not render_consent_gate():
-    st.stop()  # Halt execution until consent is given
+    st.stop()
+
+if st.session_state.pop("_reset_scroll_after_consent", False):
+    reset_main_scroll_once()
 
 # =============================================================================
 # SIDEBAR: NAVIGATION
