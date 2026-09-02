@@ -26,10 +26,9 @@ st.set_page_config(
 # =============================================================================
 if not render_consent_gate():
     st.stop()  # Halt execution until consent is given
-
-# This triggers a visual effect that often resets scroll position
-st.balloons()
-st.rerun()
+else:
+    st.balloons()
+    st.rerun()
 # =============================================================================
 # SIDEBAR: NAVIGATION
 # =============================================================================
