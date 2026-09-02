@@ -63,6 +63,41 @@ Researchers who require full control over their computational environment (e.g.,
 
 Local deployment also enables the use of local inference providers such as Ollama and LM Studio, which are unavailable in the hosted version.
 
+## Legal & Privacy
+
+### Privacy-First Design
+SARSP-LangEd is designed with a **privacy-first** architecture:
+
+- **No data collection**: We do not collect, store, or transmit any personal data, usage analytics, uploaded files, API keys, or prompts.
+- **No cookies or tracking**: The application does not use cookies or third-party tracking scripts.
+- **Ephemeral sessions**: All data you upload exists only in your browser session and is automatically deleted when your session ends or times out.
+- **No usage analytics**: Unlike many web applications, we do not track which stages you visit, how long you spend, or what configurations you use.
+
+### Consent Gate
+On first launch, users are presented with a consent gate requiring acceptance of:
+- **Terms of Use** — User responsibilities, limitations of liability, IP terms, and third-party service disclaimers.
+- **Privacy Policy** — A clear statement that no data is collected, with information about Streamlit Cloud's native anonymous metrics.
+
+Users can review these documents at any time via the "Legal" link in the sidebar.
+
+### What Metrics Are Available?
+The only metrics available to the developers are those provided by **Streamlit Cloud's native dashboard**, which includes:
+- Aggregate viewer count (number of unique visitors)
+- Aggregate session duration
+
+These metrics are **anonymous, aggregated, and cannot be linked to individual users**.
+
+### GDPR Compliance
+Since we do not collect personal data, no legal basis under GDPR or similar regulations is required for data processing. Users retain full control over their data, which exists only in their ephemeral browser session.
+
+### Researcher Responsibility
+Users are solely responsible for:
+- The quality, legality, and appropriateness of data they upload
+- Ensuring they hold legitimate access rights to all uploaded documents
+- Compliance with applicable institutional, national, and disciplinary regulations
+- Verification of all computational outputs against source documents
+- The interpretive claims they advance based on pipeline outputs
+
 ## Installation
 
 ### Prerequisites
