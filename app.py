@@ -27,12 +27,36 @@ st.set_page_config(
 if not render_consent_gate():
     st.stop()  # Halt execution until consent is given
 
+# --- FIX: Force scroll to top after consent is accepted ---
 st.markdown(
     """
     <script>
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+        function forceScrollToTop() {
+            // 1. Standard window/body
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            
+            // 2. Streamlit's main app container
+            var appContainer = document.querySelector('[data-testid="stAppViewContainer"]');
+            if (appContainer) appContainer.scrollTop = 0;
+            
+            // 3. Handle iframes (common in Streamlit Cloud)
+            if (window.parent !== window) {
+                window.parent.scrollTo(0, 0);
+                window.parent.document.documentElement.scrollTop = 0;
+                window.parent.document.body.scrollTop = 0;
+                var parentApp = window.parent.document.querySelector('[data-testid="stAppViewContainer"]');
+                if (parentApp) parentApp.scrollTop = 0;
+            }
+        }
+        
+        // Run immediately
+        forceScrollToTop();
+        
+        // Run again after short delays to catch async rendering
+        setTimeout(forceScrollToTop, 100);
+        setTimeout(forceScrollToTop, 500);
     </script>
     """,
     unsafe_allow_html=True
