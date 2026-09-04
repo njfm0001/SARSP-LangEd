@@ -3,6 +3,7 @@ SARSP-LangEd: Semi-Automated Research Synthesis Protocol for Language Education
 Main Streamlit Application Entry Point
 """
 import streamlit as st
+import os
 
 # --- Import consent module ---
 from core.consent import (
@@ -11,9 +12,15 @@ from core.consent import (
     reset_main_scroll_once,
 )
 
-# import logging
+import base64
 
-# logger = logging.getLogger(__name__)
+def _load_logo_b64(path, mime):
+    """Return a base64 data-URI for a local image, or None if the file is missing."""
+    try:
+        with open(path, "rb") as f:
+            return f"data:{mime};base64," + base64.b64encode(f.read()).decode()
+    except Exception:
+        return None
 
 # =============================================================================
 # PAGE CONFIGURATION & GLOBAL STYLES
@@ -147,6 +154,38 @@ if page == "🏠 Home":
     2. Configure API endpoints and keys within each LLM-dependent stage
     3. Download the full reproducibility package from Stage 8 when complete
     """)
+        # --- Project & Funding acknowledgement ---
+    bsddl_uri = _load_logo_b64("assets/bsddl_logo.png", "image/png")
+    funder_uri = _load_logo_b64("assets/funder_logo.jpg", "image/jpeg")
+
+    logos_html = ""
+    if bsddl_uri:
+        logos_html += (f'<img src="{bsddl_uri}" '
+                       'style="height:110px; width:auto; border-radius:10px; '
+                       'box-shadow:0 0 0 1px rgba(128,128,128,.25);">')
+    if funder_uri:
+        logos_html += (f'<img src="{funder_uri}" '
+                       'style="height:64px; width:auto; border-radius:6px; '
+                       'box-shadow:0 0 0 1px rgba(128,128,128,.25);">')
+
+    st.markdown(f"""
+    <div style="border:1px solid rgba(128,128,128,.3); border-radius:12px;
+                padding:1.2rem 1.5rem; margin-top:2.5rem;
+                background:rgba(128,128,128,.07);">
+      <div style="display:flex; align-items:center; justify-content:center;
+                  gap:3rem; flex-wrap:wrap;">
+        {logos_html}
+      </div>
+      <p style="text-align:center; margin:1.1rem 0 .25rem 0; font-size:.95rem;">
+        <b>Broadening the scope of Data-driven learning:<br>
+        a multi-site &amp; multi-data approach (BsDDL)</b>
+      </p>
+      <p style="text-align:center; margin:0; font-size:.85rem; opacity:.75;">
+        Grant PID2023-146916NB-I00 &nbsp;·&nbsp;
+        <a href="https://www.um.es/languagecorpora/bsddl/" target="_blank">Project Website</a>
+      </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 elif page == "1️⃣ Preprocessing":
     from core.preprocessing import render_preprocessing_page
