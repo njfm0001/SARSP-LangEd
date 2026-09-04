@@ -258,11 +258,13 @@ Please use the following reference:
 
 ## Acknowledgements
 
-SARSP-LangEd was developed as the methodological infrastructure for the Cambridge Elements volume **Semi-Automated Research Synthesis in Language Education**.
+SARSP-LangEd was developed as the methodological infrastructure for the Cambridge Elements volume **Semi-Automated Research Synthesis in Language Education**, within the framework of the research project **Broadening the scope of Data-driven learning: a multi-site & multi-data approach (BsDDL)**. 
+
+This work was supported by the Spanish Ministerio de Ciencia, Innovación y Universidades (Agencia Estatal de Investigación) under Grant **PID2023-146916NB-I00**. 
+
+For more information about the broader research initiative, visit the [BsDDL Project Website](https://www.um.es/languagecorpora/bsddl/).
 
 The accompanying case study comprises **427 empirical studies** on text-based large language models in language education published between **December 2022 and October 2025**.
-
-This work was supported by the Spanish Ministerio de Ciencia, Innovación y Universidades (Agencia Estatal de Investigación) (grant number PID2023-146916NB-I00).
 
 ---
 
