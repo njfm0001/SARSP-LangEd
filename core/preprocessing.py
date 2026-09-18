@@ -148,6 +148,7 @@ def render_preprocessing_page():
     sjr_file = None
     jcr_file = None
     all_uploaded = False
+    filtering_enabled = True  # Default to True, overridden if user skips SJR/JCR
 
     if st.session_state.get("replication_mode"):
         from core.utils import get_replication_path
@@ -205,11 +206,16 @@ def render_preprocessing_page():
             scopus_file = st.file_uploader("Scopus Export (.csv)", type=["csv"], key="scopus_upload")
             jcr_file = st.file_uploader("JCR Impact Factors (.xlsx)", type=["xlsx"], key="jcr_upload")
 
-        all_uploaded = all([wos_file, scopus_file, sjr_file, jcr_file])
+        core_uploaded = all([wos_file, scopus_file])
+        filtering_enabled = all([sjr_file, jcr_file])
+        all_uploaded = core_uploaded  # Update all_uploaded so the Run button logic works
 
         if not all_uploaded:
-            st.warning("⚠️ Please upload all four files to proceed.")
-            return  # Only returns when NOT in replication mode and files are missing
+            st.warning("⚠️ Please upload at least the Web of Science and Scopus files to proceed.")
+            return  # Only returns when NOT in replication mode and core files are missing
+            
+        if not filtering_enabled:
+            st.info("ℹ️ SJR and/or JCR files not provided. Quartile filtering will be skipped.")
 
     # If we reach here, all_uploaded is guaranteed True (either via replication or upload)
     
@@ -217,49 +223,46 @@ def render_preprocessing_page():
     # QUARTILE FILTERING CONFIGURATION PANEL
     # =========================================================================
     st.divider()
-    with st.expander("⚙️ Quartile Filtering Criteria", expanded=True):
-        st.caption(
-            "Configure which journal quartiles to retain. Leave a selector empty "
-            "to skip filtering for that database entirely. Articles must meet "
-            "**all active** criteria to be kept."
-        )
-        
-        q_col1, q_col2 = st.columns(2)
-        
-        quartile_options = ["Q1", "Q2", "Q3", "Q4"]
-        
-        with q_col1:
-            sjr_quartiles = st.multiselect(
-                "SJR (Scimago) Quartiles",
-                options=quartile_options,
-                default=["Q1", "Q2"],
-                key="sjr_q_select",
-                help="Select acceptable SJR quartiles. Leave empty to disable SJR filtering."
-            )
-        
-        with q_col2:
-            jcr_quartiles = st.multiselect(
-                "JCR (Web of Science) Quartiles",
-                options=quartile_options,
-                default=["Q1", "Q2"],
-                key="jcr_q_select",
-                help="Select acceptable JCR quartiles. Leave empty to disable JCR filtering."
-            )
-        
-        # Build human-readable summary of active criteria
-        sjr_active = len(sjr_quartiles) > 0
-        jcr_active = len(jcr_quartiles) > 0
-        
-        if sjr_active and jcr_active:
-            criteria_summary = f"SJR ∈ {{{', '.join(sjr_quartiles)}}} **AND** JCR ∈ {{{', '.join(jcr_quartiles)}}}"
-        elif sjr_active and not jcr_active:
-            criteria_summary = f"SJR ∈ {{{', '.join(sjr_quartiles)}}} only (JCR filtering disabled)"
-        elif not sjr_active and jcr_active:
-            criteria_summary = f"JCR ∈ {{{', '.join(jcr_quartiles)}}} only (SJR filtering disabled)"
+    with st.expander("⚙️ Quartile Filtering Criteria", expanded=filtering_enabled if not st.session_state.get("replication_mode") else True):
+        if not filtering_enabled and not st.session_state.get("replication_mode"):
+            st.warning("⚠️ Quartile filtering is disabled because SJR and/or JCR files were not uploaded.")
+            sjr_quartiles = []
+            jcr_quartiles = []
+            criteria_summary = "**No quartile filtering** (SJR/JCR files not provided)"
         else:
-            criteria_summary = "**No quartile filtering** (all matched journals retained)"
-        
-        st.info(f"📋 **Active filter:** {criteria_summary}")
+            st.caption(
+                "Configure which journal quartiles to retain. Leave a selector empty "
+                "to skip filtering for that database entirely. Articles must meet "
+                "**all active** criteria to be kept."
+            )
+            
+            q_col1, q_col2 = st.columns(2)
+            quartile_options = ["Q1", "Q2", "Q3", "Q4"]
+            
+            with q_col1:
+                sjr_quartiles = st.multiselect(
+                    "SJR (Scimago) Quartiles", options=quartile_options, default=["Q1", "Q2"], key="sjr_q_select",
+                    help="Select acceptable SJR quartiles. Leave empty to disable SJR filtering."
+                )
+            with q_col2:
+                jcr_quartiles = st.multiselect(
+                    "JCR (Web of Science) Quartiles", options=quartile_options, default=["Q1", "Q2"], key="jcr_q_select",
+                    help="Select acceptable JCR quartiles. Leave empty to disable JCR filtering."
+                )
+            
+            sjr_active = len(sjr_quartiles) > 0
+            jcr_active = len(jcr_quartiles) > 0
+            
+            if sjr_active and jcr_active:
+                criteria_summary = f"SJR ∈ {{{', '.join(sjr_quartiles)}}} **AND** JCR ∈ {{{', '.join(jcr_quartiles)}}}"
+            elif sjr_active and not jcr_active:
+                criteria_summary = f"SJR ∈ {{{', '.join(sjr_quartiles)}}} only (JCR filtering disabled)"
+            elif not sjr_active and jcr_active:
+                criteria_summary = f"JCR ∈ {{{', '.join(jcr_quartiles)}}} only (SJR filtering disabled)"
+            else:
+                criteria_summary = "**No quartile filtering** (all matched journals retained)"
+            
+            st.info(f"📋 **Active filter:** {criteria_summary}")
     
     st.divider()
     
@@ -277,8 +280,13 @@ def render_preprocessing_page():
             
             wos = pd.read_excel(wos_file, dtype=str).fillna("")
             scopus = pd.read_csv(scopus_file, sep=',', dtype=str).fillna("")
-            sjr = pd.read_csv(sjr_file, sep=';', dtype=str).fillna("")
-            jcr = pd.read_excel(jcr_file, dtype=str).fillna("")
+            
+            sjr = pd.DataFrame()
+            jcr = pd.DataFrame()
+            if sjr_file:
+                sjr = pd.read_csv(sjr_file, sep=';', dtype=str).fillna("")
+            if jcr_file:
+                jcr = pd.read_excel(jcr_file, dtype=str).fillna("")
             
             st.metric("Loaded Records", f"WoS: {len(wos)} | Scopus: {len(scopus)} | SJR: {len(sjr)} | JCR: {len(jcr)}")
             
@@ -354,127 +362,137 @@ def render_preprocessing_page():
             status_text.text("📰 Step 4/9: Normalizing journal names & ISSNs...")
             progress_bar.progress(45)
             
-            # --- Resolve column names case-insensitively ---
-            sjr_title_col = resolve_column(sjr, ["Title", "title", "TITLE", "Source Title", "Journal Title"])
-            sjr_issn_col = resolve_column(sjr, ["ISSN", "Issn", "issn", "E-ISSN", "eissn"])
-            sjr_quartile_col = resolve_column(sjr, ["SJR Best Quartile", "sjr best quartile", "Best Quartile", "Quartile"])
+            _sjr_quartile_col = None
+            _jcr_quartile_col = None
             
-            jcr_name_col = resolve_column(jcr, ["Journal Name", "journal name", "JOURNAL NAME", "Full Journal Title"])
-            jcr_abbr_col = resolve_column(jcr, ["Abbreviated Journal", "abbreviated journal", "ABBREVIATED JOURNAL", "Abbrev Title"])
-            jcr_issn_col = resolve_column(jcr, ["ISSN", "Issn", "issn"])
-            jcr_eissn_col = resolve_column(jcr, ["eISSN", "eissn", "E-ISSN", "EISSN"])
-            jcr_quartile_col = resolve_column(jcr, ["JIF Quartile", "jif quartile", "JIF QUARTILE", "Quartile"])
-            
-            # Validate critical columns exist
-            missing_cols = []
-            if not sjr_title_col:
-                missing_cols.append(f"SJR Title (searched: Title, Source Title)")
-            if not sjr_issn_col:
-                missing_cols.append(f"SJR ISSN (searched: ISSN, Issn)")
-            if not sjr_quartile_col:
-                missing_cols.append(f"SJR Quartile (searched: SJR Best Quartile, Best Quartile)")
-            if not jcr_name_col:
-                missing_cols.append(f"JCR Journal Name (searched: Journal Name, Full Journal Title)")
-            if not jcr_quartile_col:
-                missing_cols.append(f"JCR Quartile (searched: JIF Quartile, Quartile)")
-            
-            if missing_cols:
-                raise KeyError(
-                    f"Could not find required columns in uploaded files:\n"
-                    f"• {'\n• '.join(missing_cols)}\n\n"
-                    f"SJR columns found: {list(sjr.columns)}\n"
-                    f"JCR columns found: {list(jcr.columns)}\n\n"
-                    f"Please check your file format matches expected column names."
-                )
-            
-            # Normalize journal names using resolved columns
+            # Normalize journal names for articles regardless of filtering
             articles_to_check["Journal_norm_JCR"] = articles_to_check.get("Source Title", "").apply(normalize_text)
             articles_to_check["Journal_norm_Scopus"] = articles_to_check.get("Source title", "").apply(normalize_text)
-            sjr["Journal_norm"] = sjr[sjr_title_col].apply(normalize_text)
-            jcr["Journal_norm"] = jcr[jcr_name_col].apply(normalize_text)
-            jcr["Abbrev_norm"] = jcr[jcr_abbr_col].apply(normalize_text) if jcr_abbr_col else ""
             
-            # Build ISSN lists using resolved columns
-            sjr["ISSN_list"] = sjr[sjr_issn_col].apply(normalize_issn)
-            
-            if jcr_eissn_col:
-                jcr["ISSN_list"] = jcr[jcr_issn_col].apply(normalize_issn) + jcr[jcr_eissn_col].apply(normalize_issn)
-            else:
-                jcr["ISSN_list"] = jcr[jcr_issn_col].apply(normalize_issn)
-            
-            # Store resolved quartile column names for use in Step 5
-            _sjr_quartile_col = sjr_quartile_col
-            _jcr_quartile_col = jcr_quartile_col
+            if filtering_enabled:
+                # --- Resolve column names case-insensitively ---
+                sjr_title_col = resolve_column(sjr, ["Title", "title", "TITLE", "Source Title", "Journal Title"])
+                sjr_issn_col = resolve_column(sjr, ["ISSN", "Issn", "issn", "E-ISSN", "eissn"])
+                sjr_quartile_col = resolve_column(sjr, ["SJR Best Quartile", "sjr best quartile", "Best Quartile", "Quartile"])
+                
+                jcr_name_col = resolve_column(jcr, ["Journal Name", "journal name", "JOURNAL NAME", "Full Journal Title"])
+                jcr_abbr_col = resolve_column(jcr, ["Abbreviated Journal", "abbreviated journal", "ABBREVIATED JOURNAL", "Abbrev Title"])
+                jcr_issn_col = resolve_column(jcr, ["ISSN", "Issn", "issn"])
+                jcr_eissn_col = resolve_column(jcr, ["eISSN", "eissn", "E-ISSN", "EISSN"])
+                jcr_quartile_col = resolve_column(jcr, ["JIF Quartile", "jif quartile", "JIF QUARTILE", "Quartile"])
+                
+                # Validate critical columns exist
+                missing_cols = []
+                if not sjr_title_col: missing_cols.append(f"SJR Title (searched: Title, Source Title)")
+                if not sjr_issn_col: missing_cols.append(f"SJR ISSN (searched: ISSN, Issn)")
+                if not sjr_quartile_col: missing_cols.append(f"SJR Quartile (searched: SJR Best Quartile, Best Quartile)")
+                if not jcr_name_col: missing_cols.append(f"JCR Journal Name (searched: Journal Name, Full Journal Title)")
+                if not jcr_quartile_col: missing_cols.append(f"JCR Quartile (searched: JIF Quartile, Quartile)")
+                
+                if missing_cols:
+                    raise KeyError(
+                        f"Could not find required columns in uploaded files:\n"
+                        f"• {'\n• '.join(missing_cols)}\n\n"
+                        f"SJR columns found: {list(sjr.columns)}\n"
+                        f"JCR columns found: {list(jcr.columns)}\n\n"
+                        f"Please check your file format matches expected column names."
+                    )
+                
+                sjr["Journal_norm"] = sjr[sjr_title_col].apply(normalize_text)
+                jcr["Journal_norm"] = jcr[jcr_name_col].apply(normalize_text)
+                jcr["Abbrev_norm"] = jcr[jcr_abbr_col].apply(normalize_text) if jcr_abbr_col else ""
+                
+                sjr["ISSN_list"] = sjr[sjr_issn_col].apply(normalize_issn)
+                if jcr_eissn_col:
+                    jcr["ISSN_list"] = jcr[jcr_issn_col].apply(normalize_issn) + jcr[jcr_eissn_col].apply(normalize_issn)
+                else:
+                    jcr["ISSN_list"] = jcr[jcr_issn_col].apply(normalize_issn)
+                
+                _sjr_quartile_col = sjr_quartile_col
+                _jcr_quartile_col = jcr_quartile_col
             
             # ---- STEP 5: Journal Matching ----
             status_text.text("🔍 Step 5/9: Matching journals against SJR & JCR...")
             progress_bar.progress(50)
             
-            def match_journal(row):
-                journal_JCR = row["Journal_norm_JCR"]
-                journal_Scopus = row["Journal_norm_Scopus"]
-                issn_ref = normalize_issn(row.get("ISSN", ""))
-                sjr_match = sjr[(sjr["Journal_norm"] == journal_Scopus) | (sjr["Journal_norm"] == journal_JCR)]
-                if sjr_match.empty:
-                    sjr_match = sjr[sjr["ISSN_list"].apply(lambda x: any(i in x for i in issn_ref))]
-                jcr_match = jcr[(jcr["Journal_norm"] == journal_JCR) | (jcr["Abbrev_norm"] == journal_JCR) | (jcr["Journal_norm"] == journal_Scopus)]
-                if jcr_match.empty:
-                    jcr_match = jcr[jcr["ISSN_list"].apply(lambda x: any(i in x for i in issn_ref))]
-                sjr_q = sjr_match[_sjr_quartile_col].iloc[0] if not sjr_match.empty else None
-                jcr_q = jcr_match[_jcr_quartile_col].iloc[0] if not jcr_match.empty else None
-                return pd.Series({"SJR_Q": sjr_q, "JCR_Q": jcr_q, "SJR_found": not sjr_match.empty, "JCR_found": not jcr_match.empty})
-            
-            match_results = articles_to_check.apply(match_journal, axis=1)
-            articles_to_check = pd.concat([articles_to_check, match_results], axis=1)
+            if filtering_enabled:
+                def match_journal(row):
+                    journal_JCR = row["Journal_norm_JCR"]
+                    journal_Scopus = row["Journal_norm_Scopus"]
+                    issn_ref = normalize_issn(row.get("ISSN", ""))
+                    sjr_match = sjr[(sjr["Journal_norm"] == journal_Scopus) | (sjr["Journal_norm"] == journal_JCR)]
+                    if sjr_match.empty:
+                        sjr_match = sjr[sjr["ISSN_list"].apply(lambda x: any(i in x for i in issn_ref))]
+                    jcr_match = jcr[(jcr["Journal_norm"] == journal_JCR) | (jcr["Abbrev_norm"] == journal_JCR) | (jcr["Journal_norm"] == journal_Scopus)]
+                    if jcr_match.empty:
+                        jcr_match = jcr[jcr["ISSN_list"].apply(lambda x: any(i in x for i in issn_ref))]
+                    sjr_q = sjr_match[_sjr_quartile_col].iloc[0] if not sjr_match.empty else None
+                    jcr_q = jcr_match[_jcr_quartile_col].iloc[0] if not jcr_match.empty else None
+                    return pd.Series({"SJR_Q": sjr_q, "JCR_Q": jcr_q, "SJR_found": not sjr_match.empty, "JCR_found": not jcr_match.empty})
+                
+                match_results = articles_to_check.apply(match_journal, axis=1)
+                articles_to_check = pd.concat([articles_to_check, match_results], axis=1)
+            else:
+                articles_to_check["SJR_Q"] = np.nan
+                articles_to_check["JCR_Q"] = np.nan
+                articles_to_check["SJR_found"] = False
+                articles_to_check["JCR_found"] = False
+                
             progress_bar.progress(70)
             
             # ---- STEP 6: Filter by User-Selected Quartiles ----
             status_text.text(f"✅ Step 6/9: Applying quartile filter ({criteria_summary})...")
             progress_bar.progress(75)
             
-            _sjr_quartiles = [q.upper() for q in sjr_quartiles] if sjr_quartiles else []
-            _jcr_quartiles = [q.upper() for q in jcr_quartiles] if jcr_quartiles else []
-            _sjr_active = len(_sjr_quartiles) > 0
-            _jcr_active = len(_jcr_quartiles) > 0
-            
-            def filter_article(row):
-                keep = True
-                reason = ""
+            if filtering_enabled:
+                _sjr_quartiles = [q.upper() for q in sjr_quartiles] if sjr_quartiles else []
+                _jcr_quartiles = [q.upper() for q in jcr_quartiles] if jcr_quartiles else []
+                _sjr_active = len(_sjr_quartiles) > 0
+                _jcr_active = len(_jcr_quartiles) > 0
                 
-                if not (row["SJR_found"] and row["JCR_found"]):
-                    keep = False
-                    reason = "Journal not found in DBs"
-                else:
-                    sjr_ok = True
-                    jcr_ok = True
+                def filter_article(row):
+                    keep = True
+                    reason = ""
                     
-                    if _sjr_active:
-                        sjr_val = str(row["SJR_Q"]).upper().strip()
-                        if sjr_val not in _sjr_quartiles:
-                            sjr_ok = False
+                    if not (row["SJR_found"] and row["JCR_found"]):
+                        keep = False
+                        reason = "Journal not found in DBs"
+                    else:
+                        sjr_ok = True
+                        jcr_ok = True
+                        
+                        if _sjr_active:
+                            sjr_val = str(row["SJR_Q"]).upper().strip()
+                            if sjr_val not in _sjr_quartiles: sjr_ok = False
+                        
+                        if _jcr_active:
+                            jcr_val = str(row["JCR_Q"]).upper().strip()
+                            if jcr_val not in _jcr_quartiles: jcr_ok = False
+                        
+                        if not sjr_ok and not jcr_ok:
+                            keep = False
+                            reason = "Below threshold in both SJR and JCR"
+                        elif not sjr_ok:
+                            keep = False
+                            reason = f"Below threshold in SJR (not in {', '.join(_sjr_quartiles)})"
+                        elif not jcr_ok:
+                            keep = False
+                            reason = f"Below threshold in JCR (not in {', '.join(_jcr_quartiles)})"
                     
-                    if _jcr_active:
-                        jcr_val = str(row["JCR_Q"]).upper().strip()
-                        if jcr_val not in _jcr_quartiles:
-                            jcr_ok = False
-                    
-                    if not sjr_ok and not jcr_ok:
-                        keep = False
-                        reason = "Below threshold in both SJR and JCR"
-                    elif not sjr_ok:
-                        keep = False
-                        reason = f"Below threshold in SJR (not in {', '.join(_sjr_quartiles)})"
-                    elif not jcr_ok:
-                        keep = False
-                        reason = f"Below threshold in JCR (not in {', '.join(_jcr_quartiles)})"
+                    row["Removal_reason"] = reason
+                    row["Keep"] = keep
+                    return row
                 
-                row["Removal_reason"] = reason
-                row["Keep"] = keep
-                return row
-            
-            articles_to_check = articles_to_check.apply(filter_article, axis=1)
-            removed = articles_to_check[articles_to_check["Keep"] == False].copy()
-            kept = articles_to_check[articles_to_check["Keep"] == True].copy()
+                articles_to_check = articles_to_check.apply(filter_article, axis=1)
+                removed = articles_to_check[articles_to_check["Keep"] == False].copy()
+                kept = articles_to_check[articles_to_check["Keep"] == True].copy()
+            else:
+                # No filtering applied, keep all articles
+                articles_to_check["Removal_reason"] = ""
+                articles_to_check["Keep"] = True
+                removed = pd.DataFrame(columns=articles_to_check.columns)
+                kept = articles_to_check.copy()
+                
             final = pd.concat([kept, non_articles], ignore_index=True)
             
             # ---- STEP 7: Column Unification ----
@@ -503,6 +521,12 @@ def render_preprocessing_page():
                     final[col] = np.nan
                 if col not in removed.columns:
                     removed[col] = np.nan
+            
+            # Ensure 'Removal_reason' exists even if the removed dataframe is empty 
+            # and its columns were stripped by the unify_columns() function
+            if "Removal_reason" not in removed.columns:
+                removed["Removal_reason"] = ""
+                
             final = final[requested_cols]
             removed = removed[requested_cols + ["Removal_reason"]]
             
