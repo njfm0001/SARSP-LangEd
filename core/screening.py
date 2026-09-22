@@ -64,6 +64,8 @@ Respond ONLY with valid JSON matching this schema:
 JSON_SCHEMA = {
     "type": "json_schema",
     "json_schema": {
+        "name": "screening_decision",  # <--- REQUIRED by OpenAI/Cerebras API
+        "strict": True,                # <--- Enforces strict schema adherence
         "schema": {
             "type": "object",
             "properties": {
@@ -213,7 +215,13 @@ def apply_color_coding(excel_bytes: bytes, llm_raters: list) -> bytes:
         fill = None
         final_decision = ""
 
+        llm_errors = sum(1 for v in llm_vals
+                         if v and not says_exclude(v) and not says_not_exclude(v))
         if total_llm_raters >= 2 and llm_excludes > 0 and llm_not_excludes > 0:
+            fill = orange_fill
+            final_decision = "DISAGREE"
+        elif llm_errors > 0 and (llm_excludes + llm_not_excludes) > 0:
+            # At least one rater failed: route to human review as a precaution
             fill = orange_fill
             final_decision = "DISAGREE"
         elif total_llm_raters > 0 and (llm_excludes > total_llm_raters / 2):
@@ -240,6 +248,47 @@ def apply_color_coding(excel_bytes: bytes, llm_raters: list) -> bytes:
     output.seek(0)
     return output.getvalue()
 
+def llm_rater_columns(df: pd.DataFrame) -> list:
+    """Return the names of the LLM rater columns present in the dataframe."""
+    return [c for c in df.columns
+            if c.startswith("Exclude? (") and c != "Exclude? (Human rater)"]
+
+
+def sync_final_decision_column(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Recompute the in-memory 'Final decision' column from the LLM rater columns,
+    mirroring exactly the logic that apply_color_coding() writes into the exported
+    Excel (consensus exclusion -> EXCLUDE, divergence -> DISAGREE, consensus
+    inclusion -> blank). Without this, the session dataframe keeps an empty
+    'Final decision' column, so the summary statistics and the preview are wrong.
+    Human-adjudicated rows (human rater + final decision both filled) are preserved.
+    """
+    if df is None or df.empty or "Final decision" not in df.columns:
+        return df
+    raters = llm_rater_columns(df)
+
+    def decide(row):
+        human = str(row.get("Exclude? (Human rater)", "") or "").strip()
+        current = str(row.get("Final decision", "") or "").strip().upper()
+        if human and current:
+            return current  # preserve human-adjudicated decision
+        vals = [str(row.get(r, "") or "").strip() for r in raters]
+        vals = [v for v in vals if v]
+        excludes = sum(1 for v in vals if v.upper().startswith("Y"))
+        includes = sum(1 for v in vals if v.upper().startswith("N"))
+        n = len(vals)
+        errors = sum(1 for v in vals
+                     if not v.upper().startswith("Y") and not v.upper().startswith("N"))
+        if n >= 2 and excludes > 0 and includes > 0:
+            return "DISAGREE"
+        if errors > 0 and (excludes + includes) > 0:
+            return "DISAGREE"
+        if n > 0 and excludes > n / 2:
+            return "EXCLUDE"
+        return ""
+
+    df["Final decision"] = df.apply(decide, axis=1)
+    return df
 
 def save_intermediate_excel(df, selected_models):
     """
@@ -581,8 +630,14 @@ def render_screening_page():
                 else:
                     _current_data_id = "__stage1_preprocessing__"
                 _data_changed = _current_data_id != st.session_state.get("screening_data_id")
+                
+                # Detect if user changed the API configuration or selected models
+                _config_changed = (
+                    selected_models != st.session_state.get("screening_models", []) or
+                    base_url != st.session_state.get("screening_base_url_used", "")
+                )
 
-                if has_existing_results and not is_complete and not _data_changed:
+                if has_existing_results and not is_complete and not _data_changed and not _config_changed:
                     btn_label = "🔄 Resume Screening"
                 else:
                     btn_label = "🚀 Run Screening"
@@ -598,8 +653,13 @@ def render_screening_page():
 
                     previous_data_id = st.session_state.get("screening_data_id")
                     data_changed = current_data_id != previous_data_id
+                    
+                    config_changed = (
+                        selected_models != st.session_state.get("screening_models", []) or
+                        base_url != st.session_state.get("screening_base_url_used", "")
+                    )
 
-                    if data_changed or not has_existing_results:
+                    if data_changed or config_changed or not has_existing_results:
                         # === FRESH START ===
                         work_df = df.copy()
                         work_df.fillna("", inplace=True)
@@ -627,11 +687,13 @@ def render_screening_page():
 
                         st.session_state["screening_df"] = work_df
                         st.session_state["screening_data_id"] = current_data_id
+                        # Lock in the current configuration to track future changes
+                        st.session_state["screening_models"] = selected_models
+                        st.session_state["screening_base_url_used"] = base_url
                         # Clear all stale state for a clean fresh run
                         st.session_state.pop("screening_complete", None)
                         st.session_state.pop("screening_excel", None)
                         st.session_state.pop("screening_log_history", None)
-                        st.session_state.pop("screening_models", None)
                     else:
                         # === RESUME EXISTING ===
                         work_df = st.session_state["screening_df"].copy()
@@ -746,6 +808,9 @@ def render_screening_page():
                 if stop_processing:
                     break
             
+            # Mirror the Excel adjudication logic into the in-memory dataframe so
+            # that the summary statistics and the preview show correct decisions
+            work_df = sync_final_decision_column(work_df)            
             st.session_state["screening_df"] = work_df
             
             if not st.session_state.get("screening_is_running", False):
@@ -791,6 +856,11 @@ def render_screening_page():
         screened_df = st.session_state.get("screening_df")
         colored_excel = st.session_state.get("screening_excel")
         used_models = st.session_state.get("screening_models", [])
+
+        # Repair sessions completed before this fix (empty 'Final decision' in memory)
+        if screened_df is not None:
+            screened_df = sync_final_decision_column(screened_df)
+            st.session_state["screening_df"] = screened_df
 
         if screened_df is not None:
             stats = compute_screening_stats(screened_df)
