@@ -29,15 +29,6 @@ PDF_UPLOAD_DIR = os.path.join(STAGE_DIR, "uploaded_pdfs")
 for d in [STAGE_DIR, PDF_UPLOAD_DIR]:
     os.makedirs(d, exist_ok=True)
 
-# Available Mistral models with strong structured output + OCR support
-MISTRAL_MODELS = [
-    "mistral-large-latest",
-    "mistral-medium-latest",
-    "mistral-small-latest",
-    "open-mixtral-8x22b",
-    "open-mixtral-8x7b",
-]
-
 MAX_RETRIES = 10
 BASE_DELAY = 5
 
@@ -832,34 +823,66 @@ def render_extraction_page():
             key="extraction_api_key"
         )
 
-        # --- Model Selection ---
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            primary_model = st.selectbox(
-                "Primary Mistral Model",
-                options=MISTRAL_MODELS,
-                index=0,
-                help="The primary model used for extraction AND schema generation. mistral-large-latest recommended.",
-                key="extraction_primary_model"
-            )
-        with col2:
-            use_fallback = st.toggle(
-                "🔄 Smart Multi-Model Fallback",
-                value=True,
-                help="Automatically switches to other Mistral models on quota errors during extraction.",
-                key="extraction_use_fallback"
-            )
+        # --- Model Discovery & Selection ---
+        st.subheader("🤖 Model Selection")
+        st.caption("Enter your API key above, then click 'Discover Models' to fetch the available Mistral models.")
+        
+        if st.button("🔍 Discover Models", key="extraction_discover_btn"):
+            if not api_key:
+                st.error("❌ Please enter your Mistral API key first.")
+            else:
+                try:
+                    with st.spinner("Fetching available Mistral models..."):
+                        temp_client = Mistral(api_key=api_key)
+                        models_response = temp_client.models.list()
+                        # Handle different SDK return types gracefully
+                        if hasattr(models_response, 'data'):
+                            available_models = sorted([m.id for m in models_response.data])
+                        elif isinstance(models_response, list):
+                            available_models = sorted([m.id for m in models_response])
+                        else:
+                            available_models = sorted([getattr(m, 'id', str(m)) for m in models_response])
+                        st.session_state["extraction_available_models"] = available_models
+                        st.success(f"✅ Found {len(available_models)} models.")
+                except Exception as e:
+                    st.error(f"❌ Failed to fetch models: {str(e)}")
+                    st.session_state["extraction_available_models"] = []
 
-        if use_fallback:
-            fallback_models = st.multiselect(
-                "Fallback Models (ordered by preference)",
-                options=[m for m in MISTRAL_MODELS if m != primary_model],
-                default=[m for m in MISTRAL_MODELS if m != primary_model][:3],
-                help="Models to try when the primary model is quota-exhausted.",
-                key="extraction_fallback_models"
-            )
-        else:
+        available_models = st.session_state.get("extraction_available_models", [])
+        
+        if not available_models:
+            st.info("👆 Click 'Discover Models' to load available models from your Mistral API endpoint.")
+            primary_model = None
             fallback_models = []
+        else:
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                primary_model = st.selectbox(
+                    "Primary Mistral Model",
+                    options=available_models,
+                    index=None,
+                    placeholder="Select a primary model...",
+                    help="The primary model used for extraction AND schema generation.",
+                    key="extraction_primary_model"
+                )
+            with col2:
+                use_fallback = st.toggle(
+                    "🔄 Smart Multi-Model Fallback",
+                    value=True,
+                    help="Automatically switches to other Mistral models on quota errors during extraction.",
+                    key="extraction_use_fallback"
+                )
+
+            if use_fallback and primary_model:
+                fallback_models = st.multiselect(
+                    "Fallback Models (ordered by preference)",
+                    options=[m for m in available_models if m != primary_model],
+                    default=[],
+                    help="Models to try when the primary model is quota-exhausted.",
+                    key="extraction_fallback_models"
+                )
+            else:
+                fallback_models = []
 
         st.divider()
 
@@ -893,6 +916,8 @@ def render_extraction_page():
             if st.button("🧠 Auto-Generate JSON Schema from Prompt", key="extraction_gen_schema_btn"):
                 if not api_key:
                     st.error("❌ API key required for schema generation.")
+                elif not primary_model:
+                    st.error("❌ Please select a primary model first.")
                 elif not custom_prompt.strip():
                     st.error("❌ Prompt cannot be empty.")
                 else:
@@ -977,7 +1002,7 @@ def render_extraction_page():
         # =========================================================================
         # RUN EXTRACTION
         # =========================================================================
-        can_run = bool(api_key) and len(all_pdfs) > 0
+        can_run = bool(api_key) and len(all_pdfs) > 0 and bool(primary_model)
         is_running = st.session_state.get("extraction_is_running", False)
 
         col_btn1, col_btn2 = st.columns([1, 4])
