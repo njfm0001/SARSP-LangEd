@@ -647,12 +647,27 @@ def upload_pdf_to_mistral(client: Mistral, pdf_bytes: bytes, fname: str):
         return None
 
 
-def delete_mistral_file(client: Mistral, file_id: str):
-    """Best-effort cleanup of uploaded file from Mistral storage."""
-    try:
-        client.files.delete(file_id=file_id)
-    except Exception:
-        pass
+def delete_mistral_file(client: Mistral, file_id: str, log_container=None,
+                        max_attempts: int = 3, base_delay: float = 2):
+    """Delete uploaded file from Mistral storage, with retry and explicit failure logging."""
+    for attempt in range(max_attempts):
+        try:
+            client.files.delete(file_id=file_id)
+            return True
+        except Exception as e:
+            if attempt < max_attempts - 1:
+                time.sleep(base_delay * (2 ** attempt))
+            else:
+                msg = (f"⚠️ Could not delete file {file_id} from Mistral storage after "
+                       f"{max_attempts} attempts: {e}. The file may persist on Mistral's "
+                       f"servers under their retention policy; delete it manually via the "
+                       f"Mistral console if required.")
+                if log_container is not None:
+                    log_container.warning(msg)
+                else:
+                    print(msg)
+                return False
+    return False
 
 
 def extract_single_pdf(client: Mistral, model_name: str, pdf_bytes: bytes, fname: str,
@@ -688,74 +703,77 @@ def extract_single_pdf(client: Mistral, model_name: str, pdf_bytes: bytes, fname
     result = None
     success = False
 
-    for current_model in models_to_try:
-        for attempt in range(max_retries):
-            try:
-                response = client.chat.complete(
-                    model=current_model,
-                    messages=messages,
-                    temperature=0,
-                    response_format={
-                        "type": "json_schema",
-                        "json_schema": {
-                            "name": "ExtractionSchema",
-                            "schema": json_schema,
-                            "strict": True
+    try:
+        for current_model in models_to_try:
+            for attempt in range(max_retries):
+                try:
+                    response = client.chat.complete(
+                        model=current_model,
+                        messages=messages,
+                        temperature=0,
+                        response_format={
+                            "type": "json_schema",
+                            "json_schema": {
+                                "name": "ExtractionSchema",
+                                "schema": json_schema,
+                                "strict": True
+                            }
                         }
-                    }
-                )
+                    )
 
-                raw_text = response.choices[0].message.content
-                data_json = json.loads(raw_text)
-                data_json = reorder_with_source_filename_first(data_json, fname)
+                    raw_text = response.choices[0].message.content
+                    data_json = json.loads(raw_text)
+                    data_json = reorder_with_source_filename_first(data_json, fname)
 
-                if current_model != model_name:
-                    log_container.info(f"✅ Extracted via fallback model `{current_model}`: {fname}")
-                else:
-                    log_container.info(f"✅ Extracted: {fname}")
-
-                # Display full extracted JSON in live log
-                log_container.json(data_json)
-
-                result = data_json
-                success = True
-                break  # Success → stop retrying this model
-
-            except SDKError as sdk_err:
-                status_code = getattr(sdk_err, "status_code", 0)
-                err_str = str(sdk_err).lower()
-
-                if status_code == 429 or "rate_limit" in err_str or "quota" in err_str:
-                    if use_fallback and current_model != models_to_try[-1]:
-                        log_container.warning(f"⚠️ Quota exhausted on `{current_model}`, switching to next model...")
-                        break  # Move to next fallback model
+                    if current_model != model_name:
+                        log_container.info(f"✅ Extracted via fallback model `{current_model}`: {fname}")
                     else:
-                        log_container.error(f"❌ All models quota exhausted. Stopping.")
+                        log_container.info(f"✅ Extracted: {fname}")
+
+                    # Display full extracted JSON in live log
+                    log_container.json(data_json)
+
+                    result = data_json
+                    success = True
+                    break  # Success → stop retrying this model
+
+                except SDKError as sdk_err:
+                    status_code = getattr(sdk_err, "status_code", 0)
+                    err_str = str(sdk_err).lower()
+
+                    if status_code == 429 or "rate_limit" in err_str or "quota" in err_str:
+                        if use_fallback and current_model != models_to_try[-1]:
+                            log_container.warning(f"⚠️ Quota exhausted on `{current_model}`, switching to next model...")
+                            break  # Move to next fallback model
+                        else:
+                            log_container.error(f"❌ All models quota exhausted. Stopping.")
+                            break
+                    elif status_code in (408, 500, 503, 504) or "timeout" in err_str:
+                        if attempt == max_retries - 1:
+                            log_container.error(f"❌ Server failure after {max_retries} retries for {fname}. Skipping.")
+                            break
+                        delay = base_delay * (2 ** attempt) + random.uniform(0, 5)
+                        log_container.warning(f"⚠️ Server error ({status_code}) — retrying in {delay:.1f}s (attempt {attempt+1}/{max_retries})...")
+                        time.sleep(delay)
+                    else:
+                        log_container.warning(f"⚠️ Non-recoverable error on {fname}: {sdk_err}")
                         break
-                elif status_code in (408, 500, 503, 504) or "timeout" in err_str:
-                    if attempt == max_retries - 1:
-                        log_container.error(f"❌ Server failure after {max_retries} retries for {fname}. Skipping.")
-                        break
-                    delay = base_delay * (2 ** attempt) + random.uniform(0, 5)
-                    log_container.warning(f"⚠️ Server error ({status_code}) — retrying in {delay:.1f}s (attempt {attempt+1}/{max_retries})...")
-                    time.sleep(delay)
-                else:
-                    log_container.warning(f"⚠️ Non-recoverable error on {fname}: {sdk_err}")
+
+                except json.JSONDecodeError:
+                    log_container.error(f"❌ Invalid JSON response from Mistral for {fname}. Skipping.")
                     break
 
-            except json.JSONDecodeError:
-                log_container.error(f"❌ Invalid JSON response from Mistral for {fname}. Skipping.")
-                break
+                except Exception as e:
+                    log_container.warning(f"⚠️ Unexpected error on {fname}: {e}")
+                    break
 
-            except Exception as e:
-                log_container.warning(f"⚠️ Unexpected error on {fname}: {e}")
-                break
+            if success:
+                break  # Stop trying fallback models if we succeeded
 
-        if success:
-            break  # Stop trying fallback models if we succeeded
-
-    # Cleanup: always delete uploaded file regardless of success/failure
-    delete_mistral_file(client, file_id)
+    finally:
+        # Cleanup: always attempt deletion of the uploaded file, regardless of
+        # success, failure, or unexpected exceptions
+        delete_mistral_file(client, file_id, log_container=log_container)
 
     return result, success
 
