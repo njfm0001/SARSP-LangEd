@@ -13,10 +13,10 @@ from datetime import datetime
 TERMS_OF_USE = """
 ## Terms of Use — SARSP-LangEd Pipeline
 
-**Last updated:** September 2026
+**Last updated:** October 2026
 
 ### 1. Acceptance of Terms
-By accessing and using the SARSP-LangEd (Semi-Automated Research Synthesis Protocol 
+By accessing and using the SARSP-LangEd (Semi-Automated Research Synthesis Pipeline 
 for Language Education) application, you agree to be bound by these Terms of Use. 
 If you do not agree, please discontinue use immediately.
 
@@ -33,6 +33,9 @@ You are solely responsible for:
 - The **configuration choices** you make at each pipeline stage.
 - The **verification** of all computational outputs against source documents.
 - Compliance with applicable **institutional, national, and disciplinary regulations**.
+- Ensuring that **transmitting uploaded documents to third-party LLM API providers** 
+  complies with copyright, publisher agreements, institutional data-protection rules 
+  (e.g. GDPR), and text-and-data-mining exemptions in your jurisdiction.
 - The **interpretive claims** you advance based on pipeline outputs.
 
 ### 4. No Warranty
@@ -52,9 +55,15 @@ incorrect outputs, or research decisions made based on tool outputs.
 
 ### 7. Third-Party Services
 This tool may connect to third-party LLM APIs (e.g., Mistral AI, OpenAI, 
-Google Gemini, Cerebras). Your use of these services is governed by their 
-respective terms of service and privacy policies. API keys are processed 
-locally and are **never stored or transmitted** to the SARSP-LangEd developers.
+Google Gemini, Cerebras, or local open-weight endpoints). Your use of these 
+services is governed by their respective terms of service and privacy policies. 
+Documents you upload for extraction are transmitted to the API provider you 
+configure solely for the duration of that document's processing; the app then 
+requests their deletion from the provider's file storage. Providers may nonetheless 
+retain processing logs for a limited window (commonly up to 30 days) for 
+trust-and-safety purposes, as described in their own privacy policies. API keys are 
+held only in your active session, are sent directly to the provider you configure, 
+and are **never stored by or transmitted to** the SARSP-LangEd developers.
 
 ### 8. Modifications
 These terms may be updated periodically. Continued use after updates 
@@ -68,7 +77,7 @@ at the email provided in the associated publication.
 PRIVACY_POLICY = """
 ## Privacy Policy — SARSP-LangEd Pipeline
 
-**Last updated:** September 2026
+**Last updated:** October 2026
 
 ### 1. Our Commitment: No Data Collection
 SARSP-LangEd is designed as a **privacy-first** application. We do **not** collect, 
@@ -83,15 +92,32 @@ We do **not** collect any of the following:
 - Usage analytics (which stages you visit, how long you spend, etc.)
 - Cookies or tracking scripts
 
+The sole exception to the above is that documents you submit for extraction are 
+transmitted, during processing, to the third-party LLM API provider you configure 
+(Section 3). The developers never receive, store, or log this content.
+
 ### 3. How Your Data Is Handled
-- **Session data**: Any data you upload (PDFs, JSON files, API keys) exists only 
-  in your browser session and is stored temporarily on Streamlit's servers for the 
-  duration of your session. This data is **automatically deleted** when your session 
+- **Ephemeral working directory**: Any data you upload (PDFs, JSON, CSV, Excel) 
+  exists only in a temporary working directory on the machine or cloud instance 
+  running the app. No persistent database is used. On the hosted deployment this 
+  directory is cleared whenever the service restarts; on local installations it 
+  remains under your control and can be inspected or deleted at any time.
+- **Session state**: Configuration values (including API keys) and in-memory results 
+  exist only for the duration of your session and are discarded when the session 
   ends or times out.
-- **No persistence**: We do not maintain databases, logs, or backups of user sessions.
-- **No third-party sharing**: Your data is never shared with third parties 
-  (except the LLM API providers you explicitly configure, whose own privacy 
-  policies apply).
+- **No persistence by the developers**: We do not maintain databases, logs, or 
+  backups of user sessions.
+- **Transmission to LLM API providers**: Documents submitted for extraction are 
+  transmitted to the API provider you configure (e.g. Mistral AI) solely for the 
+  duration of that document's processing. The app then requests deletion of each 
+  uploaded file from the provider's file storage, retrying automatically and logging 
+  a warning if deletion fails. Apart from this provider-directed transmission, your 
+  data is never shared with third parties.
+- **Provider-side retention**: Under their developer terms, API providers do not use 
+  API inputs to train or fine-tune their models; however, providers may retain 
+  processing logs for a limited window (commonly up to 30 days) strictly for 
+  trust-and-safety and abuse-monitoring purposes. That retention is governed by the 
+  provider's own privacy policy, not by SARSP-LangEd.
 
 ### 4. What We DO Track (Only via Streamlit Cloud)
 The only metrics available to the developers are those provided by Streamlit Cloud's 
@@ -180,7 +206,7 @@ def render_consent_gate():
     
     ## 📚 SARSP-LangEd Pipeline
     
-    ### Semi-Automated Research Synthesis Protocol for Language Education
+    ### Semi-Automated Research Synthesis Pipeline for Language Education
     
     **Before using this tool, please review and accept the following:**
     
@@ -211,6 +237,10 @@ def render_consent_gate():
     privacy_check = st.checkbox(
         "I have read and accept the **Privacy Policy** *",
         key="gate_privacy_check"
+    )
+    st.caption(
+        "Including how uploaded documents are transmitted to — and deleted from — "
+        "the third-party LLM API providers you configure (Privacy Policy, Section 3)."
     )
     
     st.divider()
@@ -260,10 +290,8 @@ def _mark_consent_accepted():
 
 def reset_main_scroll_once():
     """Reset the main Streamlit viewport after leaving the consent gate."""
-    import streamlit.components.v1 as components
-
-    components.html(
-        """
+    st.iframe(
+        srcdoc="""
         <script>
         (() => {
             const deadline = performance.now() + 1500;
