@@ -39,7 +39,7 @@ import zipfile
 from datetime import datetime
 
 # Consistent temp directory structure
-from core.utils import get_session_temp_dir
+from utils import get_session_temp_dir
 TEMP_DIR = get_session_temp_dir()
 STAGE_DIR = os.path.join(TEMP_DIR, "stage7_topic_discovery")
 TOPIC_OUTPUT_DIR = os.path.join(STAGE_DIR, "results")

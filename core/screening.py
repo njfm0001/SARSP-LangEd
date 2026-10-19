@@ -98,7 +98,7 @@ def _get_available_providers():
     return _ALL_API_PROVIDERS
 
 # Auto-save configuration with temp folder logic
-from core.utils import get_session_temp_dir
+from utils import get_session_temp_dir
 TEMP_DIR = get_session_temp_dir()
 AUTO_SAVE_DIR_NAME = "stage2_screening"
 AUTO_SAVE_FILENAME = os.path.join(TEMP_DIR, AUTO_SAVE_DIR_NAME, "screening.xlsx")

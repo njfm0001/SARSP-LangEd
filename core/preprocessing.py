@@ -16,7 +16,7 @@ from pathlib import Path
 from datetime import datetime
 import os
 
-from core.utils import get_session_temp_dir
+from utils import get_session_temp_dir
 TEMP_DIR = get_session_temp_dir()
 # =============================================================================
 # HELPER FUNCTIONS (from original script, unchanged logic)

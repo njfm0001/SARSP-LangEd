@@ -14,7 +14,7 @@ import time
 from pathlib import Path
 from datetime import datetime
 
-from core.utils import get_session_temp_dir
+from utils import get_session_temp_dir
 TEMP_DIR = get_session_temp_dir()
 
 # Stage-specific paths matching updated folder structure

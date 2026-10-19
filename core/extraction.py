@@ -19,7 +19,7 @@ from mistralai.models import SDKError, TextChunk, FileChunk
 # CONSTANTS
 # =============================================================================
 
-from core.utils import get_session_temp_dir
+from utils import get_session_temp_dir
 TEMP_DIR = get_session_temp_dir()
 STAGE_DIR = os.path.join(TEMP_DIR, "stage3_extraction")
 EXTRACTION_OUTPUT = os.path.join(STAGE_DIR, "structured_output.json")
