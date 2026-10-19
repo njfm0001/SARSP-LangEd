@@ -125,7 +125,7 @@ def get_available_replication_files() -> dict:
 def copy_to_session_temp(src_path: str, dest_subpath: str) -> str | None:
     """Copy a replication file into the current session's temp directory."""
     import shutil
-    from utils import get_session_temp_dir
+    from core.utils import get_session_temp_dir
     
     if not src_path or not os.path.exists(src_path):
         return None

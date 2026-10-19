@@ -24,7 +24,7 @@ plt.style.use('seaborn-v0_8-whitegrid')
 sns.set_palette("husl")
 
 # Consistent temp directory structure
-from utils import get_session_temp_dir
+from core.utils import get_session_temp_dir
 TEMP_DIR = get_session_temp_dir()
 STAGE_DIR = os.path.join(TEMP_DIR, "stage5_normalization")
 AUTO_SAVE_DIR = os.path.join(STAGE_DIR, "auto_save")
