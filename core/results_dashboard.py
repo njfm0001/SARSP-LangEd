@@ -27,7 +27,7 @@ STAGE6_DIR = os.path.join(TEMP_DIR, "stage6_prompt_analysis")
 STAGE7_DIR = os.path.join(TEMP_DIR, "stage7_topic_discovery")
 STAGE8_DIR = os.path.join(TEMP_DIR, "stage8_results")
 
-# Key artifact paths
+# Key artefact paths
 PREPROCESSING_FINAL = os.path.join(STAGE1_DIR, "final_filtered_refs.csv")
 SCREENING_AUTO_SAVE = os.path.join(STAGE2_DIR, "screening.xlsx")
 EXTRACTION_OUTPUT = os.path.join(STAGE3_DIR, "structured_output.json")
@@ -57,7 +57,7 @@ def load_json_safe(filepath):
 
 def load_session_results():
     """
-    Aggregate results from disk artifacts (primary) and session state (fallback).
+    Aggregate results from disk artefacts (primary) and session state (fallback).
     In replication mode, reads from replication_data/ instead of session temp.
     Resilient to session loss / browser refresh.
     """
@@ -68,7 +68,7 @@ def load_session_results():
 
     # === STAGE 1: PREPROCESSING ===
     if is_repl:
-        # Check verified corpus first (canonical post-preprocessing artifact),
+        # Check verified corpus first (canonical post-preprocessing artefact),
         # then fall back to pre-verification filtered refs
         repl_final_verified = os.path.join(REPLICATION_DIR, "stage1_final_filtered_after_manual_verification_book_chapters.csv")
         repl_final_raw = os.path.join(REPLICATION_DIR, "stage1_final_filtered_refs.csv")
@@ -317,7 +317,7 @@ def load_session_results():
     return results
 
 def build_reproducibility_package(results):
-    """Create a ZIP archive containing all pipeline artifacts and metadata.
+    """Create a ZIP archive containing all pipeline artefacts and metadata.
     In replication mode, bundles files from replication_data/."""
     from core.utils import REPLICATION_DIR
 
@@ -433,7 +433,7 @@ def render_results_page():
     st.title("8️⃣ Results Dashboard & Reproducibility Package")
     st.markdown("""
     Centralized overview of all pipeline stages, key metrics, and a downloadable 
-    reproducibility package containing all artifacts, metadata, and audit trails.
+    reproducibility package containing all artefacts, metadata, and audit trails.
     """)
         # Show replication mode banner
     if st.session_state.get("replication_mode"):
@@ -554,7 +554,7 @@ def render_results_page():
     with tab3:
         st.subheader("📦 Download Reproducibility Package")
         st.markdown("""
-        The reproducibility package contains all pipeline artifacts, configuration metadata, 
+        The reproducibility package contains all pipeline artefacts, configuration metadata, 
         and an audit trail manifest. Use this to document your methodology, share with 
         collaborators, or verify results independently.
         """)
