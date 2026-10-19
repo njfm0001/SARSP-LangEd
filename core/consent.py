@@ -239,10 +239,6 @@ def render_consent_gate():
         "I have read and accept the **Privacy Policy** *",
         key="gate_privacy_check"
     )
-    st.caption(
-        "Including how uploaded documents are transmitted to — and deleted from — "
-        "the third-party LLM API providers you configure (Privacy Policy, Section 3)."
-    )
     
     st.divider()
     
