@@ -1,5 +1,5 @@
 """
-SARSP-LangEd: Semi-Automated Research Synthesis Protocol for Language Education
+SARSP-LangEd: Semi-Automated Research Synthesis Pipeline for Language Education
 Main Streamlit Application Entry Point
 """
 import streamlit as st
@@ -46,7 +46,7 @@ if st.session_state.pop("_reset_scroll_after_consent", False):
 # =============================================================================
 with st.sidebar:
     st.title("📚 SARSP-LangEd")
-    st.caption("Semi-Automated Research Synthesis Protocol")
+    st.caption("Semi-Automated Research Synthesis Pipeline")
     
     st.divider()
     
@@ -105,7 +105,7 @@ with st.sidebar:
 if page == "🏠 Home":
     st.title("📚 SARSP-LangEd Pipeline")
     st.markdown("""
-    ### Semi-Automated Research Synthesis Protocol for Language Education
+    ### Semi-Automated Research Synthesis Pipeline for Language Education
     
     This tool implements the complete semi-automated systematic review pipeline 
     described in the *Elements* book. Each stage is modular and can be run independently.
