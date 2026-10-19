@@ -1,6 +1,6 @@
 # SARSP-LangEd
 
-**Semi-Automated Research Synthesis Protocol for Language Education**
+**Semi-Automated Research Synthesis Pipeline for Language Education**
 
 An open-source, browser-based application for conducting semi-automated systematic reviews in fast-moving, data-intensive educational domains. SARSP-LangEd integrates LLM-assisted screening and extraction with human-in-the-loop validation, rule-based normalisation, prompt analysis, and data-driven topic discovery—packaging every intermediate artefact into a single downloadable reproducibility archive.
 
@@ -68,10 +68,10 @@ Local deployment also enables the use of local inference providers such as Ollam
 ### Privacy-First Design
 SARSP-LangEd is designed with a **privacy-first** architecture:
 
-- **No data collection**: We do not collect, store, or transmit any personal data, usage analytics, uploaded files, API keys, or prompts.
+- **No data collection by developers**: The developers do not collect, store, or log any personal data, usage analytics, API keys, or prompts. 
+- **Third-party API transmission**: While the app itself does not store your files, documents uploaded for extraction or text sent for screening/labelling are securely transmitted to the third-party LLM API providers you configure (e.g., Mistral AI, Cerebras, OpenAI) solely for the duration of processing. The app automatically requests the deletion of these files from the provider's servers immediately after processing completes.
+- **Ephemeral local sessions**: All workflow data exists only in a temporary working directory on the machine or cloud instance running the app. Session-level state (including API keys) is discarded when your session ends or times out.
 - **No cookies or tracking**: The application does not use cookies or third-party tracking scripts.
-- **Ephemeral sessions**: All data you upload exists only in your browser session and is automatically deleted when your session ends or times out.
-- **No usage analytics**: Unlike many web applications, we do not track which stages you visit, how long you spend, or what configurations you use.
 
 ### Consent Gate
 On first launch, users are presented with a consent gate requiring acceptance of:
@@ -235,7 +235,7 @@ Researchers remain solely responsible for:
 - protecting confidential or sensitive information;
 - interpreting and reporting findings.
 
-Human verification is an integral component of the SARSP-LangEd protocol and should not be omitted.
+Human verification is an integral component of the SARSP-LangEd pipeline and should not be omitted.
 
 ---
 
@@ -249,7 +249,7 @@ Please use the following reference:
 @misc{fernandezmartinez2026sarsp,
   author = {Fernández-Martínez, Nicolás J. and Pérez-Paredes, Pascual},
   title = {Semi-Automated Research Synthesis in Language Education},
-  year = {2026},
+  year = {2027},
   note = {Cambridge Elements in Research Methods in Education. In preparation.}
 }
 ```
