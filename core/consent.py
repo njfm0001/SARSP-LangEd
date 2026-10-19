@@ -124,6 +124,7 @@ The only metrics available to the developers are those provided by Streamlit Clo
 native dashboard, which includes:
 - Aggregate viewer count (number of unique visitors)
 - Aggregate session duration
+
 These metrics are **anonymous, aggregated, and cannot be linked to individual users**.
 
 ### 5. Legal Basis
@@ -290,8 +291,10 @@ def _mark_consent_accepted():
 
 def reset_main_scroll_once():
     """Reset the main Streamlit viewport after leaving the consent gate."""
-    st.iframe(
-        srcdoc="""
+    import streamlit.components.v1 as components
+
+    components.html(
+        """
         <script>
         (() => {
             const deadline = performance.now() + 1500;
