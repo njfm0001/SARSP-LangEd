@@ -91,7 +91,7 @@ with st.sidebar:
         avail = get_available_replication_files()
         n_files = len([k for k in avail if k != "s7_topics"])
         n_topics = avail.get("s7_topics", {}).get("n_sections", 0)
-        st.success(f"🔬 **Replication Mode Active**\n{n_files} artifact(s) + {n_topics} topic section(s) loaded.")
+        st.success(f"🔬 **Replication Mode Active**\n{n_files} artefact(s) + {n_topics} topic section(s) loaded.")
     
     st.divider()
 
@@ -126,7 +126,7 @@ if page == "🏠 Home":
     
     ### 🔬 Replicating the Published Study
     
-    This app bundles **all original experiment artifacts** (except copyrighted PDFs).
+    This app bundles **all original experiment artefacts** (except copyrighted PDFs).
     
     1. Toggle **🔬 Replication Mode** in the sidebar
     2. Navigate to any stage — original data loads automatically
