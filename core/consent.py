@@ -285,11 +285,9 @@ def _mark_consent_accepted():
     st.session_state["_reset_scroll_after_consent"] = True
 
 
-import streamlit.components.v1 as components
-
 def reset_main_scroll_once():
     """Reset the main Streamlit viewport after leaving the consent gate."""
-    components.html(
+    st.iframe(
         """
         <script>
         (() => {
@@ -319,5 +317,5 @@ def reset_main_scroll_once():
         })();
         </script>
         """,
-        height=0,
+        height=1, 
     )
