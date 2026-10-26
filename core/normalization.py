@@ -3641,14 +3641,43 @@ def compare_task_types_by_group(df, participant_groups=None, normalise_func=None
 
     return reports, title
 
-
-def generate_all_figures(df):
+def generate_all_figures(df, norm_mode="default", custom_cols=None):
     """
-    Generate all standard normalization visualizations.
+    Generate normalization visualizations.
+    For 'default' mode, generates standard pipeline charts.
+    For 'custom_light' mode, dynamically generates charts for all normalized columns.
     Returns dict of {chart_name: matplotlib.Figure}.
     """
     figures = {}
 
+    # =========================================================================
+    # CUSTOM LIGHT MODE: Dynamic chart generation for any schema
+    # =========================================================================
+    if norm_mode == "custom_light":
+        metadata_cols = {'source_filename', 'title', 'authors', 'summary', 'APA_reference'}
+        cols_to_plot = custom_cols if custom_cols else [c for c in df.columns if c not in metadata_cols]
+        
+        for col in cols_to_plot:
+            if col in df.columns:
+                try:
+                    # Attempt to generate frequency chart
+                    freq_df = label_frequency(df[col]).rename_axis("label").reset_index(name="count")
+                    if not freq_df.empty and freq_df['count'].sum() > 0:
+                        # Prettify column name for chart title (e.g., "my_custom_field" -> "My Custom Field")
+                        pretty_title = col.replace("_", " ").replace(" norm", "").title()
+                        figures[pretty_title] = create_bar_chart(
+                            freq_df,
+                            f"{pretty_title} distribution",
+                            top_n=20
+                        )
+                except Exception:
+                    # Skip columns that cause errors (e.g., nested dictionaries, unhashable types)
+                    continue
+        return figures
+
+    # =========================================================================
+    # DEFAULT PIPELINE MODE: Hardcoded charts for the validated schema
+    # =========================================================================
     # Geographic
     if "region_list" in df.columns:
         figures["Regions"] = create_bar_chart(
@@ -3810,7 +3839,7 @@ def generate_all_figures(df):
     task_reports, task_title = compare_task_types_by_group(df, title="Task types by participant type")
     if task_reports:
         figures["Task Types by Participant Type"] = plot_comparative_distribution(task_reports, title=task_title)
-
+    
     return figures
 
 # =============================================================================
@@ -3868,10 +3897,95 @@ def light_normalize_dataframe(df: pd.DataFrame, selected_columns: list) -> pd.Da
             result[col] = result[col].apply(light_normalize_value)
     return result
 
+def auto_flatten_complex_columns(df):
+    """
+    Automatically detect columns containing lists of dicts or single dicts,
+    and flatten them into separate top-level columns containing lists of values.
+    This allows nested fields (like demographics or outcomes) to be normalized and charted.
+    
+    NOTE: We intentionally DO NOT drop the original complex columns. The Default Pipeline 
+    normalization logic relies on the nested structure of columns like 'participant_demographics' 
+    and 'task_types'. Dropping them causes a KeyError. In Custom Light mode, the parent 
+    columns will simply be skipped during charting (due to unhashable dicts) while the 
+    flattened child columns are charted successfully.
+    """
+    cols_to_add = {}
+    
+    for col in df.columns:
+        is_complex = False
+        all_keys = set()
+        
+        # Sample non-null values to determine structure
+        for val in df[col].dropna():
+            if isinstance(val, list):
+                for item in val:
+                    if isinstance(item, dict):
+                        is_complex = True
+                        all_keys.update(item.keys())
+            elif isinstance(val, dict):
+                is_complex = True
+                all_keys.update(val.keys())
+                
+        if is_complex and all_keys:
+            for key in all_keys:
+                new_col_name = f"{col}_{key}"
+                new_col_values = []
+                for val in df[col]:
+                    extracted_vals = []
+                    if isinstance(val, list):
+                        for item in val:
+                            if isinstance(item, dict) and key in item:
+                                v = item[key]
+                                # Flatten one level if the extracted value is itself a list
+                                if isinstance(v, list):
+                                    extracted_vals.extend(v)
+                                else:
+                                    extracted_vals.append(v)
+                    elif isinstance(val, dict):
+                        if key in val:
+                            v = val[key]
+                            if isinstance(v, list):
+                                extracted_vals.extend(v)
+                            else:
+                                extracted_vals.append(v)
+                    
+                    new_col_values.append(extracted_vals if extracted_vals else ["N/A"])
+                cols_to_add[new_col_name] = new_col_values
+
+    # Add the new flattened columns alongside the original ones (DO NOT DROP ORIGINALS)
+    for new_col, values in cols_to_add.items():
+        df[new_col] = values
+        
+    return df
 
 # =============================================================================
 # STREAMLIT RENDER FUNCTION
 # =============================================================================
+
+def _safe_display_df(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Streamlit's st.dataframe uses PyArrow, which crashes if a column contains 
+    a mix of structs (dicts) and non-structs (strings/lists of strings).
+    This function safely converts complex nested objects to JSON strings for display.
+    """
+    df_display = df.copy()
+    for col in df_display.columns:
+        col_has_struct = False
+        # Check if the column contains any dicts or lists of dicts
+        for val in df_display[col].dropna():
+            if isinstance(val, dict):
+                col_has_struct = True
+                break
+            if isinstance(val, list) and any(isinstance(item, dict) for item in val):
+                col_has_struct = True
+                break
+        
+        # If mixed structs are found, convert all lists/dicts in this column to JSON strings
+        if col_has_struct:
+            df_display[col] = df_display[col].apply(
+                lambda x: json.dumps(x, ensure_ascii=False) if isinstance(x, (dict, list)) else x
+            )
+    return df_display
 
 def render_normalization_page():
     st.title("5️⃣ Rule-Based Normalization")
@@ -3899,6 +4013,10 @@ def render_normalization_page():
                     with open(repl_path, "r", encoding="utf-8") as f:
                         repl_data = json.load(f)
                     repl_df = pd.DataFrame(repl_data)
+                    
+                    # Flatten just in case the replication data contains nested dicts
+                    repl_df = auto_flatten_complex_columns(repl_df)
+                    
                     st.session_state["norm_result_df"] = repl_df
                     st.session_state["norm_mode_used"] = "default"
                     # Clear cached figures so they regenerate from replication data
@@ -3930,9 +4048,18 @@ def render_normalization_page():
                         try:
                             with open(auto_path, "r", encoding="utf-8") as f:
                                 recovered_data = json.load(f)
-                            st.session_state["norm_result_df"] = pd.DataFrame(recovered_data)
-                            st.session_state["norm_mode_used"] = "default" if "normalized_output.json" in candidate else "custom_light"
-                            st.info(f"♻️ Recovered normalized data from `{auto_path}` ({len(recovered_data)} records)")
+                            rec_df = pd.DataFrame(recovered_data)
+                            st.session_state["norm_result_df"] = rec_df
+                            
+                            if "normalized_output.json" in candidate:
+                                st.session_state["norm_mode_used"] = "default"
+                            else:
+                                st.session_state["norm_mode_used"] = "custom_light"
+                                # Fallback for custom cols if recovering from disk
+                                metadata_cols = {'source_filename', 'title', 'authors', 'summary', 'APA_reference'}
+                                st.session_state["norm_custom_cols_used"] = [c for c in rec_df.columns if c not in metadata_cols]
+                                
+                            st.info(f"♻️ Recovered normalized data from `{auto_path}` ({len(rec_df)} records)")
                             break
                         except Exception as e:
                             st.warning(f"⚠️ Could not recover auto-save: {e}")
@@ -3942,7 +4069,11 @@ def render_normalization_page():
                     data = json.loads(json_upload.read().decode("utf-8"))
                     json_upload.seek(0)
                     df = pd.DataFrame(data)
-                    st.success(f"✅ Loaded {len(df)} records")
+                    
+                    # --- AUTO-FLATTEN COMPLEX COLUMNS ---
+                    df = auto_flatten_complex_columns(df)
+                    
+                    st.success(f"✅ Loaded {len(df)} records. Nested fields have been automatically flattened for analysis.")
                 except Exception as e:
                     st.error(f"❌ Failed to load JSON: {e}")
 
@@ -4158,7 +4289,8 @@ def render_normalization_page():
             result_df = st.session_state["norm_result_df"]
 
             st.subheader("Preview Normalized Data")
-            st.dataframe(result_df.head(10), use_container_width=True)
+            # Use the safe display function to prevent PyArrow struct mixing errors
+            st.dataframe(_safe_display_df(result_df.head(10)), use_container_width=True)
 
             st.divider()
             st.subheader("📥 Download Normalized Data")
@@ -4202,7 +4334,12 @@ def render_normalization_page():
             # Generate figures (cached in session state to avoid regeneration on rerun)
             if "norm_figures" not in st.session_state:
                 with st.spinner("Generating visualizations..."):
-                    st.session_state["norm_figures"] = generate_all_figures(result_df)
+                    custom_cols = st.session_state.get("norm_custom_cols_used", None)
+                    st.session_state["norm_figures"] = generate_all_figures(
+                        result_df, 
+                        norm_mode=norm_mode_used, 
+                        custom_cols=custom_cols
+                    )
 
             figures = st.session_state.get("norm_figures", {})
 
