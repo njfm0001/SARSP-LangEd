@@ -3457,23 +3457,42 @@ def normalize_study_duration(raw, debug=False):
     return ["N/A"]
 
 # HELPER FUNCTIONS
+def _flatten_nested(val):
+    """Recursively flatten nested lists (e.g., lists of lists)."""
+    if isinstance(val, list):
+        flat = []
+        for v in val:
+            flat.extend(_flatten_nested(v))
+        return flat
+    return [val]
+
 def label_frequency(series):
     """
     Unified frequency counter matching the original Jupyter notebook exactly.
-    Handles Series of lists, single values, and mixed types.
-    Skips NaN/None (does NOT count them as N/A).
+    Handles Series of lists, nested lists, single values, and mixed types.
+    Skips NaN/None and unhashable types (dicts) to prevent Counter crashes.
     """
     items = []
     for item in series:
         if isinstance(item, list):
-            items.extend(item)
+            items.extend(_flatten_nested(item))
         elif pd.isna(item) or item is None:
             continue
         else:
             items.append(item)
-    if not items:
+            
+    # Filter out unhashable types (dicts, remaining lists) and NaNs to prevent Counter crashes
+    hashable_items = []
+    for i in items:
+        if isinstance(i, (dict, list)):
+            continue
+        if isinstance(i, float) and np.isnan(i):
+            continue
+        hashable_items.append(i)
+        
+    if not hashable_items:
         return pd.Series(dtype=int)
-    return pd.Series(Counter(items)).sort_values(ascending=False)
+    return pd.Series(Counter(hashable_items)).sort_values(ascending=False)
 
 
 def create_bar_chart(report_df, title, top_n=20, figsize=(14, 8)):
@@ -3641,6 +3660,14 @@ def compare_task_types_by_group(df, participant_groups=None, normalise_func=None
 
     return reports, title
 
+def _is_nested_list_container(series):
+    """True if column values are lists containing sub-lists
+    (structural containers like study_location = [[region],[country],[continent]])."""
+    for val in series.dropna():
+        if isinstance(val, list):
+            return any(isinstance(item, list) for item in val)
+    return False
+
 def generate_all_figures(df, norm_mode="default", custom_cols=None):
     """
     Generate normalization visualizations.
@@ -3659,15 +3686,22 @@ def generate_all_figures(df, norm_mode="default", custom_cols=None):
         
         for col in cols_to_plot:
             if col in df.columns:
+                # Skip structural containers (e.g. study_location as list-of-lists):
+                # their decomposed children (region/country/continent) are charted instead
+                if _is_nested_list_container(df[col]):
+                    continue
                 try:
                     # Attempt to generate frequency chart
                     freq_df = label_frequency(df[col]).rename_axis("label").reset_index(name="count")
                     if not freq_df.empty and freq_df['count'].sum() > 0:
-                        # Prettify column name for chart title (e.g., "my_custom_field" -> "My Custom Field")
-                        pretty_title = col.replace("_", " ").replace(" norm", "").title()
-                        figures[pretty_title] = create_bar_chart(
+                        title = DEFAULT_CHART_TITLES.get(col)
+                        if not title:
+                            title = col.replace("_", " ").title()
+                        if title in figures:  # collision safety
+                            title = f"{title} ({col})"
+                        figures[title] = create_bar_chart(
                             freq_df,
-                            f"{pretty_title} distribution",
+                            f"{title} distribution",
                             top_n=20
                         )
                 except Exception:
@@ -3987,6 +4021,81 @@ def _safe_display_df(df: pd.DataFrame) -> pd.DataFrame:
             )
     return df_display
 
+# =============================================================================
+# CUSTOM MODE: USER-CONTROLLED MAPPING TO DEFAULT NORMALIZATION RULES
+# =============================================================================
+
+STRUCTURE_DESCRIPTIONS = {
+    "location": "a list of exactly three elements (region, country, continent)",
+    "string_or_liststr": "a string or a list of strings",
+    "liststr": "a list of strings",
+    "dict_groups": "an object/dictionary with stakeholder-group keys (students, teachers, ...)",
+    "list_dicts": "a list of dictionaries (one per participant group)",
+}
+
+# (rule_id, user-facing label, expected structure, name aliases for auto-suggestion)
+DEFAULT_RULE_SPECS = [
+    ("study_location", "Geographic location → Regions / Countries / Continents", "location",
+     ["study_location", "location", "geographic_location", "study_locations"]),
+    ("duration", "Study duration → standardised bands", "string_or_liststr",
+     ["duration", "study_duration", "intervention_duration", "timeframe", "length_of_study"]),
+    ("sample_size", "Sample size → ordinal bands", "string_or_liststr",
+     ["sample_size", "participants", "n_participants", "number_of_participants", "sample"]),
+    ("frameworks", "Conceptual/theoretical frameworks → unified labels", "liststr",
+     ["frameworks", "conceptual_theoretical_frameworks", "theoretical_frameworks", "conceptual_frameworks", "theory"]),
+    ("LLMs_used", "LLMs used → model-family consolidation", "liststr",
+     ["LLMs_used", "large_language_models_used", "llms", "ai_models_used", "models_used", "genai_models"]),
+    ("educational_settings", "Educational settings → controlled vocabulary", "liststr",
+     ["educational_settings", "educational_setting", "education_level", "institutional_level", "school_level"]),
+    ("language_skills_targeted", "Language skills → controlled vocabulary", "liststr",
+     ["language_skills_targeted", "language_skills", "target_skills", "skills"]),
+    ("task_types", "Task types (per stakeholder group) → unified task categories", "dict_groups",
+     ["task_types", "tasks", "activities", "learning_tasks"]),
+    ("participant_demographics", "Participant demographics → age/gender/L1/target-language norms", "list_dicts",
+     ["participant_demographics", "demographics", "participant_characteristics", "participant_profiles"]),
+]
+RULE_KINDS = {r[0]: r[2] for r in DEFAULT_RULE_SPECS}
+RULE_LABELS = {r[0]: r[1] for r in DEFAULT_RULE_SPECS}
+
+# Chart titles for rule-generated columns (match Default-mode chart names)
+DEFAULT_CHART_TITLES = {
+    "region_list": "Regions", "country_list": "Countries", "continent_list": "Continents",
+    "duration_norm": "Study Duration", "sample_size_norm": "Sample Size Distribution",
+    "frameworks_norm": "Frameworks", "LLMs_norm": "LLMs Used",
+    "educational_settings_norm": "Educational Settings", "language_skills_norm": "Language Skills Targeted",
+    "task_types_norm": "Task Types", "L1_norm": "First Languages (L1)",
+    "target_language_norm": "Target Languages", "age_norm": "Age Bands",
+    "gender_norm": "Gender Distribution", "cefr_norm": "CEFR Levels", "ai_literacy_norm": "AI Literacy Levels",
+}
+
+
+def _suggest_column(df_columns, aliases):
+    """Return the first column matching an alias (case-insensitive), else None."""
+    lower = {c.lower(): c for c in df_columns}
+    for a in aliases:
+        if a.lower() in lower:
+            return lower[a.lower()]
+    return None
+
+
+def _check_field_structure(series, kind):
+    """Validate that a column's values match the structure the default rule expects."""
+    vals = [v for v in series.dropna() if v is not None]
+    if not vals:
+        return False
+    sample = vals[:10]
+    if kind == "string_or_liststr":
+        return all(isinstance(v, str) or (isinstance(v, list) and all(isinstance(x, str) for x in v)) for v in sample)
+    if kind == "liststr":
+        return all(isinstance(v, list) and all(isinstance(x, str) for x in v) for v in sample)
+    if kind == "location":
+        return all(isinstance(v, list) and len(v) == 3 for v in sample)
+    if kind == "dict_groups":
+        return all(isinstance(v, dict) for v in sample)
+    if kind == "list_dicts":
+        return all(isinstance(v, list) and any(isinstance(x, dict) for x in v) for v in sample)
+    return False
+
 def render_normalization_page():
     st.title("5️⃣ Rule-Based Normalization")
     st.markdown("""
@@ -4033,15 +4142,9 @@ def render_normalization_page():
                 return
         else:
             st.subheader("Upload Extracted Data")
-            json_upload = st.file_uploader(
-                "Upload structured_output.json (from Stage 3)",
-                type=["json"],
-                key="norm_json_upload"
-            )
-
             df = None
             # --- AUTO-RECOVER FROM DISK IF SESSION STATE LOST ---
-            if "norm_result_df" not in st.session_state:
+            if "norm_result_df" not in st.session_state and "raw_df" not in st.session_state:
                 for candidate in ["normalized_output.json", "normalized_output_light.json"]:
                     auto_path = os.path.join(AUTO_SAVE_DIR, candidate)
                     if os.path.exists(auto_path):
@@ -4050,12 +4153,12 @@ def render_normalization_page():
                                 recovered_data = json.load(f)
                             rec_df = pd.DataFrame(recovered_data)
                             st.session_state["norm_result_df"] = rec_df
+                            st.session_state["raw_df"] = rec_df # Store as raw to allow re-running
                             
                             if "normalized_output.json" in candidate:
                                 st.session_state["norm_mode_used"] = "default"
                             else:
                                 st.session_state["norm_mode_used"] = "custom_light"
-                                # Fallback for custom cols if recovering from disk
                                 metadata_cols = {'source_filename', 'title', 'authors', 'summary', 'APA_reference'}
                                 st.session_state["norm_custom_cols_used"] = [c for c in rec_df.columns if c not in metadata_cols]
                                 
@@ -4063,20 +4166,44 @@ def render_normalization_page():
                             break
                         except Exception as e:
                             st.warning(f"⚠️ Could not recover auto-save: {e}")
-            if json_upload:
-                try:
-                    json_upload.seek(0)
-                    data = json.loads(json_upload.read().decode("utf-8"))
-                    json_upload.seek(0)
-                    df = pd.DataFrame(data)
-                    
-                    # --- AUTO-FLATTEN COMPLEX COLUMNS ---
-                    df = auto_flatten_complex_columns(df)
-                    
-                    st.success(f"✅ Loaded {len(df)} records. Nested fields have been automatically flattened for analysis.")
-                except Exception as e:
-                    st.error(f"❌ Failed to load JSON: {e}")
 
+            # --- FILE UPLOAD WITH STATE PERSISTENCE (FIXES BUG 1) ---
+            json_upload = st.file_uploader(
+                "Upload structured_output.json (from Stage 3)",
+                type=["json"],
+                key="norm_json_upload"
+            )
+
+            if json_upload is not None:
+                file_id = f"{json_upload.name}_{json_upload.size}"
+                # Only process if it's a newly uploaded file (prevents wiping state on Tab 3 reruns)
+                if st.session_state.get("current_raw_file_id") != file_id:
+                    st.session_state["current_raw_file_id"] = file_id
+                    try:
+                        json_upload.seek(0)
+                        data = json.loads(json_upload.read().decode("utf-8"))
+                        json_upload.seek(0)
+                        df = pd.DataFrame(data)
+                        
+                        # --- AUTO-FLATTEN COMPLEX COLUMNS ---
+                        df = auto_flatten_complex_columns(df)
+                        
+                        # Store raw dataframe in session state so it persists across tab reruns
+                        st.session_state["raw_df"] = df
+                        
+                        # Clear downstream state AND widget selections for the new file
+                        st.session_state.pop("norm_result_df", None)
+                        st.session_state.pop("norm_figures", None)
+                        st.session_state.pop("norm_mode_used", None)
+                        st.session_state.pop("norm_custom_cols_used", None)
+                        st.session_state.pop("norm_custom_columns", None)   # column multiselect
+                        st.session_state.pop("norm_viz_selector", None)     # chart multiselect
+                        
+                        st.success(f"✅ Loaded {len(df)} records. Nested fields have been automatically flattened for analysis.")
+                    except Exception as e:
+                        st.error(f"❌ Failed to load JSON: {e}")
+
+            df = st.session_state.get("raw_df")
             if df is None:
                 st.warning("⚠️ Upload a JSON file to proceed.")
                 return
@@ -4086,7 +4213,7 @@ def render_normalization_page():
             # --- Mode Selection ---
             norm_mode = st.radio(
                 "Normalization Mode",
-                ["🔒 Default Pipeline", "✏️ Custom Light"],
+                ["🔒 Default Pipeline", "✏️ Custom"],
                 horizontal=True,
                 key="norm_mode",
                 help="Default = full domain-specific normalization (requires default extraction schema). Custom Light = structural cleanup for any schema."
@@ -4096,19 +4223,46 @@ def render_normalization_page():
                 st.info("Applies all validated normalization functions: sample size banding, age/gender/demographics parsing, L1/target language consolidation, task type mapping, framework normalization, region/country standardization, study duration banding, and more.")
                 selected_columns = list(df.columns)
             else:
-                st.warning("⚠️ Custom Light mode applies only structural normalization (N/A standardization, list deduplication, whitespace cleanup, unicode normalization). Domain-specific mappings are NOT applied.")
+                st.warning("⚠️ Custom mode applies structural normalization (N/A standardization, list deduplication, whitespace cleanup, unicode normalization) to the columns selected below.")
+
                 metadata_cols = {'source_filename', 'title', 'authors', 'summary', 'APA_reference'}
                 available = sorted([c for c in df.columns if c not in metadata_cols])
                 selected_columns = st.multiselect(
-                    "Columns to Normalize",
+                    "Columns to normalize (structural cleanup)",
                     options=available,
                     default=available,
                     key="norm_custom_columns"
                 )
 
+                with st.expander("🔗 Map custom fields to default normalization rules (optional)", expanded=False):
+                    st.caption(
+                        "If your schema contains fields equivalent to the default pipeline's fields, map them here to reuse the "
+                        "validated default rules (e.g. duration banding, framework consolidation, geographic splitting). "
+                        "Suggestions are pre-filled by field name; every mapping is validated against the expected field "
+                        "structure at run time, and incompatible fields are skipped with a warning."
+                    )
+                    mapping = {}
+                    for rule_id, rule_label, kind, aliases in DEFAULT_RULE_SPECS:
+                        suggestion = _suggest_column(df.columns, aliases)
+                        options = ["(none)"] + available
+                        default_idx = options.index(suggestion) if suggestion in options else 0
+                        chosen = st.selectbox(
+                            f"{rule_label}  ·  expected: {STRUCTURE_DESCRIPTIONS[kind]}",
+                            options=options,
+                            index=default_idx,
+                            key=f"norm_map_{rule_id}",
+                        )
+                        if chosen != "(none)":
+                            mapping[rule_id] = chosen
+                    st.session_state["norm_custom_mapping"] = mapping
+
             st.divider()
 
             if st.button("🚀 Run Normalization", type="primary", key="norm_run_btn"):
+                # Clear cached figures and chart selection so they regenerate for this run
+                st.session_state.pop("norm_figures", None)
+                st.session_state.pop("norm_viz_selector", None)
+                
                 with st.spinner("Normalizing..."):
                     if norm_mode == "🔒 Default Pipeline":
                         # Apply full default normalization
@@ -4213,24 +4367,114 @@ def render_normalization_page():
                             st.error(f"❌ Default normalization failed: {e}\nEnsure your data matches the default extraction schema.")
                             return
                     else:
-                        # Custom light normalization
+                        # Custom normalization: structural cleanup + user-mapped default rules
                         if not selected_columns:
                             st.error("❌ Select at least one column.")
                             return
                         normalized_df = light_normalize_dataframe(df, selected_columns)
+
+                        mapping = st.session_state.get("norm_custom_mapping", {})
+                        generated_cols = []
+                        mapped_sources = []
+                        skipped = []
+
+                        for rule_id, source in mapping.items():
+                            if source not in normalized_df.columns:
+                                continue
+                            kind = RULE_KINDS[rule_id]
+                            if not _check_field_structure(normalized_df[source], kind):
+                                skipped.append((rule_id, source))
+                                continue
+                            mapped_sources.append(source)
+                            try:
+                                if rule_id == "study_location":
+                                    loc_parsed = normalized_df[source].apply(parse_study_location)
+                                    normalized_df["region_list"] = loc_parsed.apply(lambda x: x["region"]).apply(
+                                        lambda lst: [normalise_region_label_simple(v) for v in lst] if isinstance(lst, list) else ["N/A"])
+                                    normalized_df["country_list"] = loc_parsed.apply(lambda x: x["country"]).apply(
+                                        lambda lst: [normalise_country(v) for v in lst] if isinstance(lst, list) else ["N/A"])
+                                    normalized_df["continent_list"] = loc_parsed.apply(lambda x: x["continent"]).apply(
+                                        lambda lst: [normalise_continent(v) for v in lst] if isinstance(lst, list) else ["N/A"])
+                                    generated_cols.extend(["region_list", "country_list", "continent_list"])
+                                elif rule_id == "duration":
+                                    normalized_df["duration_norm"] = normalized_df[source].apply(normalize_study_duration)
+                                    generated_cols.append("duration_norm")
+                                elif rule_id == "sample_size":
+                                    normalized_df["sample_size_norm"] = normalized_df[source].apply(categorize_sample_size)
+                                    generated_cols.append("sample_size_norm")
+                                elif rule_id == "frameworks":
+                                    normalized_df["frameworks_norm"] = normalized_df[source].apply(
+                                        lambda fw: normalise_frameworks(fw) if isinstance(fw, list) else [normalise_frameworks(fw)])
+                                    generated_cols.append("frameworks_norm")
+                                elif rule_id == "LLMs_used":
+                                    normalized_df["LLMs_norm"] = normalized_df[source].apply(
+                                        lambda m: normalise_llm_model(m) if isinstance(m, list) else [normalise_llm_model(m)])
+                                    generated_cols.append("LLMs_norm")
+                                elif rule_id == "educational_settings":
+                                    normalized_df["educational_settings_norm"] = normalized_df[source].apply(normalise_list)
+                                    generated_cols.append("educational_settings_norm")
+                                elif rule_id == "language_skills_targeted":
+                                    normalized_df["language_skills_norm"] = normalized_df[source].apply(normalise_list)
+                                    generated_cols.append("language_skills_norm")
+                                elif rule_id == "task_types":
+                                    def _row_norm_tasks_hybrid(task_obj):
+                                        if not isinstance(task_obj, dict): return ["N/A"]
+                                        all_tasks = []
+                                        for pt in ['students', 'teachers', 'policymakers_administrators', 'others']:
+                                            tasks = task_obj.get(pt, [])
+                                            if isinstance(tasks, list): all_tasks.extend(tasks)
+                                        if not all_tasks: return ["N/A"]
+                                        normed = []
+                                        for task in all_tasks:
+                                            result = normalise_task_type(task)
+                                            if isinstance(result, list): normed.extend(result)
+                                            else: normed.append(result)
+                                        return normed if normed else ["N/A"]
+                                    normalized_df["task_types_norm"] = normalized_df[source].apply(_row_norm_tasks_hybrid)
+                                    generated_cols.append("task_types_norm")
+                                elif rule_id == "participant_demographics":
+                                    demo_mappings = [
+                                        ("L1_norm", normalise_L1, ["first_language", "l1", "native_language"]),
+                                        ("target_language_norm", normalise_target_language, ["target_language", "l2", "foreign_language"]),
+                                        ("age_norm", normalize_age, ["age", "age_group", "age_band"]),
+                                        ("gender_norm", normalize_gender, ["gender", "sex"]),
+                                    ]
+                                    for tgt, func, subs in demo_mappings:
+                                        src_flat = None
+                                        for c in normalized_df.columns:
+                                            if c.lower().startswith(source.lower() + "_") and any(s in c.lower() for s in subs):
+                                                src_flat = c
+                                                break
+                                        if src_flat:
+                                            normalized_df[tgt] = normalized_df[src_flat].apply(
+                                                lambda lst: [item for v in lst for item in func(v)] if isinstance(lst, list) else ["N/A"])
+                                            generated_cols.append(tgt)
+                                            mapped_sources.append(src_flat) # Exclude raw flattened column from charting
+                            except Exception:
+                                skipped.append((rule_id, source))
+                                if source in mapped_sources:
+                                    mapped_sources.remove(source)
+
+                        for rule_id, source in skipped:
+                            st.warning(
+                                f"⚠️ Mapping skipped: '{source}' → {RULE_LABELS[rule_id]}. "
+                                f"The field's structure does not match the expected format ({STRUCTURE_DESCRIPTIONS[RULE_KINDS[rule_id]]})."
+                            )
+
+                        # Charts: exclude mapped source columns (their normalized twins replace them)
+                        chart_cols = [c for c in selected_columns if c not in mapped_sources] + generated_cols
+                        seen = set()
+                        chart_cols = [c for c in chart_cols if not (c in seen or seen.add(c))]
+
+                        if generated_cols:
+                            st.success(f"✅ Applied default rules to mapped fields: {', '.join(sorted(set(generated_cols)))}")
+
                         st.session_state["norm_result_df"] = normalized_df
                         st.session_state["norm_mode_used"] = "custom_light"
                         st.session_state.pop("norm_figures", None)
-                        st.session_state["norm_custom_cols_used"] = selected_columns
-                        st.success(f"✅ Light normalization complete for {len(normalized_df)} records across {len(selected_columns)} columns")
-                        # ---- AUTO-SAVE TO TEMP (safety net) ----
-                        try:
-                            normalized_df.to_json(os.path.join(AUTO_SAVE_DIR, "normalized_output_light.json"), orient="records", force_ascii=False, indent=2)
-                            normalized_df.to_csv(os.path.join(AUTO_SAVE_DIR, "normalized_output_light.csv"), index=False)
-                            st.caption(f"💾 Auto-saved to `{AUTO_SAVE_DIR}`")
-                        except Exception as save_err:
-                            st.warning(f"⚠️ Auto-save failed: {save_err}")
-
+                        st.session_state.pop("norm_viz_selector", None)
+                        st.session_state["norm_custom_cols_used"] = chart_cols
+                        st.success(f"✅ Custom normalization complete for {len(normalized_df)} records across {len(chart_cols)} charted columns")
             # Reproducibility & Accessibility
             if "norm_result_df" in st.session_state:
                 with st.expander("🔬 Reproducibility & Accessibility Information", expanded=False):
@@ -4350,11 +4594,15 @@ def render_normalization_page():
                 st.caption("All charts show frequency counts with percentages. Generated from normalized data using the same logic as the validated pipeline notebook.")
 
                 # Chart selector
-                chart_names = list(figures.keys())
+                chart_names = sorted(figures.keys())
+                
+                # Initialize default selection only once per run to prevent Streamlit ghost-chip glitches
+                if "norm_viz_selector" not in st.session_state:
+                    st.session_state["norm_viz_selector"] = chart_names[:6]
+
                 selected_charts = st.multiselect(
                     "Select charts to display",
                     options=chart_names,
-                    default=chart_names[:6],
                     key="norm_viz_selector"
                 )
 
