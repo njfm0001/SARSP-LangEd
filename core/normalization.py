@@ -3481,18 +3481,24 @@ def label_frequency(series):
         else:
             items.append(item)
             
-    # Filter out unhashable types (dicts, remaining lists) and NaNs to prevent Counter crashes
-    hashable_items = []
-    for i in items:
-        if isinstance(i, (dict, list)):
-            continue
-        if isinstance(i, float) and np.isnan(i):
-            continue
-        hashable_items.append(i)
+    # Filter out unhashable types (dicts, remaining lists) and NaNs using list comprehension for speed
+    hashable_items = [
+        i for i in items 
+        if not isinstance(i, (dict, list)) and not (isinstance(i, float) and np.isnan(i))
+    ]
         
     if not hashable_items:
         return pd.Series(dtype=int)
     return pd.Series(Counter(hashable_items)).sort_values(ascending=False)
+
+def _clean_extracted_list(lst):
+    """Safely clean a list of strings or a single string extracted from flattened demographics."""
+    if isinstance(lst, list):
+        cleaned = [str(v).strip() for v in lst if isinstance(v, str) and v.strip() and v.strip().lower() not in ("n/a", "na", "none", "null")]
+        return cleaned if cleaned else ["N/A"]
+    if isinstance(lst, str) and lst.strip() and lst.strip().lower() not in ("n/a", "na", "none", "null"):
+        return [lst.strip()]
+    return ["N/A"]
 
 
 def create_bar_chart(report_df, title, top_n=20, figsize=(14, 8)):
@@ -4004,18 +4010,14 @@ def _safe_display_df(df: pd.DataFrame) -> pd.DataFrame:
     """
     df_display = df.copy()
     for col in df_display.columns:
-        col_has_struct = False
-        # Check if the column contains any dicts or lists of dicts
-        for val in df_display[col].dropna():
-            if isinstance(val, dict):
-                col_has_struct = True
-                break
-            if isinstance(val, list) and any(isinstance(item, dict) for item in val):
-                col_has_struct = True
-                break
+        # Check if the column contains any dicts or lists of dicts using any() for speed
+        has_struct = any(
+            isinstance(val, dict) or (isinstance(val, list) and any(isinstance(item, dict) for item in val))
+            for val in df_display[col].dropna()
+        )
         
         # If mixed structs are found, convert all lists/dicts in this column to JSON strings
-        if col_has_struct:
+        if has_struct:
             df_display[col] = df_display[col].apply(
                 lambda x: json.dumps(x, ensure_ascii=False) if isinstance(x, (dict, list)) else x
             )
@@ -4051,8 +4053,12 @@ DEFAULT_RULE_SPECS = [
      ["language_skills_targeted", "language_skills", "target_skills", "skills"]),
     ("task_types", "Task types (per stakeholder group) → unified task categories", "dict_groups",
      ["task_types", "tasks", "activities", "learning_tasks"]),
-    ("participant_demographics", "Participant demographics → age/gender/L1/target-language norms", "list_dicts",
+    ("participant_demographics", "Participant demographics → age/gender/L1/target-language/status/CEFR/AI literacy norms", "list_dicts",
      ["participant_demographics", "demographics", "participant_characteristics", "participant_profiles"]),
+    ("prompting_techniques", "Prompting techniques → controlled vocabulary", "liststr",
+     ["prompting_techniques", "prompt_techniques", "prompting_methods"]),
+    ("prompting_strategies", "Prompting strategies → unified labels", "string_or_liststr",
+     ["prompting_strategies", "prompt_strategies", "prompting_approaches"]),
 ]
 RULE_KINDS = {r[0]: r[2] for r in DEFAULT_RULE_SPECS}
 RULE_LABELS = {r[0]: r[1] for r in DEFAULT_RULE_SPECS}
@@ -4065,7 +4071,9 @@ DEFAULT_CHART_TITLES = {
     "educational_settings_norm": "Educational Settings", "language_skills_norm": "Language Skills Targeted",
     "task_types_norm": "Task Types", "L1_norm": "First Languages (L1)",
     "target_language_norm": "Target Languages", "age_norm": "Age Bands",
-    "gender_norm": "Gender Distribution", "cefr_norm": "CEFR Levels", "ai_literacy_norm": "AI Literacy Levels",
+    "gender_norm": "Gender Distribution", "language_status_norm": "Language Status",
+    "cefr_norm": "CEFR Levels", "ai_literacy_norm": "AI Literacy Levels",
+    "prompting_techniques_norm": "Prompting Techniques", "prompting_strategies_norm": "Prompting Strategies",
 }
 
 
@@ -4432,12 +4440,22 @@ def render_normalization_page():
                                         return normed if normed else ["N/A"]
                                     normalized_df["task_types_norm"] = normalized_df[source].apply(_row_norm_tasks_hybrid)
                                     generated_cols.append("task_types_norm")
+                                elif rule_id == "prompting_techniques":
+                                    normalized_df["prompting_techniques_norm"] = normalized_df[source].apply(normalise_list)
+                                    generated_cols.append("prompting_techniques_norm")
+                                elif rule_id == "prompting_strategies":
+                                    normalized_df["prompting_strategies_norm"] = normalized_df[source].apply(
+                                        lambda s: normalise_prompting_strategy(s) if isinstance(s, list) else [normalise_prompting_strategy(s)])
+                                    generated_cols.append("prompting_strategies_norm")
                                 elif rule_id == "participant_demographics":
                                     demo_mappings = [
                                         ("L1_norm", normalise_L1, ["first_language", "l1", "native_language"]),
                                         ("target_language_norm", normalise_target_language, ["target_language", "l2", "foreign_language"]),
                                         ("age_norm", normalize_age, ["age", "age_group", "age_band"]),
                                         ("gender_norm", normalize_gender, ["gender", "sex"]),
+                                        ("language_status_norm", _clean_extracted_list, ["language_status", "status"]),
+                                        ("cefr_norm", _clean_extracted_list, ["cefr", "cefr_level", "proficiency"]),
+                                        ("ai_literacy_norm", _clean_extracted_list, ["ai_literacy", "prompt_literacy", "ai_competence"]),
                                     ]
                                     for tgt, func, subs in demo_mappings:
                                         src_flat = None
@@ -4446,8 +4464,11 @@ def render_normalization_page():
                                                 src_flat = c
                                                 break
                                         if src_flat:
-                                            normalized_df[tgt] = normalized_df[src_flat].apply(
-                                                lambda lst: [item for v in lst for item in func(v)] if isinstance(lst, list) else ["N/A"])
+                                            if func is _clean_extracted_list:
+                                                normalized_df[tgt] = normalized_df[src_flat].apply(func)
+                                            else:
+                                                normalized_df[tgt] = normalized_df[src_flat].apply(
+                                                    lambda lst: [item for v in lst for item in func(v)] if isinstance(lst, list) else ["N/A"])
                                             generated_cols.append(tgt)
                             except Exception:
                                 skipped.append((rule_id, source))
