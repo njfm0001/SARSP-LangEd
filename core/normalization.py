@@ -4449,7 +4449,6 @@ def render_normalization_page():
                                             normalized_df[tgt] = normalized_df[src_flat].apply(
                                                 lambda lst: [item for v in lst for item in func(v)] if isinstance(lst, list) else ["N/A"])
                                             generated_cols.append(tgt)
-                                            mapped_sources.append(src_flat) # Exclude raw flattened column from charting
                             except Exception:
                                 skipped.append((rule_id, source))
                                 if source in mapped_sources:
