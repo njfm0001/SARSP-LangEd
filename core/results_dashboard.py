@@ -294,6 +294,25 @@ def load_session_results():
                     topic_sections[sec_key] = meta
                 except Exception:
                     continue
+                    
+        # Fallback: Scan STAGE7_DIR for actual CSV outputs (handles restored ZIPs missing metadata)
+        if not topic_sections:
+            for csv_file in Path(STAGE7_DIR).rglob("themes_merged.csv"):
+                sec_key = csv_file.parent.name
+                if sec_key in ("auto_save", "results", "stage7_topic_discovery"):
+                    continue
+                n_texts, n_themes = 0, 0
+                texts_csv = csv_file.parent / "texts_with_themes.csv"
+                if texts_csv.exists():
+                    try:
+                        n_texts = sum(1 for _ in open(texts_csv, "r", encoding="utf-8")) - 1
+                    except Exception: pass
+                try:
+                    themes_df = pd.read_csv(csv_file, dtype=str)
+                    n_themes = len(themes_df)
+                except Exception: pass
+                topic_sections[sec_key] = {"n_texts": n_texts, "n_themes": n_themes}
+
         if topic_sections:
             total_texts = sum(v.get("n_texts", 0) for v in topic_sections.values())
             total_themes = sum(v.get("n_themes", 0) for v in topic_sections.values())
@@ -435,9 +454,94 @@ def render_results_page():
     Centralized overview of all pipeline stages, key metrics, and a downloadable 
     reproducibility package containing all artefacts, metadata, and audit trails.
     """)
-        # Show replication mode banner
+    
+    # Show replication mode banner
     if st.session_state.get("replication_mode"):
         st.info("🔬 **Replication Mode:** Dashboard shows metrics from the original published experiment. Toggle off in sidebar to view live pipeline results.")
+
+    # =========================================================================
+    # CROSS-SESSION RECOVERY (NEW FEATURE)
+    # =========================================================================
+    with st.expander("📂 Restore Pipeline from Saved Files (Cross-Session Recovery)", expanded=False):
+        st.markdown("""
+        If you ran the pipeline stages across different sessions or days and the dashboard shows 0/7 stages 
+        (because temporary session files were cleared by the browser or server), you can upload your manually 
+        saved output files here. This will restore the dashboard metrics and allow you to generate the full 
+        reproducibility package.
+        """)
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("**Stage 1: Preprocessing**")
+            s1_final = st.file_uploader("Final Filtered Corpus (.csv)", type=["csv"], key="restore_s1_final")
+            s1_removed = st.file_uploader("Removed References (.csv)", type=["csv"], key="restore_s1_removed")
+            
+            st.markdown("**Stage 2: Screening**")
+            s2_screen = st.file_uploader("Screening Results (.xlsx)", type=["xlsx"], key="restore_s2")
+            
+            st.markdown("**Stage 3: Extraction**")
+            s3_ext = st.file_uploader("Structured Output (.json)", type=["json"], key="restore_s3")
+            
+        with col2:
+            st.markdown("**Stage 4: Validation**")
+            s4_val = st.file_uploader("Agreement Summary (.xlsx)", type=["xlsx"], key="restore_s4_val")
+            s4_comp = st.file_uploader("Comparison Table (.xlsx)", type=["xlsx"], key="restore_s4_comp")
+            
+            st.markdown("**Stage 5: Normalization**")
+            s5_norm = st.file_uploader("Normalized Output (.json)", type=["json"], key="restore_s5")
+            
+            st.markdown("**Stage 6: Prompt Analysis**")
+            s6_prompts = st.file_uploader("Analyzed Prompts (.csv)", type=["csv"], key="restore_s6")
+
+        st.markdown("**Stage 7: Topic Discovery**")
+        s7_zip = st.file_uploader(
+            "Topic Discovery Folder (.zip) - *Optional*", 
+            type=["zip"], 
+            key="restore_s7", 
+            help="Upload a ZIP file containing the topic discovery results folders and metadata."
+        )
+
+        if st.button("💾 Restore Files to Pipeline", type="primary", key="btn_restore_files"):
+            restored_count = 0
+            
+            def save_uploaded_file(uploaded_file, dest_path):
+                if uploaded_file is not None:
+                    os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+                    with open(dest_path, "wb") as f:
+                        f.write(uploaded_file.getbuffer())
+                    return True
+                return False
+
+            if save_uploaded_file(s1_final, PREPROCESSING_FINAL): restored_count += 1
+            if save_uploaded_file(s1_removed, os.path.join(STAGE1_DIR, "removed_refs.csv")): restored_count += 1
+            if save_uploaded_file(s2_screen, SCREENING_AUTO_SAVE): restored_count += 1
+            if save_uploaded_file(s3_ext, EXTRACTION_OUTPUT): restored_count += 1
+            if save_uploaded_file(s4_val, VALIDATION_AUTO_SAVE): restored_count += 1
+            if save_uploaded_file(s4_comp, os.path.join(STAGE4_DIR, "auto_save", "comparison_table.xlsx")): restored_count += 1
+            
+            # Handle Normalization (detect if it's the light or default version based on filename)
+            if s5_norm is not None:
+                dest = NORMALIZATION_LIGHT_OUTPUT if "light" in s5_norm.name.lower() else NORMALIZATION_OUTPUT
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                with open(dest, "wb") as f:
+                    f.write(s5_norm.getbuffer())
+                restored_count += 1
+                
+            if save_uploaded_file(s6_prompts, PROMPT_ANALYSIS_OUTPUT): restored_count += 1
+            
+            # Handle Topic Discovery (extracts the zip directly into the stage 7 directory)
+            if s7_zip is not None:
+                os.makedirs(STAGE7_DIR, exist_ok=True)
+                with zipfile.ZipFile(s7_zip, 'r') as zip_ref:
+                    zip_ref.extractall(STAGE7_DIR)
+                restored_count += 1
+            
+            if restored_count > 0:
+                st.success(f"✅ Successfully restored {restored_count} artefact(s)! The dashboard will now update.")
+                time.sleep(1.5)
+                st.rerun()
+            else:
+                st.warning("⚠️ No files were uploaded. Please select at least one file to restore.")
 
     tab1, tab2, tab3 = st.tabs([
         "📊 Pipeline Overview",
