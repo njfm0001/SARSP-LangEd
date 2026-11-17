@@ -4,7 +4,7 @@
 
 An open-source, browser-based application for conducting semi-automated systematic reviews in fast-moving, data-intensive educational domains. SARSP-LangEd integrates LLM-assisted screening and extraction with human-in-the-loop validation, rule-based normalisation, prompt analysis, and data-driven topic discovery—packaging every intermediate artefact into a single downloadable reproducibility archive.
 
-> 📖 **Companion publication:** Fernández-Martínez, N.J. & Pérez-Paredes, P. (in preparation). *Semi-Automated Research Synthesis in Language Education*. Cambridge Elements in Research Methods in Education. Cambridge University Press.
+> 📖 **Companion publication:** Fernández-Martínez, N.J. & Pérez-Paredes, P. (in preparation). *Semi-Automated Research Synthesis in Language Education*. 
 
 ---
 
@@ -249,8 +249,8 @@ Please use the following reference:
 @misc{fernandezmartinez2026sarsp,
   author = {Fernández-Martínez, Nicolás J. and Pérez-Paredes, Pascual},
   title = {Semi-Automated Research Synthesis in Language Education},
-  year = {2027},
-  note = {Cambridge Elements in Research Methods in Education. In preparation.}
+  year = {In preparation},
+  note = {In preparation.}
 }
 ```
 
@@ -258,7 +258,7 @@ Please use the following reference:
 
 ## Acknowledgements
 
-SARSP-LangEd was developed as the methodological infrastructure for the Cambridge Elements volume **Semi-Automated Research Synthesis in Language Education**, within the framework of the research project **Broadening the scope of Data-driven learning: a multi-site & multi-data approach (BsDDL)**. 
+SARSP-LangEd was developed as the methodological infrastructure within the framework of the research project **Broadening the scope of Data-driven learning: a multi-site & multi-data approach (BsDDL)**. 
 
 This work was supported by the Spanish Ministerio de Ciencia, Innovación y Universidades (Agencia Estatal de Investigación) under Grant **PID2023-146916NB-I00**. 
 
